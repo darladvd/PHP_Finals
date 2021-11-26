@@ -1,13 +1,9 @@
+<!DOCTYPE html>
 <?php
         session_start();
-        $conn = mysqli_connect('localhost', 'root', '', 'phpfinals');
-        if($conn->connect_error){
-            echo "$conn->connect_error";
-            die("Connection Failed : ".$conn->connect_error);
-        }
-        ?>
+        error_reporting(0);
+?>
 
-<!DOCTYPE html>
 <html>
     <head>
         <!-- Required meta tags -->
@@ -121,55 +117,72 @@
         </style>
     </head>
     <body >
-
-    <div class="register-photo">
-    <div class="form-container">
-        <div class="image-holder"></div>
-
-        <form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
-            <h2 class="text-center"><strong>Login</strong> your account.</h2>
-            <div class="form-group"><input class="form-control" type="text" name="username" placeholder="Student Number"></div>
-            <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password"></div>
-            <div class="form-group"><button class="btn btn-success btn-block" type="submit">Sign In</button></div>
-
         <?php
-        if ($_SERVER["REQUEST_METHOD"] == "POST"){
-            $username = $_POST['username'];
-            $password = $_POST['password'];
-
-            if (empty($username))
-            {
-                error_reporting(0);
+            $conn = mysqli_connect('localhost', 'root', '', 'phpfinals');
+            if($conn->connect_error){
+            echo "$conn->connect_error";
+            die("Connection Failed : ".$conn->connect_error);
             }
-            
-            $p_un = mysqli_real_escape_string($conn, $username);
-            $p_pw = mysqli_real_escape_string($conn, $password);
-            $sql = mysqli_query($conn, "select count(*) as usercnt from records where username='".$p_un."' and password='".$p_pw."'");
-            $data = mysqli_fetch_array($sql);
 
-            $count = $data['usercnt'];
-            if($count > 0){
-                $_SESSION['username'] = $p_un;
-                $_SESSION['loggedin'] = true;
-                
-                $level = mysqli_query($conn, "select accesslevel as lvl from records where username='".$p_un."'");
+            if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true && isset($_SESSION['username'])){
+                $level = mysqli_query($conn, "select accesslevel as lvl from records where username='".$_SESSION['username']."'");
                 while($record = mysqli_fetch_array($level)){
                     if($record['lvl'] == "admin"){
+                        echo "Hello";
                         header("location: empty.php");
                     }
                     else{
+                        echo "Hi";
                         header("location: empty.php");
                     }
                 }
             }
-            else {
-                echo "Invalid username and/or password. Please try again...";
-            }
-            mysqli_close($conn);
-        }
         ?>
+
+        <div class="register-photo">
+        <div class="form-container">
+        <div class="image-holder"></div>
+
+        <form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
+        <h2 class="text-center"><strong>Login</strong> your account.</h2>
+        <div class="form-group"><input class="form-control" type="text" name="username" placeholder="Student Number"></div>
+        <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password"></div>
+        <div class="form-group"><button class="btn btn-success btn-block" type="submit" name="submit" value="Submit">Sign In</button></div>
+
+        <?php
+            if ($_SERVER["REQUEST_METHOD"] == "POST"){
+                $username = $_POST['username'];
+                $password = $_POST['password'];
+
+                echo "<hr>";
+                
+                $p_un = mysqli_real_escape_string($conn, $username);
+                $p_pw = mysqli_real_escape_string($conn, $password);
+                $sql = mysqli_query($conn, "select count(*) as usercnt from records where username='".$p_un."' and password='".$p_pw."'");
+                $data = mysqli_fetch_array($sql);
+
+                $count = $data['usercnt'];
+                if($count > 0){
+                    $level = mysqli_query($conn, "select accesslevel as lvl from records where username='".$p_un."'"); 
+                    while($record = mysqli_fetch_array($level)){
+                        $_SESSION['username'] = $p_un;
+                        $_SESSION['loggedin'] = true;
+                        if($record['lvl'] == "admin"){
+                            echo "Hello";
+                            header("location: logout.php");
+                        }
+                        else{
+                            echo "Hi";
+                            header("location: logout.php");
+                        }
+                    }
+                }
+            }
+        ?>
+        </form>
     </div>
 </div>
 </form>
+
     </body>
 </html>
