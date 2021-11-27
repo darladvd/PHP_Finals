@@ -116,7 +116,7 @@
         }
         </style>
     </head>
-    <body >
+    <body>
         <?php
             $conn = mysqli_connect('localhost', 'root', '', 'phpfinals');
             if($conn->connect_error){
