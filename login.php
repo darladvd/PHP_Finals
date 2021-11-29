@@ -129,11 +129,11 @@
                 while($record = mysqli_fetch_array($level)){
                     if($record['lvl'] == "admin"){
                         echo "Hello";
-                        header("location: empty.php");
+                        header("location: admin_home.php");
                     }
                     else{
                         echo "Hi";
-                        header("location: empty.php");
+                        header("location: user_home.php");
                     }
                 }
             }
@@ -169,7 +169,7 @@
                         $_SESSION['loggedin'] = true;
                         if($record['lvl'] == "admin"){
                             echo "Hello";
-                            header("location: logout.php");
+                            header("location: admin_home.php");
                         }
                         else{
                             echo "Hi";

@@ -53,7 +53,8 @@
                 <div id="sidebar" class="bg-blue">
                     <div class="h4 text-white">Account</div>
                     <ul>
-                        <li class="active"> <a href="#profile" class="text-decoration-none d-flex align-items-start" onclick="openCity(event, 'London')">
+                        <li class="active"> <a href="#profile" class="text-decoration-none d-flex align-items-start" onclick="openCity(event, 'London')" id ="defaultOpen">
+                        <script>
                                 <div class="fas fa-box pt-2 me-3"></div>
                                 <div class="d-flex flex-column">
                                     <div class="link">My Profile</div>
