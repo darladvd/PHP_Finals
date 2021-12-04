@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<?php	
+<?php
         session_start();
         error_reporting(0);
 		
@@ -33,7 +33,7 @@
     
     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container"> <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynav" aria-controls="mynav" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button> <a class="navbar-brand" href="#">
+    <div class="container"> <button class="navbar-toggler" type="button" row-bs-toggle="collapse" row-bs-target="#mynav" aria-controls="mynav" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button> <a class="navbar-brand" href="#">
             <div class="d-flex">
                 <div class="ms-3 d-flex flex-column">
                     <!-- <img src="images/logo.png"> -->
@@ -53,187 +53,162 @@
 
             <!-- Menu -->
             <div class="tab">
-                <button class="tablinks" onclick="openTab(event, 'ViewProfile')" id = "defaultOpen">View Profile</button>
-                <button class="tablinks" onclick="openTab(event, 'SubmitVote')">Submit a Vote</button>
-                <button class="tablinks" onclick="openTab(event, 'ViewBallot')">View Ballot</button>
-                <button class="tablinks" onclick="openTab(event, 'Profile Settings')">Profile Settings</button>
+            <button class="tablinks" onclick="openTab(event, 'ViewProfile')" id = "defaultOpen">View Profile</button>
+            <button class="tablinks" onclick="openTab(event, 'SubmitVote')">Submit a Vote</button>
+            <button class="tablinks" onclick="openTab(event, 'ViewBallot')">View Ballot</button>
+            <button class="tablinks" onclick="openTab(event, 'ProfileSettings')">Profile Settings</button>
             </div>
 
-            <!-- View Profile -->
+        
             <div id="ViewProfile" class="tabcontent">
                 <div class="row align-items-center flex-row-reverse">
-                <div class="col-lg-6">
-                    <div class="about-text go-to">
-
-                    <h3 class="dark-color">About Me</h3>
-                        <div class="row about-list">
-                            <div class="col-md-6">
-                                <div class="media">
-                                        <label>Student Number</label>
-										<?php 
-											$sql=mysqli_query($conn,"select * from records where username='$username'")or die(mysqli_error());
-											while($row=mysqli_fetch_array($sql)){ 
-												echo $row['username'];
-											}
-										?>
+                    <div class="col-md-6">
+                        <div class="about-text go-to">
+                            <?php 
+                                $sql=mysqli_query($conn,"select * from records where username='$username'")or die(mysqli_error());
+                                while($row=mysqli_fetch_array($sql)){ 
+                                echo "<h3 class='dark-color'>".$row['firstname']." ".$row['middle']." ".$row['lastname']."</h3>";}?>
+                            <div class="row about-list">
+                                <div class="col-md-6">
+                                    <div class="media">
+                                            <label>Student Number</label>
+                                            <?php 
+                                                $sql=mysqli_query($conn,"select * from records where username='$username'")or die(mysqli_error());
+                                                while($row=mysqli_fetch_array($sql)){echo $row['username'];}
+                                            ?>
+                                    </div>
+                                    <div class="media">
+                                            <label>Status</label>
+                                            <?php 
+                                                $sql=mysqli_query($conn,"select * from records where username='$username'")or die(mysqli_error());
+                                                while($row=mysqli_fetch_array($sql))
+                                                {
+                                                    if($row['status'] == "not voted")
+                                                    {
+                                                        echo "Not Voted";
+                                                    } else
+                                                    {
+                                                        echo "Voted";
+                                                    }
+                                                }
+                                            ?>
+                                    </div>
                                 </div>
-                                <div class="media">
-                                        <label>Status</label>
-										<?php 
-											$sql=mysqli_query($conn,"select * from records where username='$username'")or die(mysqli_error());
-											while($row=mysqli_fetch_array($sql)){ 
-												echo $row['status'];
-											}
-										?>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="media">
-                                    <label>Year Level</label>
-										<?php 
-											$sql=mysqli_query($conn,"select * from records where username='$username'")or die(mysqli_error());
-											while($row=mysqli_fetch_array($sql)){ 
-												echo $row['yearlevel'];
-											}
-										?>
-                                </div>
-                                <div class="media">
-                                    <label>Gender</label>
-										<?php 
-											$sql=mysqli_query($conn,"select * from records where username='$username'")or die(mysqli_error());
-											while($row=mysqli_fetch_array($sql)){ 
-												echo $row['gender'];
-											}
-										?>
+                                <div class="col-md-6">
+                                    <div class="media">
+                                        <label>Year Level</label>
+                                            <?php 
+                                                $sql=mysqli_query($conn,"select * from records where username='$username'")or die(mysqli_error());
+                                                while($row=mysqli_fetch_array($sql)){echo $row['yearlevel'];}
+                                            ?>
+                                    </div>
+                                    <div class="media">
+                                        <label>Gender</label>
+                                            <?php 
+                                                $sql=mysqli_query($conn,"select * from records where username='$username'")or die(mysqli_error());
+                                                while($row=mysqli_fetch_array($sql)){echo $row['gender'];}
+                                            ?>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <div class="col-md-5">
+                        <?php
+                            $sql=mysqli_query($conn,"select * from records where username='$username'") or die(mysqli_error());
+                            while($row = mysqli_fetch_array($sql)){
+                                if($row['images']!=''){
+                                    echo "<img src = 'data:image/jpeg;base64," .base64_encode($row["images"]) ."' class='profilepic'/>";                                }
+                                else{
+                                    echo "<img src='images/default.jpg'>";
+                                }
+                            }
+                        ?>
                     </div>
-                    <div class="col-lg-5">
-                        <div class="profilepic">
-                            <img src="https://bootdey.com/img/Content/avatar/avatar7.png">
-                    </div>
-                </div>
                 </div>
             </div>
 
             <div id="SubmitVote" class="tabcontent">
-                        <div class="row align-items-center flex-row-reverse">
-            <div class="col-lg-6">
-                    <div class="about-text go-to">
-                    <h3 class="dark-color">About Me</h3>
-                        <div class="row about-list">
-                            <div class="col-md-6">
-                                <div class="media">
-                                        <label>Student Number</label>
-                                        <p>4th april 1998</p>
-                                </div>
-                                <div class="media">
-                                        <label>Status</label>
-                                        <p>22 Yr</p>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="media">
-                                    <label>Year Level</label>
-                                    <p>info@domain.com</p>
-                                </div>
-                                <div class="media">
-                                    <label>Gender</label>
-                                    <p>820-885-3321</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    </div>
-                    <div class="col-lg-5">
-                        <div class="profilepic">
-                            <img src="https://bootdey.com/img/Content/avatar/avatar7.png">
-                        </div>
-                    </div>
-                </div>
-                
+            <h3>Add Candidate</h3>
+            <p>Add Candidate.</p>
             </div>
 
             <div id="ViewBallot" class="tabcontent">
-                        <div class="row align-items-center flex-row-reverse">
-            <div class="col-lg-6">
-                    <div class="about-text go-to">
-                    <h3 class="dark-color">About Me</h3>
-                        <div class="row about-list">
-                            <div class="col-md-6">
-                                <div class="media">
-                                        <label>Student Number</label>
-                                        <p>4th april 1998</p>
-                                </div>
-                                <div class="media">
-                                        <label>Status</label>
-                                        <p>22 Yr</p>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="media">
-                                    <label>Year Level</label>
-                                    <p>info@domain.com</p>
-                                </div>
-                                <div class="media">
-                                    <label>Gender</label>
-                                    <p>820-885-3321</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    </div>
-                    <div class="col-lg-5">
-                        <div class="profilepic">
-                            <img src="https://bootdey.com/img/Content/avatar/avatar7.png">
-                        </div>
-                    </div>
-                </div>
+                <h3>View Results</h3>
+                <p>Check Results.</p>
             </div>
 
-            <div id="Profile Settings" class="tabcontent">
-                        <div class="row align-items-center flex-row-reverse">
-            <div class="col-lg-6">
-                    <div class="about-text go-to">
-                    <h3 class="dark-color">About Me</h3>
-                        <div class="row about-list">
-                            <div class="col-md-6">
-                                <div class="media">
-                                        <label>Student Number</label>
-                                        <p>4th april 1998</p>
+            <div id="ProfileSettings" class="tabcontent">
+            <div class="row align-items-center flex-row-reverse">
+                    <div class="col-md-6">
+                        <div class="about-text go-to">
+                            <?php 
+                                $sql=mysqli_query($conn,"select * from records where username='$username'")or die(mysqli_error());
+                                while($row=mysqli_fetch_array($sql)){ 
+                                echo "<h3 class='dark-color'>".$row['firstname']." ".$row['middle']." ".$row['lastname']."</h3>";}?>
+                            <div class="row about-list">
+                                <div class="col-md-6">
+                                    <div class="media">
+                                            <label>Student Number</label>
+                                            <?php 
+                                                $sql=mysqli_query($conn,"select * from records where username='$username'")or die(mysqli_error());
+                                                while($row=mysqli_fetch_array($sql)){echo $row['username'];}
+                                            ?>
+                                    </div>
+                                    <div class="media">
+                                            <label>Status</label>
+                                            <?php 
+                                                $sql=mysqli_query($conn,"select * from records where username='$username'")or die(mysqli_error());
+                                                while($row=mysqli_fetch_array($sql))
+                                                {
+                                                    if($row['status'] == "not voted")
+                                                    {
+                                                        echo "Not Voted";
+                                                    } else
+                                                    {
+                                                        echo "Voted";
+                                                    }
+                                                }
+                                            ?>
+                                    </div>
                                 </div>
-                                <div class="media">
-                                        <label>Status</label>
-                                        <p>22 Yr</p>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="media">
-                                    <label>Year Level</label>
-                                    <p>info@domain.com</p>
-                                </div>
-                                <div class="media">
-                                    <label>Gender</label>
-                                    <p>820-885-3321</p>
+                                <div class="col-md-6">
+                                    <div class="media">
+                                        <label>Year Level</label>
+                                            <?php 
+                                                $sql=mysqli_query($conn,"select * from records where username='$username'")or die(mysqli_error());
+                                                while($row=mysqli_fetch_array($sql)){echo $row['yearlevel'];}
+                                            ?>
+                                    </div>
+                                    <div class="media">
+                                        <label>Gender</label>
+                                            <?php 
+                                                $sql=mysqli_query($conn,"select * from records where username='$username'")or die(mysqli_error());
+                                                while($row=mysqli_fetch_array($sql)){echo $row['gender'];}
+                                            ?>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    </div>
-                    <div class="col-lg-5">
-                        <div class="profilepic">
-                            <img src="https://bootdey.com/img/Content/avatar/avatar7.png">
-                        </div>
+                    <div class="col-md-5">
+                        <?php
+                            $sql=mysqli_query($conn,"select * from records where username='$username'") or die(mysqli_error());
+                            while($row = mysqli_fetch_array($sql)){
+                                if($row['images']!=''){
+                                    echo "<img src = 'data:image/jpeg;base64," .base64_encode($row["images"]) ."' class='profilepic'/>";                                }
+                                else{
+                                    echo "<img src='images/default.jpg'>";
+                                }
+                            }
+                        ?>
                     </div>
                 </div>
-                
             </div>
 
 
             <script>
-            function openTab(evt, cityName) {
+            function openTab(evt, tabName) {
             var i, tabcontent, tablinks;
             tabcontent = document.getElementsByClassName("tabcontent");
             for (i = 0; i < tabcontent.length; i++) {
@@ -243,11 +218,11 @@
             for (i = 0; i < tablinks.length; i++) {
                 tablinks[i].className = tablinks[i].className.replace(" active", "");
             }
-            document.getElementById(cityName).style.display = "block";
+            document.getElementById(tabName).style.display = "block";
             evt.currentTarget.className += " active";
             }
 
-            function openTabh(evt, cityName) {
+            function openTabh(evt, tabName) {
             var i, tabcontent, tablinks;
             tabcontent = document.getElementsByClassName("tabcontenth");
             for (i = 0; i < tabcontent.length; i++) {
@@ -257,7 +232,7 @@
             for (i = 0; i < tablinks.length; i++) {
                 tablinks[i].className = tablinks[i].className.replace(" active", "");
             }
-            document.getElementById(cityName).style.display = "block";
+            document.getElementById(tabName).style.display = "block";
             evt.currentTarget.className += " active";
             }
 
@@ -291,5 +266,7 @@
                 }
             }
             </script>
+        </div>
+    </div>
     </body>
 </html>
