@@ -33,6 +33,7 @@
     <div class="container"> <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynav" aria-controls="mynav" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button> <a class="navbar-brand" href="#">
             <div class="d-flex">
                 <div class="ms-3 d-flex flex-column">
+                    <!-- <img src="images/logo.png"> -->
                     <div class="h4"> <img src="images/logo.png" class="logo"> Voter Dashboard </div>
                 </div>
             </div>
@@ -49,10 +50,10 @@
 
             <!-- Menu -->
             <div class="tab">
-            <button class="tablinks" onclick="openTab(event, 'ViewProfile')" id = "defaultOpen">View Profile</button>
-            <button class="tablinks" onclick="openTab(event, 'SubmitVote')">Submit a Vote</button>
-            <button class="tablinks" onclick="openTab(event, 'ViewBallot')">View Ballot</button>
-            <button class="tablinks" onclick="openTab(event, 'ProfileSettings')">Profile Settings</button>
+                <button class="tablinks" onclick="openTab(event, 'ViewProfile')" id = "defaultOpen">View Profile</button>
+                <button class="tablinks" onclick="openTab(event, 'SubmitVote')">Submit a Vote</button>
+                <button class="tablinks" onclick="openTab(event, 'ViewBallot')">View Ballot</button>
+                <button class="tablinks" onclick="openTab(event, 'Profile Settings')">Profile Settings</button>
             </div>
 
             <!-- View Profile -->
@@ -88,55 +89,14 @@
                     <div class="col-lg-5">
                         <div class="profilepic">
                             <img src="https://bootdey.com/img/Content/avatar/avatar7.png">
-                        </div>
                     </div>
                 </div>
                 </div>
             </div>
 
-            <!-- Submit a Vote -->
             <div id="SubmitVote" class="tabcontent">
-            <h3>Add Candidate</h3>
-            <p>Add Candidate.</p>
-            </div>
-
-            <!-- View Ballot -->
-            <div id="ViewBallot" class="tabcontent">
-            <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th> First Name </th>
-                            <th> Middle Name </th>
-                            <th> Last Name </th>
-                            <th> Year Level </th>
-                            <th> Status </th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                    <?php
-                        $selectvoters = mysqli_query($conn,"SELECT `firstname`, `middlename`, `lastname`, `yearlevel`, `status` FROM phpfinals.records WHERE `position` = '' AND `accesslevel` = 'user'");
-                        while($row = mysqli_fetch_assoc($selectvoters)) 
-                            {
-                                echo "<tr>";
-                                echo "<td></td>";
-                                echo "<td>" . $row['firstname']   . "</td>";
-                                echo "<td>" . $row['middlename']  . "</td>";
-                                echo "<td>" . $row['lastname']    . "</td>";
-                                echo "<td>" . $row['yearlevel'] . "</td>";
-                                echo "<td>" . $row['status'] . "</td>";
-                                echo "</td>";
-                                echo "</tr>";
-                            }  
-                    ?>
-                    </tbody>
-                </table>
-            </div>
-
-            <div id="ProfileSettings" class="tablinks">
-                <div class="row align-items-center flex-row-reverse">
-                <div class="col-lg-6">
+                        <div class="row align-items-center flex-row-reverse">
+            <div class="col-lg-6">
                     <div class="about-text go-to">
                     <h3 class="dark-color">About Me</h3>
                         <div class="row about-list">
@@ -169,12 +129,87 @@
                         </div>
                     </div>
                 </div>
+                
+            </div>
+
+            <div id="ViewBallot" class="tabcontent">
+                        <div class="row align-items-center flex-row-reverse">
+            <div class="col-lg-6">
+                    <div class="about-text go-to">
+                    <h3 class="dark-color">About Me</h3>
+                        <div class="row about-list">
+                            <div class="col-md-6">
+                                <div class="media">
+                                        <label>Student Number</label>
+                                        <p>4th april 1998</p>
+                                </div>
+                                <div class="media">
+                                        <label>Status</label>
+                                        <p>22 Yr</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="media">
+                                    <label>Year Level</label>
+                                    <p>info@domain.com</p>
+                                </div>
+                                <div class="media">
+                                    <label>Gender</label>
+                                    <p>820-885-3321</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="profilepic">
+                            <img src="https://bootdey.com/img/Content/avatar/avatar7.png">
+                        </div>
+                    </div>
                 </div>
+            </div>
+
+            <div id="Profile Settings" class="tabcontent">
+                        <div class="row align-items-center flex-row-reverse">
+            <div class="col-lg-6">
+                    <div class="about-text go-to">
+                    <h3 class="dark-color">About Me</h3>
+                        <div class="row about-list">
+                            <div class="col-md-6">
+                                <div class="media">
+                                        <label>Student Number</label>
+                                        <p>4th april 1998</p>
+                                </div>
+                                <div class="media">
+                                        <label>Status</label>
+                                        <p>22 Yr</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="media">
+                                    <label>Year Level</label>
+                                    <p>info@domain.com</p>
+                                </div>
+                                <div class="media">
+                                    <label>Gender</label>
+                                    <p>820-885-3321</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="profilepic">
+                            <img src="https://bootdey.com/img/Content/avatar/avatar7.png">
+                        </div>
+                    </div>
+                </div>
+                
             </div>
 
 
             <script>
-            function openTab(evt, tabName) {
+            function openTab(evt, cityName) {
             var i, tabcontent, tablinks;
             tabcontent = document.getElementsByClassName("tabcontent");
             for (i = 0; i < tabcontent.length; i++) {
@@ -184,11 +219,11 @@
             for (i = 0; i < tablinks.length; i++) {
                 tablinks[i].className = tablinks[i].className.replace(" active", "");
             }
-            document.getElementById(tabName).style.display = "block";
+            document.getElementById(cityName).style.display = "block";
             evt.currentTarget.className += " active";
             }
 
-            function openTabh(evt, tabName) {
+            function openTabh(evt, cityName) {
             var i, tabcontent, tablinks;
             tabcontent = document.getElementsByClassName("tabcontenth");
             for (i = 0; i < tabcontent.length; i++) {
@@ -198,7 +233,7 @@
             for (i = 0; i < tablinks.length; i++) {
                 tablinks[i].className = tablinks[i].className.replace(" active", "");
             }
-            document.getElementById(tabName).style.display = "block";
+            document.getElementById(cityName).style.display = "block";
             evt.currentTarget.className += " active";
             }
 
