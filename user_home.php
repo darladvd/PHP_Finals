@@ -2,6 +2,9 @@
 <?php
         session_start();
         error_reporting(0);
+		
+		$username = $_SESSION["username"];	
+		$conn = mysqli_connect('localhost','root','','phpfinals');
 ?>
 
 <html>
@@ -61,26 +64,47 @@
                 <div class="row align-items-center flex-row-reverse">
                 <div class="col-lg-6">
                     <div class="about-text go-to">
+
                     <h3 class="dark-color">About Me</h3>
                         <div class="row about-list">
                             <div class="col-md-6">
                                 <div class="media">
                                         <label>Student Number</label>
-                                        <p>4th april 1998</p>
+										<?php 
+											$sql=mysqli_query($conn,"select * from records where username='$username'")or die(mysqli_error());
+											while($row=mysqli_fetch_array($sql)){ 
+												echo $row['username'];
+											}
+										?>
                                 </div>
                                 <div class="media">
                                         <label>Status</label>
-                                        <p>22 Yr</p>
+										<?php 
+											$sql=mysqli_query($conn,"select * from records where username='$username'")or die(mysqli_error());
+											while($row=mysqli_fetch_array($sql)){ 
+												echo $row['status'];
+											}
+										?>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="media">
                                     <label>Year Level</label>
-                                    <p>info@domain.com</p>
+										<?php 
+											$sql=mysqli_query($conn,"select * from records where username='$username'")or die(mysqli_error());
+											while($row=mysqli_fetch_array($sql)){ 
+												echo $row['yearlevel'];
+											}
+										?>
                                 </div>
                                 <div class="media">
                                     <label>Gender</label>
-                                    <p>820-885-3321</p>
+										<?php 
+											$sql=mysqli_query($conn,"select * from records where username='$username'")or die(mysqli_error());
+											while($row=mysqli_fetch_array($sql)){ 
+												echo $row['gender'];
+											}
+										?>
                                 </div>
                             </div>
                         </div>

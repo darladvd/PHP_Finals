@@ -15,7 +15,6 @@
 	
 	$username = $_SESSION["username"];
 	$president = $_SESSION["president"];
-	$_SESSION["votes"] = row["votes"];
 	$viceint = $_SESSION["viceint"];
 	$viceext = $_SESSION["viceext"]; 
 	$secretary = $_SESSION["secretary"]; 
@@ -25,37 +24,37 @@
 	
 	$sql=mysqli_query($conn,"select * from records where username='$president'")or die(mysqli_error());
 	while($row=mysqli_fetch_assoc($sql)){ 
-		$presidentvotes = row["votes"];
+		$presidentvotes = $row["votes"];
 	}
 	
 	$sql=mysqli_query($conn,"select * from records where username='$viceint'")or die(mysqli_error());
 	while($row=mysqli_fetch_assoc($sql)){ 
-		$viceintvotes = row["votes"];
+		$viceintvotes = $row["votes"];
 	}
 	
 	$sql=mysqli_query($conn,"select * from records where username='$viceext'")or die(mysqli_error());
 	while($row=mysqli_fetch_assoc($sql)){ 
-		$viceextvotes = row["votes"];
+		$viceextvotes = $row["votes"];
 	}
 	
 	$sql=mysqli_query($conn,"select * from records where username='$secretary'")or die(mysqli_error());
 	while($row=mysqli_fetch_assoc($sql)){ 
-		$secretaryvotes = row["votes"];
+		$secretaryvotes = $row["votes"];
 	}
 	
 	$sql=mysqli_query($conn,"select * from records where username='$treasurer'")or die(mysqli_error());
 	while($row=mysqli_fetch_assoc($sql)){ 
-		$treasurervotes = row["votes"];
+		$treasurervotes = $row["votes"];
 	}
 	
 	$sql=mysqli_query($conn,"select * from records where username='$auditor'")or die(mysqli_error());
 	while($row=mysqli_fetch_assoc($sql)){ 
-		$auditorvotes = row["votes"];
+		$auditorvotes = $row["votes"];
 	}
 	
 	$sql=mysqli_query($conn,"select * from records where username='$pro'")or die(mysqli_error());
 	while($row=mysqli_fetch_assoc($sql)){ 
-		$provotes = row["votes"];
+		$provotes = $row["votes"];
 	}
 	
 	if (isset($_POST['SubmitFinalvotes'])){
@@ -76,8 +75,6 @@
 		$sql=mysqli_query($conn,"UPDATE records SET votess='$auditorvotes + 1' WHERE username='$auditor'")or die(mysqli_error());
 		$sql=mysqli_query($conn,"UPDATE records SET votess='$provotes + 1' WHERE username='$pro'")or die(mysqli_error());
 	}
-	
-	echo $presidentvotes;
 ?>
 
 </body>
