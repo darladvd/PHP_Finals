@@ -75,9 +75,9 @@
 		$sql=mysqli_query($conn,"UPDATE records SET votes=$treasurervotes+1 WHERE username='$treasurer2'")or die(mysqli_error());
 		$sql=mysqli_query($conn,"UPDATE records SET votes=$auditorvotes+1 WHERE username='$auditor2'")or die(mysqli_error());
 		$sql=mysqli_query($conn,"UPDATE records SET votes=$provotes+1 WHERE username='$pro2'")or die(mysqli_error());
+		
+		echo "<h1>THANKS FOR VOTING!</h1>";
 	}
-	
-	echo "<h1>THANKS FOR VOTING!</h1>";
 ?>
 
 </body>
