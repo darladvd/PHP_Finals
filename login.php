@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php
         session_start();
-        error_reporting(0);
+        ob_start();
 ?>
 
 <html>
@@ -121,32 +121,6 @@
         </style>
     </head>
     <body>
-        <?php
-            $conn = mysqli_connect('localhost', 'root', '', 'phpfinals');
-            if($conn->connect_error){
-            echo "$conn->connect_error";
-            die("Connection Failed : ".$conn->connect_error);
-            }
-			
-			//check user level
-			//working
-            if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true && isset($_SESSION['username'])){
-                $level = mysqli_query($conn, "select accesslevel as lvl from records where username='".$_SESSION['username']."'");
-                while($record = mysqli_fetch_array($level)){
-                    if($record['lvl'] == "admin"){
-                        header("location: admin_home.php");
-                    }
-                    elseif($record['lvl'] == "user"){
-                        header("location: user_home.php");
-                    }
-					else {
-						echo "Record not found in the database.";
-						header("location: login.php");
-					}
-                }
-            } 
-        ?>
-
         <div class="register-photo">
         <div class="form-container">
         <div class="image-holder"></div>
@@ -158,42 +132,48 @@
         <div class="form-group"><button class="btn btn-success btn-block" type="submit" name="submit" value="Submit">Sign In</button></div>
 
         <?php
-            if ($_SERVER["REQUEST_METHOD"] == "POST"){
+            if ($_SERVER["REQUEST_METHOD"] == "POST") 
+            {
                 $username = $_POST['username'];
                 $password = $_POST['password'];
-
-                echo "<hr>";
-                
-				//check username and password
-                $p_un = mysqli_real_escape_string($conn, $username);
-                $p_pw = mysqli_real_escape_string($conn, $password);
-                $sql = mysqli_query($conn, "select count(*) as usercnt from records where username='".$p_un."' and password='".$p_pw."'");
-                $data = mysqli_fetch_array($sql);
-
-                $count = $data['usercnt'];
-                if($count > 0){
-                    $level = mysqli_query($conn, "select accesslevel as lvl from records where username='".$p_un."'"); 
-                    while($record = mysqli_fetch_array($level)){
-                        $_SESSION['username'] = $p_un;
-                        $_SESSION['loggedin'] = true;
-						
-						//not working
-                        if($record['lvl'] == "admin"){
-                            header("location: admin_home.php");
+    
+                $conn = mysqli_connect('localhost','root','','phpfinals');
+    
+                if (empty($username))
+                {
+                    error_reporting(0);
+                }
+    
+                if($conn->connect_error)
+                {
+                    echo "$conn->connect_error";
+                    die("Connection Failed: ". $conn->connect_error);
+                } else 
+                {
+                    $sql = "SELECT * FROM records WHERE username = '$username' AND password = '$password'";
+                    $exec = mysqli_query($conn, $sql);
+                    if ($exec->num_rows > 0)
+                    {
+                        $row = mysqli_fetch_assoc($exec);
+                        $_SESSION['username'] = $row['username'];
+                        $_SESSION['password'] = $row['password'];
+                        $_SESSION['accesslevel'] = $row['accesslevel'];
+    
+                        if($_SESSION['accesslevel'] == "admin")
+                        {
+                            header("Location: admin_home.php");
+                        } elseif($_SESSION['accesslevel'] == "user")
+                        {
+                            header("Location: user_home.php");
+                        } else
+                        {
+                            echo "<script>alert('No record found!')</script>"; 
                         }
-						elseif($record['lvl'] == "user"){
-                            header("location: user_home.php");
-                        }
-                        else{
-							echo "Record not found in the database.";
-							header("location: login.php");
-                        }
+                    } else
+                    {
+                        echo "<p>Invalid username/password. Please try again!</p>";
                     }
-                } 
-				else {
-					echo "<p>Invalid username or password. Please try again.</p>";
-					header("location: login.php");
-				}
+                }   
             }
         ?>
         </form>
