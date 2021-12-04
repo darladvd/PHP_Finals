@@ -9,10 +9,14 @@
  ?>
 </head>
 <style>
-	body{
+	body {
 		font-family: arial;
 		margin: 50px;
 		text-align: center;
+	}
+	img {
+		width: 150px; 
+		height: 150;
 	}
 </style>
 <body>
@@ -24,7 +28,7 @@
 		</div>
 	</div>
 <div class="wrapper">
-	<div class="hero-body-voting"><h2>"Please Vote Wisely"</h2></div>
+	<div class="hero-body-voting"><h2>"Please Vote Wisely"</h2></div><br>
 	<form method ="post" action="vote.php">
 		<div class="president-align">
 			<div class="hero-body-presindent"><h2>Candidate for President</h2></div>
@@ -32,14 +36,16 @@
 			<div class="president">
 				<div class="president-margin">
 					<?php 
-					$president=mysqli_query($conn,"select * from records where position='president'")or die(mysqli_error());
-					while($row=mysqli_fetch_array($president)){ $president_id=$row['username']; ?>
-
-					<img class="president" src="<?php echo $row['images'];?>" width="150" height="150" border="0" onmouseover="showtrail('<?php echo $row['images'];?>','<?php echo $row['FirstName']." ".$row['LastName'];?> ',200,5)" onmouseout="hidetrail()">
-					&nbsp;&nbsp;&nbsp;&nbsp;
-
-					<?php
-					}
+						$president=mysqli_query($conn,"select * from records where position='president'")or die(mysqli_error());
+						while($row=mysqli_fetch_array($president)){ 
+						$president_id=$row['username']; 
+							if($row['images']!=''){
+								echo "<img src = 'data:image/jpeg;base64," .base64_encode($row["images"]) ."' class='profilepic'/>" . " ";
+							}
+							else{
+								echo "<img src='images/default.jpg'>";
+							}
+						}
 					?>
 				</div>
 			</div>
@@ -64,12 +70,14 @@
 				<div class="viceint-margin">
 					<?php 
 					$viceint=mysqli_query($conn,"select * from records where position='Vice President Internal'")or die(mysqli_error());
-					while($row=mysqli_fetch_array($viceint)){ $viceint_id=$row['username']; ?>
-
-					<img class="viceint" src="<?php echo $row['images'];?>" width="150" height="150" border="0" onmouseover="showtrail('<?php echo $row['images'];?>','<?php echo $row['firstname']." ".$row['lastname'];?> ',200,5)" onmouseout="hidetrail()">
-					&nbsp;&nbsp;&nbsp;&nbsp;
-
-					<?php
+					while($row=mysqli_fetch_array($viceint)){ 
+						$viceint_id=$row['username']; 
+						if($row['images']!=''){
+							echo "<img src = 'data:image/jpeg;base64," .base64_encode($row["images"]) ."' class='profilepic'/>" . " ";
+						}
+						else{
+							echo "<img src='images/default.jpg'>";
+						}
 					}
 					?>
 				</div>
@@ -94,12 +102,14 @@
 					<div class="viceext-margin">
 						<?php 
 						$viceext=mysqli_query($conn,"select * from records where position='Vice President External'")or die(mysqli_error());
-						while($row=mysqli_fetch_array($viceext)){ $viceext_id=$row['username']; ?>
-
-						<img class="viceext" src="<?php echo $row['images'];?>" width="150" height="150" border="0" onmouseover="showtrail('<?php echo $row['images'];?>','<?php echo $row['firstname']." ".$row['lastname'];?> ',200,5)" onmouseout="hidetrail()">
-						&nbsp;&nbsp;&nbsp;&nbsp;
-
-						<?php
+						while($row=mysqli_fetch_array($viceext)){ 
+						$viceext_id=$row['username']; 
+							if($row['images']!=''){
+								echo "<img src = 'data:image/jpeg;base64," .base64_encode($row["images"]) ."' class='profilepic'/>" . " ";
+							}
+							else{
+								echo "<img src='images/default.jpg'>";
+							}
 						}
 						?>
 					</div>
@@ -124,12 +134,14 @@
 					<div class="secretary-margin">
 						<?php 
 						$secretary=mysqli_query($conn,"select * from records where position='Secretary'")or die(mysqli_error());
-						while($row=mysqli_fetch_array($secretary)){ $secretary_id=$row['username']; ?>
-
-						<img class="secretary" src="<?php echo $row['images'];?>" width="150" height="150" border="0" onmouseover="showtrail('<?php echo $row['images'];?>','<?php echo $row['firstname']." ".$row['lastname'];?> ',200,5)" onmouseout="hidetrail()">
-						&nbsp;&nbsp;&nbsp;&nbsp;
-
-						<?php
+						while($row=mysqli_fetch_array($secretary)){ 
+						$secretary_id=$row['username']; 
+							if($row['images']!=''){
+								echo "<img src = 'data:image/jpeg;base64," .base64_encode($row["images"]) ."' class='profilepic'/>" . " ";
+							}
+							else{
+								echo "<img src='images/default.jpg'>";
+							}
 						}
 						?>
 					</div>
@@ -154,12 +166,14 @@
 					<div class="treasurer-margin">
 						<?php 
 						$treasurer=mysqli_query($conn,"select * from records where position='Treasurer'")or die(mysqli_error());
-						while($row=mysqli_fetch_array($treasurer)){ $treasurer_id=$row['username']; ?>
-
-						<img class="treasurer" src="<?php echo $row['images'];?>" width="150" height="150" border="0" onmouseover="showtrail('<?php echo $row['images'];?>','<?php echo $row['firstname']." ".$row['lastname'];?> ',200,5)" onmouseout="hidetrail()">
-						&nbsp;&nbsp;&nbsp;&nbsp;
-
-						<?php
+						while($row=mysqli_fetch_array($treasurer)){ 
+						$treasurer_id=$row['username']; 
+							if($row['images']!=''){
+								echo "<img src = 'data:image/jpeg;base64," .base64_encode($row["images"]) ."' class='profilepic'/>" . " ";
+							}
+							else{
+								echo "<img src='images/default.jpg'>";
+							}
 						}
 						?>
 					</div>
@@ -184,12 +198,14 @@
 					<div class="auditor-margin">
 						<?php 
 						$auditor=mysqli_query($conn,"select * from records where position='Auditor'")or die(mysqli_error());
-						while($row=mysqli_fetch_array($auditor)){ $auditor_id=$row['username']; ?>
-
-						<img class="auditor" src="<?php echo $row['images'];?>" width="150" height="150" border="0" onmouseover="showtrail('<?php echo $row['images'];?>','<?php echo $row['firstname']." ".$row['lastname'];?> ',200,5)" onmouseout="hidetrail()">
-						&nbsp;&nbsp;&nbsp;&nbsp;
-
-						<?php
+						while($row=mysqli_fetch_array($auditor)){ 
+						$auditor_id=$row['username']; 
+							if($row['images']!=''){
+								echo "<img src = 'data:image/jpeg;base64," .base64_encode($row["images"]) ."' class='profilepic'/>" . " ";
+							}
+							else{
+								echo "<img src='images/default.jpg'>";
+							}
 						}
 						?>
 					</div>
@@ -214,12 +230,14 @@
 					<div class="pro-margin">
 						<?php 
 						$pro=mysqli_query($conn,"select * from records where position='PRO'")or die(mysqli_error());
-						while($row=mysqli_fetch_array($pro)){ $pro_id=$row['username']; ?>
-
-						<img class="pro" src="<?php echo $row['images'];?>" width="150" height="150" border="0" onmouseover="showtrail('<?php echo $row['images'];?>','<?php echo $row['firstname']." ".$row['lastname'];?> ',200,5)" onmouseout="hidetrail()">
-						&nbsp;&nbsp;&nbsp;&nbsp;
-
-						<?php
+						while($row=mysqli_fetch_array($pro)){ 
+						$pro_id=$row['username']; 
+							if($row['images']!=''){
+								echo "<img src = 'data:image/jpeg;base64," .base64_encode($row["images"]) ."' class='profilepic'/>" . " ";
+							}
+							else{
+								echo "<img src='images/default.jpg'>";
+							}
 						}
 						?>
 					</div>
