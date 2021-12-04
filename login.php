@@ -114,6 +114,10 @@
             opacity: 0.9;
             text-decoration: none
         }
+		
+		p {
+			color: red !important;
+		}
         </style>
     </head>
     <body>
@@ -123,20 +127,24 @@
             echo "$conn->connect_error";
             die("Connection Failed : ".$conn->connect_error);
             }
-
+			
+			//check user level
+			//working
             if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true && isset($_SESSION['username'])){
                 $level = mysqli_query($conn, "select accesslevel as lvl from records where username='".$_SESSION['username']."'");
                 while($record = mysqli_fetch_array($level)){
                     if($record['lvl'] == "admin"){
-                        echo "Hello";
                         header("location: admin_home.php");
                     }
-                    else{
-                        echo "Hi";
+                    elseif($record['lvl'] == "user"){
                         header("location: user_home.php");
                     }
+					else {
+						echo "Record not found in the database.";
+						header("location: login.php");
+					}
                 }
-            }
+            } 
         ?>
 
         <div class="register-photo">
@@ -145,8 +153,8 @@
 
         <form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
         <h2 class="text-center"><strong>Login</strong> your account.</h2>
-        <div class="form-group"><input class="form-control" type="text" name="username" placeholder="Student Number"></div>
-        <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password"></div>
+        <div class="form-group"><input class="form-control" type="text" name="username" placeholder="Student Number" required></div>
+        <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password" required></div>
         <div class="form-group"><button class="btn btn-success btn-block" type="submit" name="submit" value="Submit">Sign In</button></div>
 
         <?php
@@ -156,6 +164,7 @@
 
                 echo "<hr>";
                 
+				//check username and password
                 $p_un = mysqli_real_escape_string($conn, $username);
                 $p_pw = mysqli_real_escape_string($conn, $password);
                 $sql = mysqli_query($conn, "select count(*) as usercnt from records where username='".$p_un."' and password='".$p_pw."'");
@@ -167,16 +176,24 @@
                     while($record = mysqli_fetch_array($level)){
                         $_SESSION['username'] = $p_un;
                         $_SESSION['loggedin'] = true;
+						
+						//not working
                         if($record['lvl'] == "admin"){
-                            echo "Hello";
                             header("location: admin_home.php");
                         }
+						elseif($record['lvl'] == "user"){
+                            header("location: user_home.php");
+                        }
                         else{
-                            echo "Hi";
-                            header("location: logout.php");
+							echo "Record not found in the database.";
+							header("location: login.php");
                         }
                     }
-                }
+                } 
+				else {
+					echo "<p>Invalid username or password. Please try again.</p>";
+					header("location: login.php");
+				}
             }
         ?>
         </form>
