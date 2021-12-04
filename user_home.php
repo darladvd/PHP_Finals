@@ -2,7 +2,6 @@
 <?php
         session_start();
         error_reporting(0);
-        ob_start();
 ?>
 
 <html>
@@ -23,8 +22,8 @@
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
 
         <!-- External CSS -->
-	    <link rel="stylesheet" type="text/css" href="admin_home.css">
-
+	    <link rel="stylesheet" type="text/css" href="user_home.css">
+        
         <title>Voter</title>
     </head>
     <body>
@@ -34,8 +33,7 @@
     <div class="container"> <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynav" aria-controls="mynav" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button> <a class="navbar-brand" href="#">
             <div class="d-flex">
                 <div class="ms-3 d-flex flex-column">
-                    <!-- <img src="images/logo.png"> -->
-                    <div class="h4"> <img src="images/logo.png"> Voter Dashboard </div>
+                    <div class="h4"> <img src="images/logo.png" class="logo"> Voter Dashboard </div>
                 </div>
             </div>
         </a>
@@ -50,120 +48,61 @@
         <div class="row">
 
             <!-- Menu -->
-            <div class="col-lg-3 my-lg-0 my-md-1">
-                <div id="sidebar" class="bg-blue">
-                    <div class="h4 text-white">Account</div>
-                    <ul>
-                        <li class="active"> <a href="#viewprofile" class="text-decoration-none d-flex align-items-start" onclick="opentab(event, 'viewprofile')">
-                                <div class="fas fa-box pt-2 me-3"></div>
-                                <div class="d-flex flex-column">
-                                    <div class="link">View Profile</div>
-                                    <div class="link-desc">Includes your personal information</div>
+            <div class="tab">
+            <button class="tablinks" onclick="openTab(event, 'ViewProfile')" id = "defaultOpen">View Profile</button>
+            <button class="tablinks" onclick="openTab(event, 'SubmitVote')">Submit a Vote</button>
+            <button class="tablinks" onclick="openTab(event, 'ViewBallot')">View Ballot</button>
+            <button class="tablinks" onclick="openTab(event, 'ProfileSettings')">Profile Settings</button>
+            </div>
+
+            <!-- View Profile -->
+            <div id="ViewProfile" class="tabcontent">
+                <div class="row align-items-center flex-row-reverse">
+                <div class="col-lg-6">
+                    <div class="about-text go-to">
+                    <h3 class="dark-color">About Me</h3>
+                        <div class="row about-list">
+                            <div class="col-md-6">
+                                <div class="media">
+                                        <label>Student Number</label>
+                                        <p>4th april 1998</p>
                                 </div>
-                            </a> </li>
-                        <li> <a href="#addcandidate" class="text-decoration-none d-flex align-items-start" onclick="opentab(event, 'AddCandidate')">
-                                <div class="fas fa-box-open pt-2 me-3"></div>
-                                <div class="d-flex flex-column">
-                                    <div class="link">Submit a vote</div>
-                                    <div class="link-desc">Start voting</div>
+                                <div class="media">
+                                        <label>Status</label>
+                                        <p>22 Yr</p>
                                 </div>
-                            </a> </li>
-                        <li> <a href="#viewvoters" class="text-decoration-none d-flex align-items-start" onclick="opentab(event, 'ViewVoters')">
-                                <div class="far fa-address-book pt-2 me-3"></div>
-                                <div class="d-flex flex-column">
-                                    <div class="link">View Ballot</div>
-                                    <div class="link-desc">View who you voted</div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="media">
+                                    <label>Year Level</label>
+                                    <p>info@domain.com</p>
                                 </div>
-                            </a> </li>
-                        <li> <a href="#viewresults" class="text-decoration-none d-flex align-items-start" onclick="opentab(event, 'CheckResults')">
-                                <div class="far fa-user pt-2 me-3"></div>
-                                <div class="d-flex flex-column">
-                                    <div class="link">Settings</div>
-                                    <div class="link-desc">Reset password and change image</div>
+                                <div class="media">
+                                    <label>Gender</label>
+                                    <p>820-885-3321</p>
                                 </div>
-                            </a> </li>
-                    </ul>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="profilepic">
+                            <img src="https://bootdey.com/img/Content/avatar/avatar7.png">
+                        </div>
+                    </div>
+                </div>
                 </div>
             </div>
 
-            <script type="text/javascript">
-            function opentab(evt, tabName) {
-                // Declare all variables
-                var i, tabcontent, tablinks;
-            
-                // Get all elements with class="tabcontent" and hide them
-                tabcontent = document.getElementsByClassName("tabcontent");
-                for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
-                }
-            
-                // Get all elements with class="tablinks" and remove the class "active"
-                tablinks = document.getElementsByClassName("tablinks");
-                for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].className = tablinks[i].className.replace(" active", "");
-                }
-            
-                // Show the current tab, and add an "active" class to the link that opened the tab
-                document.getElementById(tabName).style.display = "block";
-                evt.currentTarget.className += " active";
-            }
-            </script>
-
-            <div id="viewprofile" class="tabcontent">
-            <div class="table-responsive">
-                    <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th> First Name </th>
-                            <th> Middle Name </th>
-                            <th> Last Name </th>
-                            <th> Position </th>
-                            <th> Year Level </th>
-                            <th></th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                    <?php
-                        $conn = mysqli_connect('localhost', 'root', '', 'phpfinals');
-                        if($conn->connect_error)
-                        {
-                            echo "$conn->connect_error";
-                            die("Connection Failed : ".$conn->connect_error);
-                        }
-
-                        $selectall = mysqli_query($conn,"SELECT `firstname`, `middlename`, `lastname`, `position`, `yearlevel` FROM phpfinals.records WHERE `position` != ''");
-
-                        while($row = mysqli_fetch_assoc($selectall)) 
-                        {
-                            echo "<tr>";
-                            echo "<td></td>";
-                            echo "<td>" . $row['firstname']   . "</td>";
-                            echo "<td>" . $row['middlename']  . "</td>";
-                            echo "<td>" . $row['lastname']    . "</td>";
-                            echo "<td>" . $row['position']  . "</td>";
-                            echo "<td>" . $row['yearlevel'] . "</td>";
-                            echo "<td>" . "<a href = 'edit_candidate.php'><input type = button value = 'Edit' name = edit>" .
-                                          "<a href = 'view_candidate.php'><input type = button value = 'View' name = view>" . 
-                                          "<a href = 'delete_candidate.php'><input type = button value = 'Delete' name = delete>"; 
-                            echo "</td>";
-                            echo "</tr>";
-                        }   
-                    
-                    ?>
-                    </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <div id="AddCandidate" class="tabcontent">
+            <!-- Submit a Vote -->
+            <div id="SubmitVote" class="tabcontent">
+            <h3>Add Candidate</h3>
             <p>Add Candidate.</p>
             </div>
 
-            <div id="ViewVoters" class="tabcontent">
-            <div class="table-responsive">
-                    <table class="table table-striped">
+            <!-- View Ballot -->
+            <div id="ViewBallot" class="tabcontent">
+            <table class="table table-striped">
                     <thead>
                         <tr>
                             <th></th>
@@ -171,48 +110,127 @@
                             <th> Middle Name </th>
                             <th> Last Name </th>
                             <th> Year Level </th>
-                            <th></th>
+                            <th> Status </th>
                         </tr>
                     </thead>
 
                     <tbody>
                     <?php
-                        $conn = mysqli_connect('localhost', 'root', '', 'phpfinals');
-                        if($conn->connect_error)
-                        {
-                            echo "$conn->connect_error";
-                            die("Connection Failed : ".$conn->connect_error);
-                        }
-
-                        $selectall = mysqli_query($conn,"SELECT `firstname`, `middlename`, `lastname`, `yearlevel` FROM phpfinals.records WHERE `position` = '' AND `accesslevel` = 'user'");
-
-                        while($row = mysqli_fetch_assoc($selectall)) 
-                        {
-                            echo "<tr>";
-                            echo "<td></td>";
-                            echo "<td>" . $row['firstname']   . "</td>";
-                            echo "<td>" . $row['middlename']  . "</td>";
-                            echo "<td>" . $row['lastname']    . "</td>";
-                            echo "<td>" . $row['yearlevel'] . "</td>";
-                            echo "<td>" . "<a href = 'edit_candidate.php'><input type = button value = 'Edit' name = edit>" .
-                                          "<a href = 'view_candidate.php'><input type = button value = 'View' name = view>" . 
-                                          "<a href = 'delete_candidate.php'><input type = button value = 'Delete' name = delete>"; 
-                            echo "</td>";
-                            echo "</tr>";
-                        }   
-                    
+                        $selectvoters = mysqli_query($conn,"SELECT `firstname`, `middlename`, `lastname`, `yearlevel`, `status` FROM phpfinals.records WHERE `position` = '' AND `accesslevel` = 'user'");
+                        while($row = mysqli_fetch_assoc($selectvoters)) 
+                            {
+                                echo "<tr>";
+                                echo "<td></td>";
+                                echo "<td>" . $row['firstname']   . "</td>";
+                                echo "<td>" . $row['middlename']  . "</td>";
+                                echo "<td>" . $row['lastname']    . "</td>";
+                                echo "<td>" . $row['yearlevel'] . "</td>";
+                                echo "<td>" . $row['status'] . "</td>";
+                                echo "</td>";
+                                echo "</tr>";
+                            }  
                     ?>
                     </tbody>
-                    </table>
+                </table>
+            </div>
+
+            <div id="ProfileSettings" class="tablinks">
+                <div class="row align-items-center flex-row-reverse">
+                <div class="col-lg-6">
+                    <div class="about-text go-to">
+                    <h3 class="dark-color">About Me</h3>
+                        <div class="row about-list">
+                            <div class="col-md-6">
+                                <div class="media">
+                                        <label>Student Number</label>
+                                        <p>4th april 1998</p>
+                                </div>
+                                <div class="media">
+                                        <label>Status</label>
+                                        <p>22 Yr</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="media">
+                                    <label>Year Level</label>
+                                    <p>info@domain.com</p>
+                                </div>
+                                <div class="media">
+                                    <label>Gender</label>
+                                    <p>820-885-3321</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="profilepic">
+                            <img src="https://bootdey.com/img/Content/avatar/avatar7.png">
+                        </div>
+                    </div>
+                </div>
                 </div>
             </div>
 
-            <div id="CheckResults" class="tabcontent">
-            <p>View Voters.</p>
-            </div>
 
-            
-        </div>
-    </div>
+            <script>
+            function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+            }
+
+            function openTabh(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontenth");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+            }
+
+            // Get the element with id="defaultOpen" and id="defaultOpen1" and click on it
+            document.getElementById("defaultOpen").click();
+            document.getElementById("defaultOpen1").click();
+
+            // Get the modal
+            var modal = document.getElementById("myModal");
+
+            // Get the button that opens the modal
+            var btn = document.getElementById("all13");
+
+            // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close")[0];
+
+            // When the user clicks on the button, open the modal
+            btn.onclick = function() {
+            modal.style.display = "block";
+            }
+
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function() {
+            modal.style.display = "none";
+            }
+
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+                if (event.target == modal){
+                    modal.style.display = "none";
+                }
+            }
+            </script>
     </body>
 </html>
