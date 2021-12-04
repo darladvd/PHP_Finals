@@ -2,6 +2,7 @@
 <?php
         session_start();
         error_reporting(0);
+        ob_start();
 ?>
 
 <html>
@@ -34,7 +35,7 @@
             <div class="d-flex">
                 <div class="ms-3 d-flex flex-column">
                     <!-- <img src="images/logo.png"> -->
-                    <div class="h4"> <img src="images/logo.png"> Admin Dashboard </div>
+                    <div class="h4"> <img src="images/logo.png"> Voter Dashboard </div>
                 </div>
             </div>
         </a>
@@ -56,29 +57,29 @@
                         <li class="active"> <a href="#viewcandidates" class="text-decoration-none d-flex align-items-start" onclick="openCity(event, 'ViewCandidates')">
                                 <div class="fas fa-box pt-2 me-3"></div>
                                 <div class="d-flex flex-column">
-                                    <div class="link">View Candidates</div>
-                                    <div class="link-desc">View candidates and the positions they are running for</div>
+                                    <div class="link">View Profile</div>
+                                    <div class="link-desc">Includes your personal information</div>
                                 </div>
                             </a> </li>
                         <li> <a href="#addcandidate" class="text-decoration-none d-flex align-items-start" onclick="openCity(event, 'AddCandidate')">
                                 <div class="fas fa-box-open pt-2 me-3"></div>
                                 <div class="d-flex flex-column">
-                                    <div class="link">Add Candidates</div>
-                                    <div class="link-desc">Add candidates that would run for the elections</div>
+                                    <div class="link">Submit a vote</div>
+                                    <div class="link-desc">Start voting</div>
                                 </div>
                             </a> </li>
                         <li> <a href="#viewvoters" class="text-decoration-none d-flex align-items-start" onclick="openCity(event, 'ViewVoters')">
                                 <div class="far fa-address-book pt-2 me-3"></div>
                                 <div class="d-flex flex-column">
-                                    <div class="link">View Voters</div>
-                                    <div class="link-desc">View registered voters</div>
+                                    <div class="link">View Ballot</div>
+                                    <div class="link-desc">View who you voted</div>
                                 </div>
                             </a> </li>
                         <li> <a href="#viewresults" class="text-decoration-none d-flex align-items-start" onclick="openCity(event, 'CheckResults')">
                                 <div class="far fa-user pt-2 me-3"></div>
                                 <div class="d-flex flex-column">
-                                    <div class="link">Check Results</div>
-                                    <div class="link-desc">View realtime results of elections</div>
+                                    <div class="link">Settings</div>
+                                    <div class="link-desc">Reset password and change image</div>
                                 </div>
                             </a> </li>
                     </ul>
