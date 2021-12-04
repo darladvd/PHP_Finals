@@ -40,15 +40,14 @@
 					?>
 				</div>
 			</div>
-			
+			<br>
 			<div class="select_president">
 				<div class="margin-president">
 					<select name="president" class="span222">
-						<option class="option">--Select Candidate--</option>
 						<?php
 						$president=mysqli_query($conn,"select * from records where position='president'")or die(mysqli_error());
 						while($row=mysqli_fetch_array($president)){ $president_id=$row['username']; ?>
-						<option value="<?php echo $username; ?>" class="option"><?php  echo $row['firstname']." ".$row['lastname']; ?></option>
+						<option value="<?php echo $president_id; ?>" class="option"><?php  echo $row['firstname']." ".$row['lastname']; ?></option>
 						<?php } ?>
 					</select>
 				</div>
@@ -72,10 +71,10 @@
 					?>
 				</div>
 			</div>
+			<br>
 			<div class="select_viceint"> 
 				<div class="margin-viceint">
 					<select name="viceint" class="span222">
-						<option class="option">--Select Candidate--</option>
 						<?php
 						$viceint=mysqli_query($conn,"select * from records where position='Vice President Internal'")or die(mysqli_error());
 						while($row=mysqli_fetch_array($viceint)){ $viceint_id=$row['username']; ?>
@@ -102,10 +101,10 @@
 						?>
 					</div>
 				</div>
+				<br>
 				<div class="select_viceext"> 
 					<div class="margin-viceext">
 						<select name="viceext" class="span222">
-							<option class="option">--Select Candidate--</option>
 							<?php
 							$viceext=mysqli_query($conn,"select * from records where position='Vice President External'")or die(mysqli_error());
 							while($row=mysqli_fetch_array($viceext)){ $viceext_id=$row['username']; ?>
@@ -132,10 +131,10 @@
 						?>
 					</div>
 				</div>
+				<br>
 				<div class="select_secretary"> 
 					<div class="margin-secretary">
 						<select name="secretary" class="span222">
-							<option class="option">--Select Candidate--</option>
 							<?php
 							$secretary=mysqli_query($conn,"select * from records where position='Secretary'")or die(mysqli_error());
 							while($row=mysqli_fetch_array($secretary)){ $secretary_id=$row['username']; ?>
@@ -162,10 +161,10 @@
 						?>
 					</div>
 				</div>
+				<br>
 				<div class="select_treasurer"> 
 					<div class="margin-treasurer">
 						<select name="treasurer" class="span222">
-							<option class="option">--Select Candidate--</option>
 							<?php
 							$treasurer=mysqli_query($conn,"select * from records where position='Treasurer'")or die(mysqli_error());
 							while($row=mysqli_fetch_array($treasurer)){ $treasurer_id=$row['username']; ?>
@@ -192,10 +191,10 @@
 						?>
 					</div>
 				</div>
+				<br>
 				<div class="select_auditor"> 
 					<div class="margin-auditor">
 						<select name="auditor" class="span222">
-							<option class="option">--Select Candidate--</option>
 							<?php
 							$auditor=mysqli_query($conn,"select * from records where position='Auditor'")or die(mysqli_error());
 							while($row=mysqli_fetch_array($auditor)){ $auditor_id=$row['username']; ?>
@@ -222,10 +221,10 @@
 						?>
 					</div>
 				</div>
+				<br>
 				<div class="select_pro"> 
 					<div class="margin-pro">
 						<select name="pro" class="span222">
-							<option class="option">--Select Candidate--</option>
 							<?php
 							$pro=mysqli_query($conn,"select * from records where position='PRO'")or die(mysqli_error());
 							while($row=mysqli_fetch_array($pro)){ $pro_id=$row['username']; ?>
@@ -236,6 +235,7 @@
 				</div>
 			</div>
 		</div>
+		<br>
 		<button type="submit" name="submit" value="SubmitVote">Submit Vote</button>
 	</form>
 </body>
