@@ -22,7 +22,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
 
         <!-- External CSS -->
-	    <link rel="stylesheet" type="text/css" href="user_home.css">
+	    <link rel="stylesheet" type="text/css" href="admin_home.css">
 
         <title>Voter</title>
     </head>
@@ -34,7 +34,7 @@
             <div class="d-flex">
                 <div class="ms-3 d-flex flex-column">
                     <!-- <img src="images/logo.png"> -->
-                    <div class="h4"> <img src="images/logo.png"> Voter Dashboard </div>
+                    <div class="h4"> <img src="images/logo.png"> Admin Dashboard </div>
                 </div>
             </div>
         </a>
@@ -53,33 +53,32 @@
                 <div id="sidebar" class="bg-blue">
                     <div class="h4 text-white">Account</div>
                     <ul>
-                        <li class="active"> <a href="#profile" class="text-decoration-none d-flex align-items-start" onclick="openCity(event, 'London')" id ="defaultOpen">
-                        <script>
+                        <li class="active"> <a href="#viewcandidates" class="text-decoration-none d-flex align-items-start" onclick="openCity(event, 'ViewCandidates')">
                                 <div class="fas fa-box pt-2 me-3"></div>
                                 <div class="d-flex flex-column">
-                                    <div class="link">My Profile</div>
-                                    <div class="link-desc">View your information and status</div>
+                                    <div class="link">View Candidates</div>
+                                    <div class="link-desc">View candidates and the positions they are running for</div>
                                 </div>
                             </a> </li>
-                        <li> <a href="#vote" class="text-decoration-none d-flex align-items-start" onclick="openCity(event, 'Paris')">
+                        <li> <a href="#addcandidate" class="text-decoration-none d-flex align-items-start" onclick="openCity(event, 'AddCandidate')">
                                 <div class="fas fa-box-open pt-2 me-3"></div>
                                 <div class="d-flex flex-column">
-                                    <div class="link">Submit a Vote</div>
-                                    <div class="link-desc">Choose the right candidates and vote</div>
+                                    <div class="link">Add Candidates</div>
+                                    <div class="link-desc">Add candidates that would run for the elections</div>
                                 </div>
                             </a> </li>
-                        <li> <a href="#ballot" class="text-decoration-none d-flex align-items-start" onclick="openCity(event, 'Tokyo')">
+                        <li> <a href="#viewvoters" class="text-decoration-none d-flex align-items-start" onclick="openCity(event, 'ViewVoters')">
                                 <div class="far fa-address-book pt-2 me-3"></div>
                                 <div class="d-flex flex-column">
-                                    <div class="link">Official Ballot</div>
-                                    <div class="link-desc">View the ballot you submitted</div>
+                                    <div class="link">View Voters</div>
+                                    <div class="link-desc">View registered voters</div>
                                 </div>
                             </a> </li>
-                        <li> <a href="#settings" class="text-decoration-none d-flex align-items-start" onclick="openCity(event, 'London')">
+                        <li> <a href="#viewresults" class="text-decoration-none d-flex align-items-start" onclick="openCity(event, 'CheckResults')">
                                 <div class="far fa-user pt-2 me-3"></div>
                                 <div class="d-flex flex-column">
-                                    <div class="link">Settings</div>
-                                    <div class="link-desc">Change your profile details & password</div>
+                                    <div class="link">Check Results</div>
+                                    <div class="link-desc">View realtime results of elections</div>
                                 </div>
                             </a> </li>
                     </ul>
@@ -109,119 +108,109 @@
             }
             </script>
 
-            <div id="London" class="tabcontent">
-            <div class="col-lg-9 my-lg-0 my-1">
-                    <div id="main-content" class="bg-white border">
-                        <div class="d-flex flex-column">
-                            <div class="h5">Hello Jhon,</div>
-                            <div>Logged in as: someone@gmail.com</div>
-                        </div>
-                        <div class="d-flex my-4 flex-wrap">
-                            <div class="box me-4 my-1 bg-light"> <img src="https://www.freepnglogos.com/uploads/box-png/cardboard-box-brown-vector-graphic-pixabay-2.png" alt="">
-                                <div class="d-flex align-items-center mt-2">
-                                    <div class="tag">Orders placed</div>
-                                    <div class="ms-auto number">10</div>
-                                </div>
-                            </div>
-                            <div class="box me-4 my-1 bg-light"> <img src="https://www.freepnglogos.com/uploads/shopping-cart-png/shopping-cart-campus-recreation-university-nebraska-lincoln-30.png" alt="">
-                                <div class="d-flex align-items-center mt-2">
-                                    <div class="tag">Items in Cart</div>
-                                    <div class="ms-auto number">10</div>
-                                </div>
-                            </div>
-                            <div class="box me-4 my-1 bg-light"> <img src="https://www.freepnglogos.com/uploads/love-png/love-png-heart-symbol-wikipedia-11.png" alt="">
-                                <div class="d-flex align-items-center mt-2">
-                                    <div class="tag">Wishlist</div>
-                                    <div class="ms-auto number">10</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="text-uppercase">My recent orders</div>
-                        <div class="order my-3 bg-light">
-                            <div class="row">
-                                <div class="col-lg-4">
-                                    <div class="d-flex flex-column justify-content-between order-summary">
-                                        <div class="d-flex align-items-center">
-                                            <div class="text-uppercase">Order #fur10001</div>
-                                            <div class="blue-label ms-auto text-uppercase">paid</div>
-                                        </div>
-                                        <div class="fs-8">Products #03</div>
-                                        <div class="fs-8">22 August, 2020 | 12:05 PM</div>
-                                        <div class="rating d-flex align-items-center pt-1"> <img src="https://www.freepnglogos.com/uploads/like-png/like-png-hand-thumb-sign-vector-graphic-pixabay-39.png" alt=""><span class="px-2">Rating:</span> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="far fa-star"></span> </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-8">
-                                    <div class="d-sm-flex align-items-sm-start justify-content-sm-between">
-                                        <div class="status">Status : Delivered</div>
-                                        <div class="btn btn-primary text-uppercase">order info</div>
-                                    </div>
-                                    <div class="progressbar-track">
-                                        <ul class="progressbar">
-                                            <li id="step-1" class="text-muted green"> <span class="fas fa-gift"></span> </li>
-                                            <li id="step-2" class="text-muted green"> <span class="fas fa-check"></span> </li>
-                                            <li id="step-3" class="text-muted green"> <span class="fas fa-box"></span> </li>
-                                            <li id="step-4" class="text-muted green"> <span class="fas fa-truck"></span> </li>
-                                            <li id="step-5" class="text-muted green"> <span class="fas fa-box-open"></span> </li>
-                                        </ul>
-                                        <div id="tracker"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="order my-3 bg-light">
-                            <div class="row">
-                                <div class="col-lg-4">
-                                    <div class="d-flex flex-column justify-content-between order-summary">
-                                        <div class="d-flex align-items-center">
-                                            <div class="text-uppercase">Order #fur10001</div>
-                                            <div class="green-label ms-auto text-uppercase">cod</div>
-                                        </div>
-                                        <div class="fs-8">Products #03</div>
-                                        <div class="fs-8">22 August, 2020 | 12:05 PM</div>
-                                        <div class="rating d-flex align-items-center pt-1"> <img src="https://www.freepnglogos.com/uploads/like-png/like-png-hand-thumb-sign-vector-graphic-pixabay-39.png" alt=""><span class="px-2">Rating:</span> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="far fa-star"></span> </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-8">
-                                    <div class="d-sm-flex align-items-sm-start justify-content-sm-between">
-                                        <div class="status">Status : Delivered</div>
-                                        <div class="btn btn-primary text-uppercase">order info</div>
-                                    </div>
-                                    <div class="progressbar-track">
-                                        <ul class="progressbar">
-                                            <li id="step-1" class="text-muted green"> <span class="fas fa-gift"></span> </li>
-                                            <li id="step-2" class="text-muted"> <span class="fas fa-check"></span> </li>
-                                            <li id="step-3" class="text-muted"> <span class="fas fa-box"></span> </li>
-                                            <li id="step-4" class="text-muted"> <span class="fas fa-truck"></span> </li>
-                                            <li id="step-5" class="text-muted"> <span class="fas fa-box-open"></span> </li>
-                                        </ul>
-                                        <div id="tracker"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <div id="ViewCandidates" class="tabcontent">
+            <div class="table-responsive">
+                    <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th> First Name </th>
+                            <th> Middle Name </th>
+                            <th> Last Name </th>
+                            <th> Position </th>
+                            <th> Year Level </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                    <?php
+                        $conn = mysqli_connect('localhost', 'root', '', 'phpfinals');
+                        if($conn->connect_error)
+                        {
+                            echo "$conn->connect_error";
+                            die("Connection Failed : ".$conn->connect_error);
+                        }
+
+                        $selectall = mysqli_query($conn,"SELECT `firstname`, `middlename`, `lastname`, `position`, `yearlevel` FROM phpfinals.records WHERE `position` != ''");
+
+                        while($row = mysqli_fetch_assoc($selectall)) 
+                        {
+                            echo "<tr>";
+                            echo "<td></td>";
+                            echo "<td>" . $row['firstname']   . "</td>";
+                            echo "<td>" . $row['middlename']  . "</td>";
+                            echo "<td>" . $row['lastname']    . "</td>";
+                            echo "<td>" . $row['position']  . "</td>";
+                            echo "<td>" . $row['yearlevel'] . "</td>";
+                            echo "<td>" . "<a href = 'edit_candidate.php'><input type = button value = 'Edit' name = edit>" .
+                                          "<a href = 'view_candidate.php'><input type = button value = 'View' name = view>" . 
+                                          "<a href = 'delete_candidate.php'><input type = button value = 'Delete' name = delete>"; 
+                            echo "</td>";
+                            echo "</tr>";
+                        }   
+                    
+                    ?>
+                    </tbody>
+                    </table>
                 </div>
-
             </div>
 
-            <div id="Paris" class="tabcontent">
-            <h3>Paris</h3>
-            <p>Paris is the capital of France.</p>
+            <div id="AddCandidate" class="tabcontent">
+            <p>Add Candidate.</p>
             </div>
 
-            <div id="Tokyo" class="tabcontent">
-            <h3>Tokyo</h3>
-            <p>Tokyo is the capital of Japan.</p>
+            <div id="ViewVoters" class="tabcontent">
+            <div class="table-responsive">
+                    <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th> First Name </th>
+                            <th> Middle Name </th>
+                            <th> Last Name </th>
+                            <th> Year Level </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                    <?php
+                        $conn = mysqli_connect('localhost', 'root', '', 'phpfinals');
+                        if($conn->connect_error)
+                        {
+                            echo "$conn->connect_error";
+                            die("Connection Failed : ".$conn->connect_error);
+                        }
+
+                        $selectall = mysqli_query($conn,"SELECT `firstname`, `middlename`, `lastname`, `yearlevel` FROM phpfinals.records WHERE `position` = '' AND `accesslevel` = 'user'");
+
+                        while($row = mysqli_fetch_assoc($selectall)) 
+                        {
+                            echo "<tr>";
+                            echo "<td></td>";
+                            echo "<td>" . $row['firstname']   . "</td>";
+                            echo "<td>" . $row['middlename']  . "</td>";
+                            echo "<td>" . $row['lastname']    . "</td>";
+                            echo "<td>" . $row['yearlevel'] . "</td>";
+                            echo "<td>" . "<a href = 'edit_candidate.php'><input type = button value = 'Edit' name = edit>" .
+                                          "<a href = 'view_candidate.php'><input type = button value = 'View' name = view>" . 
+                                          "<a href = 'delete_candidate.php'><input type = button value = 'Delete' name = delete>"; 
+                            echo "</td>";
+                            echo "</tr>";
+                        }   
+                    
+                    ?>
+                    </tbody>
+                    </table>
+                </div>
             </div>
 
-            <section id="vote">
-            </section>
+            <div id="CheckResults" class="tabcontent">
+            <p>View Voters.</p>
+            </div>
 
-            <section id="ballot">
-            </section>
-
-            <section id="settings">
-            </section>
+            
         </div>
     </div>
     </body>
