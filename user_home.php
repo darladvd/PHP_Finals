@@ -54,28 +54,28 @@
                 <div id="sidebar" class="bg-blue">
                     <div class="h4 text-white">Account</div>
                     <ul>
-                        <li class="active"> <a href="#viewcandidates" class="text-decoration-none d-flex align-items-start" onclick="openCity(event, 'ViewCandidates')">
+                        <li class="active"> <a href="#viewprofile" class="text-decoration-none d-flex align-items-start" onclick="opentab(event, 'viewprofile')">
                                 <div class="fas fa-box pt-2 me-3"></div>
                                 <div class="d-flex flex-column">
                                     <div class="link">View Profile</div>
                                     <div class="link-desc">Includes your personal information</div>
                                 </div>
                             </a> </li>
-                        <li> <a href="#addcandidate" class="text-decoration-none d-flex align-items-start" onclick="openCity(event, 'AddCandidate')">
+                        <li> <a href="#addcandidate" class="text-decoration-none d-flex align-items-start" onclick="opentab(event, 'AddCandidate')">
                                 <div class="fas fa-box-open pt-2 me-3"></div>
                                 <div class="d-flex flex-column">
                                     <div class="link">Submit a vote</div>
                                     <div class="link-desc">Start voting</div>
                                 </div>
                             </a> </li>
-                        <li> <a href="#viewvoters" class="text-decoration-none d-flex align-items-start" onclick="openCity(event, 'ViewVoters')">
+                        <li> <a href="#viewvoters" class="text-decoration-none d-flex align-items-start" onclick="opentab(event, 'ViewVoters')">
                                 <div class="far fa-address-book pt-2 me-3"></div>
                                 <div class="d-flex flex-column">
                                     <div class="link">View Ballot</div>
                                     <div class="link-desc">View who you voted</div>
                                 </div>
                             </a> </li>
-                        <li> <a href="#viewresults" class="text-decoration-none d-flex align-items-start" onclick="openCity(event, 'CheckResults')">
+                        <li> <a href="#viewresults" class="text-decoration-none d-flex align-items-start" onclick="opentab(event, 'CheckResults')">
                                 <div class="far fa-user pt-2 me-3"></div>
                                 <div class="d-flex flex-column">
                                     <div class="link">Settings</div>
@@ -87,7 +87,7 @@
             </div>
 
             <script type="text/javascript">
-            function openCity(evt, cityName) {
+            function opentab(evt, tabName) {
                 // Declare all variables
                 var i, tabcontent, tablinks;
             
@@ -104,12 +104,12 @@
                 }
             
                 // Show the current tab, and add an "active" class to the link that opened the tab
-                document.getElementById(cityName).style.display = "block";
+                document.getElementById(tabName).style.display = "block";
                 evt.currentTarget.className += " active";
             }
             </script>
 
-            <div id="ViewCandidates" class="tabcontent">
+            <div id="viewprofile" class="tabcontent">
             <div class="table-responsive">
                     <table class="table table-striped">
                     <thead>
