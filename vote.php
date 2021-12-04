@@ -13,7 +13,7 @@
 	session_start();
 	$conn = mysqli_connect('localhost','root','','phpfinals');
 	
-	if (isset($_POST['submit'])){
+	if(isset($_POST['submit'])){
 		$president=$_POST['president'];
 		$viceint=$_POST['viceint'];
 		$viceext=$_POST['viceext'];
@@ -113,7 +113,7 @@
 ?>
 	<br><br>
 	<form method ="post" action="finalvote.php">
-	<button type="submit" name="submit" value="SubmitFinalVote">Submit Final Vote</button>
+	<button type="submit" name="SubmitFinalVote">Submit Final Vote</button>
 	</form>
 	
 	<a href = submit_vote.php>Back</a>

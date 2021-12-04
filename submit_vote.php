@@ -1,4 +1,7 @@
 <?php 
+		//if(!isset($_SESSION['username'])) {
+		//	header("location: login.php");
+		//}
         session_start();
         ob_start();
 		
@@ -236,7 +239,7 @@
 			</div>
 		</div>
 		<br>
-		<button type="submit" name="submit" value="SubmitVote">Submit Vote</button>
+		<button type="submit" name="submit">Submit Vote</button>
 	</form>
 </body>
 </html>
