@@ -292,7 +292,6 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <img src = '' class='profilepic' id="images"/>      
                         <h1>Account Details: </h1>
                         <h5 id ="uname"></h5>
                         <h5 id ="pass"></h5>
@@ -849,7 +848,6 @@
                     $('#accesslevel').text("Access Level: " + userid.accesslevel)
                     $('#status').text("Status: " + userid.status)
                     $('#votes').text("Votes: " + userid.votes)
-                    $('#images').attr("src", "images/logo.png")
                 });
                 $('#viewModal').modal("show");
             }
