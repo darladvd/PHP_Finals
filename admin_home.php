@@ -160,7 +160,7 @@
 
                     <tbody>
                     <?php
-                        $selectvpint = mysqli_query($conn,"SELECT `username`, `firstname`, `middlename`, `lastname`, `position`, `yearlevel` FROM phpfinals.records WHERE `position` = 'Vice President Internal'");
+                        $selectvpint = mysqli_query($conn,"SELECT `username`, `firstname`, `middlename`, `lastname`, `position`, `yearlevel` FROM phpfinals.records WHERE `position` = 'VP Internal'");
                         disp($selectvpint);
                     ?>
                     </tbody>
@@ -183,7 +183,7 @@
 
                     <tbody>
                     <?php
-                        $selectvpext = mysqli_query($conn,"SELECT `username`, `firstname`, `middlename`, `lastname`, `position`, `yearlevel` FROM phpfinals.records WHERE `position` = 'Vice President External'");
+                        $selectvpext = mysqli_query($conn,"SELECT `username`, `firstname`, `middlename`, `lastname`, `position`, `yearlevel` FROM phpfinals.records WHERE `position` = 'VP External'");
                         disp($selectvpext);
                     ?>
                     </tbody>
@@ -292,7 +292,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <img src="images/logo.png" class="logo">
+                        <img id = "img"/>
                         <h1>Account Details: </h1>
                         <h5 id ="uname"></h5>
                         <h5 id ="pass"></h5>
@@ -508,240 +508,246 @@
             <!-- Check Results -->
             <div id="CheckResults" class="tabcontent">
                 <h5>President</h5>
-                <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th></th>
-                                <th> First Name </th>
-                                <th> Last Name </th>
-                                <th> Position </th>
-                                <th> Votes </th>
-                            </tr>
-                        </thead>
+                    <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th> First Name </th>
+                                    <th> Last Name </th>
+                                    <th> Position </th>
+                                    <th> Votes </th>
+                                </tr>
+                            </thead>
 
-                        <tbody>
-                        <?php
-                            $res = mysqli_query($conn,"SELECT `firstname`, `lastname`, `position`, `votes` FROM phpfinals.records WHERE `position` = 'President'");
-                            while($row = mysqli_fetch_assoc($res)) 
-                                {
-                                    echo "<tr>";
-                                    echo "<td></td>";
-                                    echo "<td>" . $row['firstname']   . "</td>";
-                                    echo "<td>" . $row['lastname']    . "</td>";
-                                    echo "<td>" . $row['position'] . "</td>";
-                                    $votes = $row['votes'] * 10;
-                                    echo "<td>";
-                                    echo $votes . '%<div class="progress"><div class="progress-bar" role="progressbar" aria-valuemax="10" style="width:' . $votes . '%"></div></div>';
-                                    echo "</td>";
-                                    echo "</tr>";
-                                }  
-                        ?>
-                        </tbody>
-                    </table>
+                            <tbody>
+                            <?php
+                                $res = mysqli_query($conn,"SELECT `firstname`, `lastname`, `position`, `votes` FROM phpfinals.records WHERE `position` = 'President'");
+                                while($row = mysqli_fetch_assoc($res)) 
+                                    {
+                                        echo "<tr>";
+                                        echo "<td></td>";
+                                        echo "<td>" . $row['firstname']   . "</td>";
+                                        echo "<td>" . $row['lastname']    . "</td>";
+                                        echo "<td>" . $row['position'] . "</td>";
+                                        $votes = $row['votes'] * 10;
+                                        echo "<td>";
+                                        echo $votes . '%<div class="progress"><div class="progress-bar" role="progressbar" aria-valuemax="10" style="width:' . $votes . '%"></div></div>';
+                                        echo "</td>";
+                                        echo "</tr>";
+                                    }  
+                            ?>
+                            </tbody>
+                        </table>
 
                     <br><br>
 
                     <h5>Vice President Internal</h5>
-                    <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                    <th> First Name </th>
-                                    <th> Last Name </th>
-                                    <th> Position </th>
-                                    <th> Votes </th>
-                                </tr>
-                            </thead>
+                        <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th> First Name </th>
+                                        <th> Last Name </th>
+                                        <th> Position </th>
+                                        <th> Votes </th>
+                                    </tr>
+                                </thead>
 
-                            <tbody>
-                            <?php
-                                $res = mysqli_query($conn,"SELECT `firstname`, `lastname`, `position`, `votes` FROM phpfinals.records WHERE `position` = 'Vice President Internal'");
-                                while($row = mysqli_fetch_assoc($res)) 
-                                    {
-                                        echo "<tr>";
-                                        echo "<td></td>";
-                                        echo "<td>" . $row['firstname']   . "</td>";
-                                        echo "<td>" . $row['lastname']    . "</td>";
-                                        echo "<td>" . $row['position'] . "</td>";
-                                        $votes = $row['votes'] * 10;
-                                        echo "<td>";
-                                        echo $votes . '%<div class="progress"><div class="progress-bar" role="progressbar" aria-valuemax="10" style="width:' . $votes . '%"></div></div>';
-                                        echo "</td>";
-                                        echo "</tr>";
-                                    }  
-                            ?>
-                            </tbody>
-                    </table>
+                                <tbody>
+                                <?php
+                                    $res = mysqli_query($conn,"SELECT `firstname`, `lastname`, `position`, `votes` FROM phpfinals.records WHERE `position` = 'VP Internal'");
+                                    while($row = mysqli_fetch_assoc($res)) 
+                                        {
+                                            echo "<tr>";
+                                            echo "<td></td>";
+                                            echo "<td>" . $row['firstname']   . "</td>";
+                                            echo "<td>" . $row['lastname']    . "</td>";
+                                            echo "<td>" . $row['position'] . "</td>";
+                                            $votes = $row['votes'] * 10;
+                                            echo "<td>";
+                                            echo $votes . '%<div class="progress"><div class="progress-bar" role="progressbar" aria-valuemax="10" style="width:' . $votes . '%"></div></div>';
+                                            echo "</td>";
+                                            echo "</tr>";
+                                        }  
+                                ?>
+                                </tbody>
+                            </table>
 
-                    <br><br>
+                        <br><br>
 
-                    <h5>Vice President External</h5>
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th></th>
-                                <th> First Name </th>
-                                <th> Last Name </th>
-                                <th> Position </th>
-                                <th> Votes </th>
-                            </tr>
-                        </thead>
+                        <h5>Vice President External</h5>
+                            <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th> First Name </th>
+                                            <th> Last Name </th>
+                                            <th> Position </th>
+                                            <th> Votes </th>
+                                        </tr>
+                                    </thead>
 
-                        <tbody>
-                        <?php
-                            $res = mysqli_query($conn,"SELECT `firstname`, `lastname`, `position`, `votes` FROM phpfinals.records WHERE `position` = 'Vice President External'");
-                            while($row = mysqli_fetch_assoc($res)) 
-                                {
-                                    echo "<tr>";
-                                    echo "<td></td>";
-                                    echo "<td>" . $row['firstname']   . "</td>";
-                                    echo "<td>" . $row['lastname']    . "</td>";
-                                    echo "<td>" . $row['position'] . "</td>";
-                                    $votes = $row['votes'] * 10;
-                                    echo "<td>";
-                                    echo $votes . '%<div class="progress"><div class="progress-bar" role="progressbar" aria-valuemax="10" style="width:' . $votes . '%"></div></div>';
-                                    echo "</td>";
-                                    echo "</tr>";
-                                }  
-                        ?>
-                        </tbody>
-                    </table>
+                                    <tbody>
+                                    <?php
+                                        $res = mysqli_query($conn,"SELECT `firstname`, `lastname`, `position`, `votes` FROM phpfinals.records WHERE `position` = 'VP External'");
+                                        while($row = mysqli_fetch_assoc($res)) 
+                                            {
+                                                echo "<tr>";
+                                                echo "<td></td>";
+                                                echo "<td>" . $row['firstname']   . "</td>";
+                                                echo "<td>" . $row['lastname']    . "</td>";
+                                                echo "<td>" . $row['position'] . "</td>";
+                                                $votes = $row['votes'] * 10;
+                                                echo "<td>";
+                                                echo $votes . '%<div class="progress"><div class="progress-bar" role="progressbar" aria-valuemax="10" style="width:' . $votes . '%"></div></div>';
+                                                echo "</td>";
+                                                echo "</tr>";
+                                            }  
+                                    ?>
+                                    </tbody>
+                                </table>
+                        
+                        <br><br>
 
-                    <br><br>
-                    
-                    <h5>Secretary</h5>
-                    <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                    <th> First Name </th>
-                                    <th> Last Name </th>
-                                    <th> Position </th>
-                                    <th> Votes </th>
-                                </tr>
-                            </thead>
+                        <h5>Secretary</h5>
+                            <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th> First Name </th>
+                                            <th> Last Name </th>
+                                            <th> Position </th>
+                                            <th> Votes </th>
+                                        </tr>
+                                    </thead>
 
-                            <tbody>
-                            <?php
-                                $res = mysqli_query($conn,"SELECT `firstname`, `lastname`, `position`, `votes` FROM phpfinals.records WHERE `position` = 'Secretary'");
-                                while($row = mysqli_fetch_assoc($res)) 
-                                    {
-                                        echo "<tr>";
-                                        echo "<td></td>";
-                                        echo "<td>" . $row['firstname']   . "</td>";
-                                        echo "<td>" . $row['lastname']    . "</td>";
-                                        echo "<td>" . $row['position'] . "</td>";
-                                        $votes = $row['votes'] * 10;
-                                        echo "<td>";
-                                        echo $votes . '%<div class="progress"><div class="progress-bar" role="progressbar" aria-valuemax="10" style="width:' . $votes . '%"></div></div>';
-                                        echo "</td>";
-                                        echo "</tr>";
-                                    }  
-                            ?>
-                            </tbody>
-                    </table>
+                                    <tbody>
+                                    <?php
+                                        $res = mysqli_query($conn,"SELECT `firstname`, `lastname`, `position`, `votes` FROM phpfinals.records WHERE `position` = 'Secretary'");
+                                        while($row = mysqli_fetch_assoc($res)) 
+                                            {
+                                                echo "<tr>";
+                                                echo "<td></td>";
+                                                echo "<td>" . $row['firstname']   . "</td>";
+                                                echo "<td>" . $row['lastname']    . "</td>";
+                                                echo "<td>" . $row['position'] . "</td>";
+                                                $votes = $row['votes'] * 10;
+                                                echo "<td>";
+                                                echo $votes . '%<div class="progress"><div class="progress-bar" role="progressbar" aria-valuemax="10" style="width:' . $votes . '%"></div></div>';
+                                                echo "</td>";
+                                                echo "</tr>";
+                                            }  
+                                    ?>
+                                    </tbody>
+                                </table>
+                        
+                        <br><br>
 
-                    <br><br>
+                        <h5>Treasurer</h5>
+                            <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th> First Name </th>
+                                            <th> Last Name </th>
+                                            <th> Position </th>
+                                            <th> Votes </th>
+                                        </tr>
+                                    </thead>
 
-                    <h5>Treasurer</h5>
-                    <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                    <th> First Name </th>
-                                    <th> Last Name </th>
-                                    <th> Position </th>
-                                    <th> Votes </th>
-                                </tr>
-                            </thead>
+                                    <tbody>
+                                    <?php
+                                        $res = mysqli_query($conn,"SELECT `firstname`, `lastname`, `position`, `votes` FROM phpfinals.records WHERE `position` = 'Treasurer'");
+                                        while($row = mysqli_fetch_assoc($res)) 
+                                            {
+                                                echo "<tr>";
+                                                echo "<td></td>";
+                                                echo "<td>" . $row['firstname']   . "</td>";
+                                                echo "<td>" . $row['lastname']    . "</td>";
+                                                echo "<td>" . $row['position'] . "</td>";
+                                                $votes = $row['votes'] * 10;
+                                                echo "<td>";
+                                                echo $votes . '%<div class="progress"><div class="progress-bar" role="progressbar" aria-valuemax="10" style="width:' . $votes . '%"></div></div>';
+                                                echo "</td>";
+                                                echo "</tr>";
+                                            }  
+                                    ?>
+                                    </tbody>
+                                </table>
+                        
+                        <br><br>
 
-                            <tbody>
-                            <?php
-                                $res = mysqli_query($conn,"SELECT `firstname`, `lastname`, `position`, `votes` FROM phpfinals.records WHERE `position` = 'Treasurer'");
-                                while($row = mysqli_fetch_assoc($res)) 
-                                    {
-                                        echo "<tr>";
-                                        echo "<td></td>";
-                                        echo "<td>" . $row['firstname']   . "</td>";
-                                        echo "<td>" . $row['lastname']    . "</td>";
-                                        echo "<td>" . $row['position'] . "</td>";
-                                        $votes = $row['votes'] * 10;
-                                        echo "<td>";
-                                        echo $votes . '%<div class="progress"><div class="progress-bar" role="progressbar" aria-valuemax="10" style="width:' . $votes . '%"></div></div>';
-                                        echo "</td>";
-                                        echo "</tr>";
-                                    }  
-                            ?>
-                            </tbody>
-                    </table>
+                        <h5>Auditor</h5>
+                            <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th> First Name </th>
+                                            <th> Last Name </th>
+                                            <th> Position </th>
+                                            <th> Votes </th>
+                                        </tr>
+                                    </thead>
 
-                    <br><br>
+                                    <tbody>
+                                    <?php
+                                        $res = mysqli_query($conn,"SELECT `firstname`, `lastname`, `position`, `votes` FROM phpfinals.records WHERE `position` = 'Auditor'");
+                                        while($row = mysqli_fetch_assoc($res)) 
+                                            {
+                                                echo "<tr>";
+                                                echo "<td></td>";
+                                                echo "<td>" . $row['firstname']   . "</td>";
+                                                echo "<td>" . $row['lastname']    . "</td>";
+                                                echo "<td>" . $row['position'] . "</td>";
+                                                $votes = $row['votes'] * 10;
+                                                echo "<td>";
+                                                echo $votes . '%<div class="progress"><div class="progress-bar" role="progressbar" aria-valuemax="10" style="width:' . $votes . '%"></div></div>';
+                                                echo "</td>";
+                                                echo "</tr>";
+                                            }  
+                                    ?>
+                                    </tbody>
+                                </table>
+                        
+                        <br><br>
 
-                    <h5>Auditor</h5>
-                    <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                    <th> First Name </th>
-                                    <th> Last Name </th>
-                                    <th> Position </th>
-                                    <th> Votes </th>
-                                </tr>
-                            </thead>
+                        <h5>P.R.O.</h5>
+                            <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th> First Name </th>
+                                            <th> Last Name </th>
+                                            <th> Position </th>
+                                            <th> Votes </th>
+                                        </tr>
+                                    </thead>
 
-                            <tbody>
-                            <?php
-                                $res = mysqli_query($conn,"SELECT `firstname`, `lastname`, `position`, `votes` FROM phpfinals.records WHERE `position` = 'Auditor'");
-                                while($row = mysqli_fetch_assoc($res)) 
-                                    {
-                                        echo "<tr>";
-                                        echo "<td></td>";
-                                        echo "<td>" . $row['firstname']   . "</td>";
-                                        echo "<td>" . $row['lastname']    . "</td>";
-                                        echo "<td>" . $row['position'] . "</td>";
-                                        $votes = $row['votes'] * 10;
-                                        echo "<td>";
-                                        echo $votes . '%<div class="progress"><div class="progress-bar" role="progressbar" aria-valuemax="10" style="width:' . $votes . '%"></div></div>';
-                                        echo "</td>";
-                                        echo "</tr>";
-                                    }  
-                            ?>
-                            </tbody>
-                    </table>
-                    
-                    <br><br>
-                    
-                    <h5>P.R.O.</h5>
-                    <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                    <th> First Name </th>
-                                    <th> Last Name </th>
-                                    <th> Position </th>
-                                    <th> Votes </th>
-                                </tr>
-                            </thead>
+                                    <tbody>
+                                    <?php
+                                        $res = mysqli_query($conn,"SELECT `firstname`, `lastname`, `position`, `votes` FROM phpfinals.records WHERE `position` = 'PRO'");
+                                        while($row = mysqli_fetch_assoc($res)) 
+                                            {
+                                                echo "<tr>";
+                                                echo "<td></td>";
+                                                echo "<td>" . $row['firstname']   . "</td>";
+                                                echo "<td>" . $row['lastname']    . "</td>";
+                                                echo "<td>" . $row['position'] . "</td>";
+                                                $votes = $row['votes'] * 10;
+                                                echo "<td>";
+                                                echo $votes . '%<div class="progress"><div class="progress-bar" role="progressbar" aria-valuemax="10" style="width:' . $votes . '%"></div></div>';
+                                                echo "</td>";
+                                                echo "</tr>";
+                                            }  
+                                    ?>
+                                    </tbody>
+                                </table>
+                        
+                        <br><br>
 
-                            <tbody>
-                            <?php
-                                $res = mysqli_query($conn,"SELECT `firstname`, `lastname`, `position`, `votes` FROM phpfinals.records WHERE `position` = 'PRO'");
-                                while($row = mysqli_fetch_assoc($res)) 
-                                    {
-                                        echo "<tr>";
-                                        echo "<td></td>";
-                                        echo "<td>" . $row['firstname']   . "</td>";
-                                        echo "<td>" . $row['lastname']    . "</td>";
-                                        echo "<td>" . $row['position'] . "</td>";
-                                        $votes = $row['votes'] * 10;
-                                        echo "<td>";
-                                        echo $votes . '%<div class="progress"><div class="progress-bar" role="progressbar" aria-valuemax="10" style="width:' . $votes . '%"></div></div>';
-                                        echo "</td>";
-                                        echo "</tr>";
-                                    }  
-                            ?>
-                            </tbody>
-                    </table>
+
+                        
+
                 </div>
             <!-- End of Check Results -->
 
@@ -861,12 +867,15 @@
                     $('#gen').text("Gender: " + userid.gender)
                     $('#yearlevel').text("Year Level: " + userid.yearlevel)
                     $('#pos').text("Position: " + userid.position)
-                    $('#accesslevel').text("Access Level: " + userid.accesslevel)
+                    $('#accesslevel').text("Access Level: " + userid.accesslevel)          
+                    let image = "images/" + userid.username + ".jpg";   
+                    $('#img').attr("src", image)            
                 });
 
                 $('#viewModal').modal("show");
             }
-           
+
+ 
 
             // Get the element with id="defaultOpen" and id="defaultOpen1" and click on it
             document.getElementById("defaultOpen").click();
