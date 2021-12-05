@@ -142,57 +142,47 @@
             <div id="ProfileSettings" class="tabcontent">
             <form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>" enctype="multipart/form-data">
             <div class="row align-items-center flex-row-reverse">
-                <div class="col-md-6">
-                    <div class="about-text go-to">
-                        <h4 class='dark-color'> Reset Password </h4>
-                        <div class="row about-list">
-                            <div class="col-md-6">
-                                <div class="media">
-                                    <div class="form-group">
-                                    <label for="newpw">New Password</label>
-                                    <input type="password" class="form-control" name="newpw" placeholder="Enter new password">
-                                    </div>
-                                </div>
-                                <div class="media">
-                                    <div class="form-group">
-                                    <label for="updpw">Confirm New Password</label>
-                                    <input type="password" class="form-control" name="updpw" placeholder="Re-enter new password">
-                                    </div>
+                <div class="about-text go-to">
+                    <div class="row about-list">
+                        <div class="col-md-3">
+                            <h4 class='dark-color'> Reset Password </h4>
+                            <div class="media">
+                                <div class="form-group">
+                                <label for="newpw">New Password</label>
+                                <input type="password" class="form-control" name="newpw" placeholder="Enter new password">
                                 </div>
                             </div>
-                        </div>
-                    </div> <br>
-
-                    <div class="about-text go-to">
-                        <h4 class='dark-color'> Change Image </h4>
-                        <div class="row about-list">
-                            <div class="col-md-6">
-                                <div class="media">
-                                    <div class="form-group">
-                                    <input type="file" name="pic" id="pic" style="margin-left:150px;"><br><br>
-                                    </div>
+                            <div class="media">
+                                <div class="form-group">
+                                <label for="updpw">Confirm New Password</label>
+                                <input type="password" class="form-control" name="updpw" placeholder="Re-enter new password">
                                 </div>
-                                <div class="media">
+                            </div>
+                            <div class="media">
                                 <div class="text-right">
-                                <button type="submit" name="submit" class="btn btn-primary" onClick="window.location.reload();">Save Changes</button>
-                                </div>
+                                <button type="submit" name="submit" style="margin-top:20px;" class="btn btn-primary" onClick="window.location.reload();">Save Changes</button>
                                 </div>
                             </div>
                         </div>
+                        <div class="col-md-8" style="margin-left:20px;">
+                            <h4> Change Image </h4>                            
+                            <div class="media">
+                                <?php
+                                    $sql=mysqli_query($conn,"select * from records where username='$username'") or die(mysqli_error());
+                                    while($row = mysqli_fetch_array($sql)){
+                                        if($row['images']!=''){
+                                            echo "<img src = 'data:image/jpeg;base64," .base64_encode($row["images"]) ."' class='changeimg'/>";                               
+                                        }
+                                        else{
+                                            echo "<img src='images/default.jpg'>";
+                                        }
+                                    }
+                                ?>
+                                <input type="file" name="pic" id="pic" style="margin-left:20px;">
+                            </div>
+                        </div>
                     </div>
-                </div>
-                    <div class="col-md-5">
-                        <?php
-                            $sql=mysqli_query($conn,"select * from records where username='$username'") or die(mysqli_error());
-                            while($row = mysqli_fetch_array($sql)){
-                                if($row['images']!=''){
-                                    echo "<img src = 'data:image/jpeg;base64," .base64_encode($row["images"]) ."' class='profilepic'/>";                                }
-                                else{
-                                    echo "<img src='images/default.jpg'>";
-                                }
-                            }
-                        ?>
-                    </div>
+                </div> <br>                
             </form>
             </div>
             </div>
