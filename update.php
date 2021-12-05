@@ -6,6 +6,7 @@
         die("Connection Failed : ".$conn->connect_error);
     }
 
+
     if(isset($_POST['sendupdate']))
     {
         $user_id = $_POST['sendupdate'];
@@ -24,8 +25,26 @@
         $response['message'] = "Invalid or data not found";
     }
 
+    if(isset($_POST['sendview']))
+    {
+        $user_id = $_POST['sendview'];
+        $stmnt = mysqli_query($conn,"SELECT * FROM phpfinals.records WHERE `username` = $user_id");
+        $response=array();
+        while($row = mysqli_fetch_assoc($stmnt))
+        {
+            $response = $row;
+        }
+        echo json_encode($response);
+    }
+
+    else
+    {
+        $response['status'] = 200;
+        $response['message'] = "Invalid or data not found";
+    }
+
     //update query
-    if(isset($_POST['hiddendata']))
+    if(isset($_POST['view']))
     {
         $old = $_POST['hiddendata'];
         $uname = $_POST['updateuname'];
