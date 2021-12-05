@@ -119,7 +119,7 @@
 											echo "<img src = 'data:image/jpeg;base64," .base64_encode($row["images"]) ."' class='candidate'/>" . " ";
 											echo "<div class='flex'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</div>";
 											// echo "<div class='flex'> <a href='#' class='item-author text-color'  onclick = 'GetUser(' . $id . ')'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</a></div>";
-											echo "<div><input class='form-check-input' type='radio' name='president' id='president' value='<?php echo $president_id;?>' required></div>";
+											echo "<div><input class='form-check-input' type='radio' name='president' id='president' value='$president_id' required></div>";
 										}
 										else{
 											echo "<img src='images/default.jpg'>";
