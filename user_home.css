@@ -12,14 +12,10 @@ nav .navbar-brand .logo {
     border-radius: 8px
 }
 
-img {
+.logo {
     height: 100px;
     width: 100px;
 }
-
-/* nav .navbar-brand .logo .h2 {
-    margin: 0
-} */
 
 nav .navbar-brand .h4 {
     margin-bottom: 0px;
@@ -59,292 +55,88 @@ nav ul li a .cart::after {
     box-shadow: none
 }
 
-#sidebar {
-    padding: 15px 0px 15px 0px;
-    border-radius: 10px
-}
-
-#sidebar .h4 {
-    font-weight: 500;
-    padding-left: 15px
-}
-
-#sidebar ul {
-    list-style: none;
-    margin: 0;
-    padding-left: 0rem
-}
-
-#sidebar ul li {
-    padding: 10px 0;
-    display: block;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    border-left: 5px solid transparent
-}
-
-#sidebar ul li.active {
-    border-left: 5px solid #b3e1f2;
-    background-color: #007caa
-}
-
-#sidebar ul li a {
-    display: block
-}
-
-#sidebar ul li a .fas,
-#sidebar ul li a .far {
-    color: #ddd
-}
-
-#sidebar ul li a .link {
-    color: #fff;
-    font-weight: 500
-}
-
-#sidebar ul li a .link-desc {
-    font-size: 0.8rem;
-    color: #ddd
-}
-
-#main-content {
-    padding: 30px;
-    border-radius: 15px
-}
-
-#main-content .h5,
-#main-content .text-uppercase {
-    font-weight: 600;
-    margin-bottom: 0
-}
-
-#main-content .h5+div {
-    font-size: 0.9rem
-}
-
-#main-content .box {
-    padding: 10px;
-    border-radius: 6px;
-    width: 170px;
-    height: 90px
-}
-
-#main-content .box img {
-    width: 40px;
-    height: 40px;
-    object-fit: contain
-}
-
-#main-content .box .tag {
-    font-size: 0.9rem;
-    color: #000;
-    font-weight: 500
-}
-
-#main-content .box .number {
-    font-size: 1.5rem;
-    font-weight: 600
-}
-
-.order {
-    padding: 10px 30px;
-    min-height: 150px
-}
-
-.order .order-summary {
-    height: 100%
-}
-
-.order .blue-label {
-    background-color: #aeaeeb;
-    color: #0046dd;
-    font-size: 0.9rem;
-    padding: 0px 3px
-}
-
-.order .green-label {
-    background-color: #a8e9d0;
-    color: #008357;
-    font-size: 0.9rem;
-    padding: 0px 3px
-}
-
-.order .fs-8 {
-    font-size: 0.85rem
-}
-
-.order .rating img {
-    width: 20px;
-    height: 20px;
-    object-fit: contain
-}
-
-.order .rating .fas,
-.order .rating .far {
-    font-size: 0.9rem
-}
-
-.order .rating .fas {
-    color: #daa520
-}
-
-.order .status {
-    font-weight: 600
-}
-
-.order .btn.btn-primary {
-    background-color: #fff;
-    color: #4e2296;
-    border: 1px solid #4e2296
-}
-
-.order .btn.btn-primary:hover {
-    background-color: #4e2296;
-    color: #fff
-}
-
-.order .progressbar-track {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    position: relative
-}
-
-.order .progressbar-track .progressbar {
-    list-style: none;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-left: 0rem
-}
-
-.order .progressbar-track .progressbar li {
-    font-size: 1.5rem;
-    border: 1px solid #333;
-    padding: 5px 10px;
+/* View Profile */
+.profilepic {
+    max-width: 100%;
+    max-height: 100%;
+    height: 300px;
+    width: 300px;
     border-radius: 50%;
-    background-color: #dddddd;
-    z-index: 100;
-    position: relative
 }
 
-.order .progressbar-track .progressbar li.green {
-    border: 1px solid #007965;
-    background-color: #d5e6e2
+.about-text h3 {
+  font-size: 45px;
+  font-weight: 700;
 }
 
-.order .progressbar-track .progressbar li::after {
-    position: absolute;
-    font-size: 0.9rem;
-    top: 50px;
-    left: 0px
+@media (max-width: 767px) {
+  .about-text h6 {
+    font-size: 18px;
+  }
+
+}
+.about-text p {
+  font-size: 18px;
+  max-width: 450px;
 }
 
-#tracker {
-    position: absolute;
-    border-top: 1px solid #bbb;
-    width: 100%;
-    top: 25px
+.about-text p mark {
+  font-weight: 600;
+  color: #20247b;
 }
 
-#step-1::after {
-    content: 'Placed'
+.about-list {
+  padding-top: 20px;
 }
 
-#step-2::after {
-    content: 'Accepted';
-    left: -10px
+.about-list .media {
+  padding: 5px 0;
 }
 
-#step-3::after {
-    content: 'Packed'
+.about-list label {
+  color: #20247b;
+  font-weight: 600;
+  width: 100%;
+  position: relative;
 }
 
-#step-4::after {
-    content: 'Shipped'
+.about-list p {
+  font-size: 15px;
 }
 
-#step-5::after {
-    content: 'Delivered';
-    left: -10px
+.form-control:focus {
+  box-shadow: none;
+  border-color: #BA68C8
 }
 
-.bg-blue {
-    background-color: #009bd4
+/* Profile Settings */
+.changeimg {
+  max-width: 100%;
+  max-height: 100%;
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
 }
 
-.bg-light {
-    background-color: #f0ecec !important
+
+.form-control {
+  border: 1px solid #cfd1d8;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  font-size: .825rem;
+  background: #ffffff;
+  color: #2e323c;
 }
 
-.green {
-    color: #007965 !important
+.card {
+  background: #ffffff;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  border: 0;
+  margin-bottom: 1rem;
 }
-
-@media(max-width: 1199.5px) {
-    nav ul li {
-        padding: 0 10px
-    }
-}
-
-@media(max-width: 500px) {
-    .order .progressbar-track .progressbar li {
-        font-size: 1rem
-    }
-
-    .order .progressbar-track .progressbar li::after {
-        font-size: 0.8rem;
-        top: 35px
-    }
-
-    #tracker {
-        top: 20px
-    }
-}
-
-@media(max-width: 440px) {
-    #main-content {
-        padding: 20px
-    }
-
-    .order {
-        padding: 20px
-    }
-
-    #step-4::after {
-        left: -5px
-    }
-}
-
-@media(max-width: 395px) {
-    .order .progressbar-track .progressbar li {
-        font-size: 0.8rem
-    }
-
-    .order .progressbar-track .progressbar li::after {
-        font-size: 0.7rem;
-        top: 35px
-    }
-
-    #tracker {
-        top: 15px
-    }
-
-    .order .btn.btn-primary {
-        font-size: 0.85rem
-    }
-}
-
-@media(max-width: 355px) {
-    #main-content {
-        padding: 15px
-    }
-
-    .order {
-        padding: 10px
-    }
-}
-
-* {box-sizing: border-box}
 
 /* Style the tab */
 .tab {
@@ -356,7 +148,6 @@ nav ul li a .cart::after {
   padding: 10px;
 }
 
-/* Style the buttons that are used to open the tab content */
 .tab button {
   display: block;
   background-color: inherit;
@@ -370,17 +161,15 @@ nav ul li a .cart::after {
   transition: 0.3s;
 }
 
-/* Change background color of buttons on hover */
 .tab button:hover {
   background-color: #007caa;
 }
 
-/* Create an active/current "tab button" class */
 .tab button.active {
   background-color: #007caa;
 }
 
-/* Style the tab content */
+/* Style the tab  */
 .tabcontent {
   float: left;
   padding: 0px 12px;
@@ -398,8 +187,8 @@ nav ul li a .cart::after {
     padding: 5px;
   }
   
-  /* Style the buttons that are used to open the tab content */
-  .tabh button {
+/* Style the buttons that are used to open the tab content */
+.tabh button {
     background-color: inherit;
     float: left;
     border: none;
@@ -407,22 +196,82 @@ nav ul li a .cart::after {
     cursor: pointer;
     padding: 14px 16px;
     transition: 0.3s;
-  }
+}
   
-  /* Change background color of buttons on hover */
-  .tabh button:hover {
+/* Change background color of buttons on hover */
+.tabh button:hover {
     background-color: #ddd;
-  }
+}
   
-  /* Create an active/current tablink class */
-  .tabh button.active {
+/* Create an active/current tablink class */
+.tabh button.active {
     background-color: #ccc;
-  }
+}
   
-  /* Style the tab content */
-  .tabcontenth {
+/* Style the tab content */
+.tabcontenth {
     display: none;
     padding: 6px 12px;
     border: 1px solid #ccc;
     border-top: none;
-  }
+}
+
+  /* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 300px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+ }
+  
+/* Modal Content */
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 35%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+  
+/* Add Animation */
+    @-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0} 
+    to {top:0; opacity:1}
+}
+  
+@keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+  
+/* The Close Button */
+.close {
+    color: black;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+  
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-body{
+      padding: 2px 16px;
+}
