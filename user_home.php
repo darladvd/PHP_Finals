@@ -131,9 +131,9 @@
 
             <!-- Submit Vote -->
             <div id="SubmitVote" class="tabcontent">
-            <?php
-            include 'submit_vote.php';
-            ?>
+                <?php
+                include 'submitvote.php';
+                ?>
             </div>
 
             <div id="ViewBallot" class="tabcontent">
@@ -300,9 +300,6 @@
             modal.style.display = "none";
         }
     }
-
-    function reloadThePage(){
-    window.location.reload();} 
     </script>
 
     </body>

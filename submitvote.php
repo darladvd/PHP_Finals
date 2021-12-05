@@ -103,7 +103,7 @@
     </head>
 	<body>
 		<div class="wrapper">
-			<form method ="post" action="vote.php">
+			<form method ="post" action="checkvote.php">
 			<div class="president-align"> <br>
 				<div class="hero-body-president" style="text-align:center;"><h2>Candidate for President</h2></div>
 					<div class="padding">
@@ -117,8 +117,9 @@
 									$president_id=$row['username']; 
 										if($row['images']!=''){
 											echo "<img src = 'data:image/jpeg;base64," .base64_encode($row["images"]) ."' class='candidate'/>" . " ";
-											echo "<div class='flex'> <a href='#' class='item-author text-color' data-toggle='modal' data-target='#exampleModal'>".$row['firstname']." ".$row['middle']." ".$row['lastname']."</a></div>";
-											echo "<div><input class='form-check-input' type='radio' name='flexRadioDefault' id='flexRadioDefault1'></div>";
+											echo "<div class='flex'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</div>";
+											// echo "<div class='flex'> <a href='#' class='item-author text-color'  onclick = 'GetUser(' . $id . ')'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</a></div>";
+											echo "<div><input class='form-check-input' type='radio' name='president' id='president' value='<?php echo $president_id;?>' required></div>";
 										}
 										else{
 											echo "<img src='images/default.jpg'>";
@@ -137,8 +138,9 @@
 									$president_id=$row['username']; 
 										if($row['images']!=''){
 											echo "<img src = 'data:image/jpeg;base64," .base64_encode($row["images"]) ."' class='candidate'/>" . " ";
-											echo "<div class='flex'> <a href='#' class='item-author text-color' data-toggle='modal' data-target='#exampleModal'>".$row['firstname']." ".$row['middle']." ".$row['lastname']."</a></div>";
-											echo "<div><input class='form-check-input' type='radio' name='flexRadioDefault' id='flexRadioDefault1'></div>";
+											echo "<div class='flex'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</div>";
+											// echo "<div class='flex'> <a href='#' class='item-author text-color'  onclick = 'GetUser(' . $id . ')'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</a></div>";
+											echo "<div><input class='form-check-input' type='radio' name='president' id='president' value='<?php echo $president_id;?>' required></div>";
 										}
 										else{
 											echo "<img src='images/default.jpg'>";
@@ -165,8 +167,9 @@
 									$viceint_id=$row['username']; 
 										if($row['images']!=''){
 											echo "<img src = 'data:image/jpeg;base64," .base64_encode($row["images"]) ."' class='candidate'/>" . " ";
-											echo "<div class='flex'> <a href='#' class='item-author text-color' data-toggle='modal' data-target='#exampleModal'>".$row['firstname']." ".$row['middle']." ".$row['lastname']."</a></div>";
-											echo "<div><input class='form-check-input' type='radio' name='flexRadioDefault' id='flexRadioDefault1'></div>";
+											echo "<div class='flex'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</div>";
+											// echo "<div class='flex'> <a href='#' class='item-author text-color'  onclick = 'GetUser(' . $id . ')'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</a></div>";
+											echo "<div><input class='form-check-input' type='radio' name='viceint' id='viceint' value='<?php echo $viceint_id;?>' required></div>";
 										}
 										else{
 											echo "<img src='images/default.jpg'>";
@@ -185,8 +188,9 @@
 									$viceint_id=$row['username']; 
 										if($row['images']!=''){
 											echo "<img src = 'data:image/jpeg;base64," .base64_encode($row["images"]) ."' class='candidate'/>" . " ";
-											echo "<div class='flex'> <a href='#' class='item-author text-color' data-toggle='modal' data-target='#exampleModal'>".$row['firstname']." ".$row['middle']." ".$row['lastname']."</a></div>";
-											echo "<div><input class='form-check-input' type='radio' name='flexRadioDefault' id='flexRadioDefault1'></div>";
+											echo "<div class='flex'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</div>";
+											// echo "<div class='flex'> <a href='#' class='item-author text-color'  onclick = 'GetUser(' . $id . ')'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</a></div>";
+											echo "<div><input class='form-check-input' type='radio' name='viceint' id='viceint' value='<?php echo $viceint_id;?>' required></div>";
 										}
 										else{
 											echo "<img src='images/default.jpg'>";
@@ -213,8 +217,9 @@
 									$viceext_id=$row['username']; 
 										if($row['images']!=''){
 											echo "<img src = 'data:image/jpeg;base64," .base64_encode($row["images"]) ."' class='candidate'/>" . " ";
-											echo "<div class='flex'> <a href='#' class='item-author text-color' data-toggle='modal' data-target='#exampleModal'>".$row['firstname']." ".$row['middle']." ".$row['lastname']."</a></div>";
-											echo "<div><input class='form-check-input' type='radio' name='flexRadioDefault' id='flexRadioDefault1'></div>";
+											echo "<div class='flex'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</div>";
+											// echo "<div class='flex'> <a href='#' class='item-author text-color'  onclick = 'GetUser(' . $id . ')'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</a></div>";
+											echo "<div><input class='form-check-input' type='radio' name='viceext' id='viceext' value='<?php echo $viceext_id;?>' required></div>";
 										}
 										else{
 											echo "<img src='images/default.jpg'>";
@@ -233,8 +238,9 @@
 									$viceext_id=$row['username']; 
 										if($row['images']!=''){
 											echo "<img src = 'data:image/jpeg;base64," .base64_encode($row["images"]) ."' class='candidate'/>" . " ";
-											echo "<div class='flex'> <a href='#' class='item-author text-color' data-toggle='modal' data-target='#exampleModal'>".$row['firstname']." ".$row['middle']." ".$row['lastname']."</a></div>";
-											echo "<div><input class='form-check-input' type='radio' name='flexRadioDefault' id='flexRadioDefault1'></div>";
+											echo "<div class='flex'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</div>";
+											// echo "<div class='flex'> <a href='#' class='item-author text-color'  onclick = 'GetUser(' . $id . ')'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</a></div>";
+											echo "<div><input class='form-check-input' type='radio' name='viceext' id='viceext' value='<?php echo $viceext_id;?>' required></div>";
 										}
 										else{
 											echo "<img src='images/default.jpg'>";
@@ -261,8 +267,9 @@
 									$sec_id=$row['username']; 
 										if($row['images']!=''){
 											echo "<img src = 'data:image/jpeg;base64," .base64_encode($row["images"]) ."' class='candidate'/>" . " ";
-											echo "<div class='flex'> <a href='#' class='item-author text-color' data-toggle='modal' data-target='#exampleModal'>".$row['firstname']." ".$row['middle']." ".$row['lastname']."</a></div>";
-											echo "<div><input class='form-check-input' type='radio' name='flexRadioDefault' id='flexRadioDefault1'></div>";
+											echo "<div class='flex'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</div>";
+											// echo "<div class='flex'> <a href='#' class='item-author text-color'  onclick = 'GetUser(' . $id . ')'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</a></div>";
+											echo "<div><input class='form-check-input' type='radio' name='sec' id='sec' value='<?php echo $sec_id;?>' required></div>";
 										}
 										else{
 											echo "<img src='images/default.jpg'>";
@@ -281,8 +288,9 @@
 									$sec_id=$row['username']; 
 										if($row['images']!=''){
 											echo "<img src = 'data:image/jpeg;base64," .base64_encode($row["images"]) ."' class='candidate'/>" . " ";
-											echo "<div class='flex'> <a href='#' class='item-author text-color' data-toggle='modal' data-target='#exampleModal'>".$row['firstname']." ".$row['middle']." ".$row['lastname']."</a></div>";
-											echo "<div><input class='form-check-input' type='radio' name='flexRadioDefault' id='flexRadioDefault1'></div>";
+											echo "<div class='flex'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</div>";
+											// echo "<div class='flex'> <a href='#' class='item-author text-color'  onclick = 'GetUser(' . $id . ')'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</a></div>";
+											echo "<div><input class='form-check-input' type='radio' name='sec' id='sec' value='<?php echo $sec_id;?>' required></div>";
 										}
 										else{
 											echo "<img src='images/default.jpg'>";
@@ -309,8 +317,9 @@
 									$trs_id=$row['username']; 
 										if($row['images']!=''){
 											echo "<img src = 'data:image/jpeg;base64," .base64_encode($row["images"]) ."' class='candidate'/>" . " ";
-											echo "<div class='flex'> <a href='#' class='item-author text-color' data-toggle='modal' data-target='#exampleModal'>".$row['firstname']." ".$row['middle']." ".$row['lastname']."</a></div>";
-											echo "<div><input class='form-check-input' type='radio' name='flexRadioDefault' id='flexRadioDefault1'></div>";
+											echo "<div class='flex'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</div>";
+											// echo "<div class='flex'> <a href='#' class='item-author text-color'  onclick = 'GetUser(' . $id . ')'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</a></div>";
+											echo "<div><input class='form-check-input' type='radio' name='trs' id='trs' value='<?php echo $trs_id;?>' required></div>";
 										}
 										else{
 											echo "<img src='images/default.jpg'>";
@@ -329,8 +338,9 @@
 									$trs_id=$row['username']; 
 										if($row['images']!=''){
 											echo "<img src = 'data:image/jpeg;base64," .base64_encode($row["images"]) ."' class='candidate'/>" . " ";
-											echo "<div class='flex'> <a href='#' class='item-author text-color' data-toggle='modal' data-target='#exampleModal'>".$row['firstname']." ".$row['middle']." ".$row['lastname']."</a></div>";
-											echo "<div><input class='form-check-input' type='radio' name='flexRadioDefault' id='flexRadioDefault1'></div>";
+											echo "<div class='flex'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</div>";
+											// echo "<div class='flex'> <a href='#' class='item-author text-color'  onclick = 'GetUser(' . $id . ')'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</a></div>";
+											echo "<div><input class='form-check-input' type='radio' name='trs' id='trs' value='<?php echo $trs_id;?>' required></div>";
 										}
 										else{
 											echo "<img src='images/default.jpg'>";
@@ -357,8 +367,9 @@
 									$aud_id=$row['username']; 
 										if($row['images']!=''){
 											echo "<img src = 'data:image/jpeg;base64," .base64_encode($row["images"]) ."' class='candidate'/>" . " ";
-											echo "<div class='flex'> <a href='#' class='item-author text-color' data-toggle='modal' data-target='#exampleModal'>".$row['firstname']." ".$row['middle']." ".$row['lastname']."</a></div>";
-											echo "<div><input class='form-check-input' type='radio' name='flexRadioDefault' id='flexRadioDefault1'></div>";
+											echo "<div class='flex'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</div>";
+											// echo "<div class='flex'> <a href='#' class='item-author text-color'  onclick = 'GetUser(' . $id . ')'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</a></div>";
+											echo "<div><input class='form-check-input' type='radio' name='aud' id='aud' value='<?php echo $aud_id;?>' required></div>";
 										}
 										else{
 											echo "<img src='images/default.jpg'>";
@@ -377,8 +388,9 @@
 									$aud_id=$row['username']; 
 										if($row['images']!=''){
 											echo "<img src = 'data:image/jpeg;base64," .base64_encode($row["images"]) ."' class='candidate'/>" . " ";
-											echo "<div class='flex'> <a href='#' class='item-author text-color' data-toggle='modal' data-target='#exampleModal'>".$row['firstname']." ".$row['middle']." ".$row['lastname']."</a></div>";
-											echo "<div><input class='form-check-input' type='radio' name='flexRadioDefault' id='flexRadioDefault1'></div>";
+											echo "<div class='flex'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</div>";
+											// echo "<div class='flex'> <a href='#' class='item-author text-color'  onclick = 'GetUser(' . $id . ')'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</a></div>";
+											echo "<div><input class='form-check-input' type='radio' name='aud' id='aud' value='<?php echo $aud_id;?>' required></div>";
 										}
 										else{
 											echo "<img src='images/default.jpg'>";
@@ -406,8 +418,9 @@
 									$pro_id=$row['username']; 
 										if($row['images']!=''){
 											echo "<img src = 'data:image/jpeg;base64," .base64_encode($row["images"]) ."' class='candidate'/>" . " ";
-											echo "<div class='flex'> <a href='#' class='item-author text-color' data-toggle='modal' data-target='#exampleModal'>".$row['firstname']." ".$row['middle']." ".$row['lastname']."</a></div>";
-											echo "<div><input class='form-check-input' type='radio' name='flexRadioDefault' id='flexRadioDefault1'></div>";
+											echo "<div class='flex'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</div>";
+											// echo "<div class='flex'> <a href='#' class='item-author text-color'  onclick = 'GetUser(' . $id . ')'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</a></div>";
+											echo "<div><input class='form-check-input' type='radio' name='pro' id='pro' value='<?php echo $pro_id;?>' required></div>";
 										}
 										else{
 											echo "<img src='images/default.jpg'>";
@@ -426,8 +439,9 @@
 									$pro_id=$row['username']; 
 										if($row['images']!=''){
 											echo "<img src = 'data:image/jpeg;base64," .base64_encode($row["images"]) ."' class='candidate'/>" . " ";
-											echo "<div class='flex'> <a href='#' class='item-author text-color' data-toggle='modal' data-target='#exampleModal'>".$row['firstname']." ".$row['middle']." ".$row['lastname']."</a></div>";
-											echo "<div><input class='form-check-input' type='radio' name='flexRadioDefault' id='flexRadioDefault1'></div>";
+											echo "<div class='flex'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</div>";
+											// echo "<div class='flex'> <a href='#' class='item-author text-color'  onclick = 'GetUser(' . $id . ')'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</a></div>";
+											echo "<div><input class='form-check-input' type='radio' name='pro' id='pro' value='<?php echo $pro_id;?>' required></div>";
 										}
 										else{
 											echo "<img src='images/default.jpg'>";
@@ -438,14 +452,10 @@
 						</div>
 						</div>
 					</div>
+					<button type="submit" name="submitvote" style="margin-left:380px; margin-bottom:20px;" class="btn btn-primary">Save Changes</button>
 					</div>
 			</div>
 		</div>
-		<button type="submit" name="submit">Submit Vote</button>
 	</form>
-</body>
-</html>
-
-
-	
-											
+	</body>
+</html>								
