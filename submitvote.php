@@ -24,6 +24,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
 
         <!-- External CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 	    <link rel="stylesheet" type="text/css" href="user_home.css">
         
         <title>Voter</title>
@@ -452,10 +453,51 @@
 						</div>
 						</div>
 					</div>
-					<button type="submit" name="submitvote" style="margin-left:380px; margin-bottom:20px;" class="btn btn-primary">Submit Vote</button>
+					<button type="button" class="btn btn-primary" onclick = "ShowDetails()">View Ballot</button>
+					<!-- View Modal -->
+					<div class="modal fade" id="viewModal"  aria-labelledby="viewModal" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLabel">Candidate Details</h5>
+							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						</div>
+						<div class="modal-body">
+							<img src="images/logo.png" class="logo">
+							<h1>Account Details: </h1>
+							<h5 id ="uname"></h5>
+							<h5 id ="pass"></h5>
+							<h1>Election Details: </h1>
+							<h5 id ="fname"></h5>
+							<h5 id ="mname"></h5>
+							<h5 id ="lname"></h5>
+							<h5 id ="gen"></h5>
+							<h5 id ="yearlevel"></h5>
+							<h5 id ="pos"></h5>
+							<h5 id ="status"></h5>
+							<h1>Access Level Details: </h1>
+							<h5 id ="accesslevel"></h5>
+							<form>
+								<input type="hidden" id="view">
+							</form>
+						</div>
+						</div>
 					</div>
+					</div>
+					<!-- End of View Modal -->
+					<!-- <button type="submit" name="submitvote" style="margin-left:380px; margin-bottom:20px;" class="btn btn-primary">Submit Vote</button> -->
+				</div>
 			</div>
 		</div>
 	</form>
+	<script>
+		function ShowDetails()
+		{
+			$('#viewModal').modal("show");
+		}
+	</script>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 	</body>
 </html>								
