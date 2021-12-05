@@ -8,14 +8,14 @@
 
 <html>
 	<head>
-        <!-- Required meta tags -->
-        <meta charset="utf-8">
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
         <script src="https://use.fontawesome.com/releases/v5.7.2/css/all.css"></script>
         
-        	<!-- Google Fonts -->
+        <!-- Google Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
@@ -24,8 +24,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
 
         <!-- External CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-	    <link rel="stylesheet" type="text/css" href="user_home.css">
+	    <link rel="stylesheet" type="text/css" href="admin_home.css">
         
         <title>Voter</title>
 		<style>
@@ -117,6 +116,8 @@
 									while($row=mysqli_fetch_array($president)){ 
 									$president_id=$row['username']; 
 										if($row['images']!=''){
+											$president_fname=$row['firstname'];
+											$president_lname=$row['lasttname']; 
 											echo "<img src = 'data:image/jpeg;base64," .base64_encode($row["images"]) ."' class='candidate'/>" . " ";
 											echo "<div class='flex'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</div>";
 											// echo "<div class='flex'> <a href='#' class='item-author text-color'  onclick = 'GetUser(' . $id . ')'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</a></div>";
@@ -453,51 +454,54 @@
 						</div>
 						</div>
 					</div>
-					<button type="button" class="btn btn-primary" onclick = "ShowDetails()">View Ballot</button>
-					<!-- View Modal -->
-					<div class="modal fade" id="viewModal"  aria-labelledby="viewModal" aria-hidden="true">
-					<div class="modal-dialog">
-						<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title" id="exampleModalLabel">Candidate Details</h5>
-							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-						</div>
-						<div class="modal-body">
-							<img src="images/logo.png" class="logo">
-							<h1>Account Details: </h1>
-							<h5 id ="uname"></h5>
-							<h5 id ="pass"></h5>
-							<h1>Election Details: </h1>
-							<h5 id ="fname"></h5>
-							<h5 id ="mname"></h5>
-							<h5 id ="lname"></h5>
-							<h5 id ="gen"></h5>
-							<h5 id ="yearlevel"></h5>
-							<h5 id ="pos"></h5>
-							<h5 id ="status"></h5>
-							<h1>Access Level Details: </h1>
-							<h5 id ="accesslevel"></h5>
-							<form>
-								<input type="hidden" id="view">
-							</form>
-						</div>
-						</div>
-					</div>
-					</div>
-					<!-- End of View Modal -->
+					<button type="button" class="btn btn-primary btn-sm" onclick = "ShowDetails()" style="margin-left:380px; margin-bottom:20px;">View Ballot</button>
 					<!-- <button type="submit" name="submitvote" style="margin-left:380px; margin-bottom:20px;" class="btn btn-primary">Submit Vote</button> -->
 				</div>
 			</div>
 		</div>
+                <!-- View Modal -->
+                <div class="modal fade" id="viewModal"  aria-labelledby="viewModal" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Official Ballot</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+						<p>President <strong id="presidentM"></strong></p>
+                        <form>
+                            <input type="hidden" id="view">
+                        </form>
+                    </div>
+                    </div>
+                </div>
+                </div>
+                <!-- End of View Modal -->
 	</form>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
 	<script>
 		function ShowDetails()
 		{
 			$('#viewModal').modal("show");
+			<?php
+				$pres = 'input[name=president]:checked';
+				$stmnt = mysqli_query($conn,"SELECT  `firstname`, `lastname` , FROM phpfinals.records WHERE `username` = $pres");
+				if(mysqli_num_rows($sql) > 0) {
+					while($row=mysqli_fetch_assoc($sql)){
+						$fullname = $row['firstname'];
+						// echo "<b>President: </b>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."<br>";
+					}
+				} 
+				else {
+					echo "<b>President:</b> No record found <br>";
+				}
+				echo "var info = '$fullname';";
+			?>
+			$('#presidentM').html(info).val());
 		}
-	</script>
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+		</script>
 	</body>
 </html>								
