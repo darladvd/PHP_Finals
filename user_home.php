@@ -132,13 +132,13 @@
             <!-- Submit Vote -->
             <div id="SubmitVote" class="tabcontent">
                 <?php
-                include 'submitvote.php';
+                    include 'submitvote.php';
                 ?>
             </div>
 
             <div id="ViewBallot" class="tabcontent">
-                <h3>View Results</h3>
-                <p>Check Results.</p>
+                <?php
+                ?>
             </div>
 
             <!-- Profile Settings -->

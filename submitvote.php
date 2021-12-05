@@ -8,14 +8,14 @@
 
 <html>
 	<head>
-		<!-- Required meta tags -->
-		<meta charset="utf-8">
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
         <script src="https://use.fontawesome.com/releases/v5.7.2/css/all.css"></script>
         
-        <!-- Google Fonts -->
+        	<!-- Google Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
@@ -24,7 +24,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
 
         <!-- External CSS -->
-	    <link rel="stylesheet" type="text/css" href="admin_home.css">
+	    <link rel="stylesheet" type="text/css" href="user_home.css">
         
         <title>Voter</title>
 		<style>
@@ -116,11 +116,8 @@
 									while($row=mysqli_fetch_array($president)){ 
 									$president_id=$row['username']; 
 										if($row['images']!=''){
-											$president_fname=$row['firstname'];
-											$president_lname=$row['lasttname']; 
 											echo "<img src = 'data:image/jpeg;base64," .base64_encode($row["images"]) ."' class='candidate'/>" . " ";
 											echo "<div class='flex'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</div>";
-											// echo "<div class='flex'> <a href='#' class='item-author text-color'  onclick = 'GetUser(' . $id . ')'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</a></div>";
 											echo "<div><input class='form-check-input' type='radio' name='president' id='president' value='$president_id' required></div>";
 										}
 										else{
@@ -141,7 +138,6 @@
 										if($row['images']!=''){
 											echo "<img src = 'data:image/jpeg;base64," .base64_encode($row["images"]) ."' class='candidate'/>" . " ";
 											echo "<div class='flex'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</div>";
-											// echo "<div class='flex'> <a href='#' class='item-author text-color'  onclick = 'GetUser(' . $id . ')'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</a></div>";
 											echo "<div><input class='form-check-input' type='radio' name='president' id='president' value='$president_id' required></div>";
 										}
 										else{
@@ -170,7 +166,6 @@
 										if($row['images']!=''){
 											echo "<img src = 'data:image/jpeg;base64," .base64_encode($row["images"]) ."' class='candidate'/>" . " ";
 											echo "<div class='flex'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</div>";
-											// echo "<div class='flex'> <a href='#' class='item-author text-color'  onclick = 'GetUser(' . $id . ')'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</a></div>";
 											echo "<div><input class='form-check-input' type='radio' name='viceint' id='viceint' value='$viceint_id' required></div>";
 										}
 										else{
@@ -191,7 +186,6 @@
 										if($row['images']!=''){
 											echo "<img src = 'data:image/jpeg;base64," .base64_encode($row["images"]) ."' class='candidate'/>" . " ";
 											echo "<div class='flex'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</div>";
-											// echo "<div class='flex'> <a href='#' class='item-author text-color'  onclick = 'GetUser(' . $id . ')'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</a></div>";
 											echo "<div><input class='form-check-input' type='radio' name='viceint' id='viceint' value='$viceint_id' required></div>";
 										}
 										else{
@@ -220,7 +214,6 @@
 										if($row['images']!=''){
 											echo "<img src = 'data:image/jpeg;base64," .base64_encode($row["images"]) ."' class='candidate'/>" . " ";
 											echo "<div class='flex'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</div>";
-											// echo "<div class='flex'> <a href='#' class='item-author text-color'  onclick = 'GetUser(' . $id . ')'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</a></div>";
 											echo "<div><input class='form-check-input' type='radio' name='viceext' id='viceext' value='$viceext_id' required></div>";
 										}
 										else{
@@ -241,7 +234,6 @@
 										if($row['images']!=''){
 											echo "<img src = 'data:image/jpeg;base64," .base64_encode($row["images"]) ."' class='candidate'/>" . " ";
 											echo "<div class='flex'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</div>";
-											// echo "<div class='flex'> <a href='#' class='item-author text-color'  onclick = 'GetUser(' . $id . ')'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</a></div>";
 											echo "<div><input class='form-check-input' type='radio' name='viceext' id='viceext' value='$viceext_id' required></div>";
 										}
 										else{
@@ -270,7 +262,6 @@
 										if($row['images']!=''){
 											echo "<img src = 'data:image/jpeg;base64," .base64_encode($row["images"]) ."' class='candidate'/>" . " ";
 											echo "<div class='flex'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</div>";
-											// echo "<div class='flex'> <a href='#' class='item-author text-color'  onclick = 'GetUser(' . $id . ')'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</a></div>";
 											echo "<div><input class='form-check-input' type='radio' name='sec' id='sec' value='$sec_id' required></div>";
 										}
 										else{
@@ -291,7 +282,6 @@
 										if($row['images']!=''){
 											echo "<img src = 'data:image/jpeg;base64," .base64_encode($row["images"]) ."' class='candidate'/>" . " ";
 											echo "<div class='flex'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</div>";
-											// echo "<div class='flex'> <a href='#' class='item-author text-color'  onclick = 'GetUser(' . $id . ')'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</a></div>";
 											echo "<div><input class='form-check-input' type='radio' name='sec' id='sec' value='$sec_id' required></div>";
 										}
 										else{
@@ -320,7 +310,6 @@
 										if($row['images']!=''){
 											echo "<img src = 'data:image/jpeg;base64," .base64_encode($row["images"]) ."' class='candidate'/>" . " ";
 											echo "<div class='flex'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</div>";
-											// echo "<div class='flex'> <a href='#' class='item-author text-color'  onclick = 'GetUser(' . $id . ')'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</a></div>";
 											echo "<div><input class='form-check-input' type='radio' name='trs' id='trs' value='$trs_id' required></div>";
 										}
 										else{
@@ -341,7 +330,6 @@
 										if($row['images']!=''){
 											echo "<img src = 'data:image/jpeg;base64," .base64_encode($row["images"]) ."' class='candidate'/>" . " ";
 											echo "<div class='flex'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</div>";
-											// echo "<div class='flex'> <a href='#' class='item-author text-color'  onclick = 'GetUser(' . $id . ')'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</a></div>";
 											echo "<div><input class='form-check-input' type='radio' name='trs' id='trs' value='$trs_id' required></div>";
 										}
 										else{
@@ -370,7 +358,6 @@
 										if($row['images']!=''){
 											echo "<img src = 'data:image/jpeg;base64," .base64_encode($row["images"]) ."' class='candidate'/>" . " ";
 											echo "<div class='flex'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</div>";
-											// echo "<div class='flex'> <a href='#' class='item-author text-color'  onclick = 'GetUser(' . $id . ')'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</a></div>";
 											echo "<div><input class='form-check-input' type='radio' name='aud' id='aud' value='$aud_id' required></div>";
 										}
 										else{
@@ -391,7 +378,6 @@
 										if($row['images']!=''){
 											echo "<img src = 'data:image/jpeg;base64," .base64_encode($row["images"]) ."' class='candidate'/>" . " ";
 											echo "<div class='flex'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</div>";
-											// echo "<div class='flex'> <a href='#' class='item-author text-color'  onclick = 'GetUser(' . $id . ')'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</a></div>";
 											echo "<div><input class='form-check-input' type='radio' name='aud' id='aud' value='$aud_id' required></div>";
 										}
 										else{
@@ -421,7 +407,6 @@
 										if($row['images']!=''){
 											echo "<img src = 'data:image/jpeg;base64," .base64_encode($row["images"]) ."' class='candidate'/>" . " ";
 											echo "<div class='flex'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</div>";
-											// echo "<div class='flex'> <a href='#' class='item-author text-color'  onclick = 'GetUser(' . $id . ')'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</a></div>";
 											echo "<div><input class='form-check-input' type='radio' name='pro' id='pro' value='$pro_id' required></div>";
 										}
 										else{
@@ -442,7 +427,6 @@
 										if($row['images']!=''){
 											echo "<img src = 'data:image/jpeg;base64," .base64_encode($row["images"]) ."' class='candidate'/>" . " ";
 											echo "<div class='flex'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</div>";
-											// echo "<div class='flex'> <a href='#' class='item-author text-color'  onclick = 'GetUser(' . $id . ')'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</a></div>";
 											echo "<div><input class='form-check-input' type='radio' name='pro' id='pro' value='$pro_id' required></div>";
 										}
 										else{
@@ -454,54 +438,10 @@
 						</div>
 						</div>
 					</div>
-					<button type="button" class="btn btn-primary btn-sm" onclick = "ShowDetails()" style="margin-left:380px; margin-bottom:20px;">View Ballot</button>
-					<!-- <button type="submit" name="submitvote" style="margin-left:380px; margin-bottom:20px;" class="btn btn-primary">Submit Vote</button> -->
-				</div>
+					<button type="submit" name="submitvote" style="margin-left:380px; margin-bottom:20px;" class="btn btn-primary">Submit Vote</button>
+					</div>
 			</div>
 		</div>
-                <!-- View Modal -->
-                <div class="modal fade" id="viewModal"  aria-labelledby="viewModal" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Official Ballot</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-						<p>President <strong id="presidentM"></strong></p>
-                        <form>
-                            <input type="hidden" id="view">
-                        </form>
-                    </div>
-                    </div>
-                </div>
-                </div>
-                <!-- End of View Modal -->
 	</form>
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-
-	<script>
-		function ShowDetails()
-		{
-			$('#viewModal').modal("show");
-			<?php
-				$pres = 'input[name=president]:checked';
-				$stmnt = mysqli_query($conn,"SELECT  `firstname`, `lastname` , FROM records WHERE `username` = $pres");
-				if(mysqli_num_rows($sql) > 0) {
-					while($row=mysqli_fetch_assoc($sql)){
-						$fullname = $row['firstname'];
-						// echo "<b>President: </b>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."<br>";
-					}
-				} 
-				else {
-					echo "<b>President:</b> No record found <br>";
-				}
-				echo "var info = '$fullname';";
-			?>
-			$('#presidentM').html(info).val());
-		}
-		</script>
 	</body>
 </html>								

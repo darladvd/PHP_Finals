@@ -29,7 +29,7 @@
         <title>Voter</title>
 		<style>
 			body {
-				margin: 50px;
+				margin: 100px;
 				text-align: center;
 				font-size: 20px;
 			}
@@ -46,16 +46,17 @@
 		{ 
 			if($row[0] == "voted")
 			{
-				echo "<h1>You can only vote once.</h1>";
+				echo "<script>alert('You can only vote once!')</script>"; 
+				header("location: user_home.php");
 			} 	
 			else
 			{
 				$president=$_POST['president'];
 				$viceint=$_POST['viceint'];
 				$viceext=$_POST['viceext'];
-				$secretary=$_POST['sec'];
-				$treasurer=$_POST['trs'];
-				$auditor=$_POST['aud'];
+				$sec=$_POST['sec'];
+				$trs=$_POST['trs'];
+				$aud=$_POST['aud'];
 				$pro=$_POST['pro'];
 				
 				echo "<div class='hero-body-aud' style='text-align:center;'><h2>Official Ballot</h2></div>";
@@ -93,8 +94,8 @@
 					echo "<b>Vice President External:</b> No record found <br>";
 				}
 				
-				//secretary
-				$sql=mysqli_query($conn,"select * from records where username='$secretary'")or die(mysqli_error());
+				//sec
+				$sql=mysqli_query($conn,"select * from records where username='$sec'")or die(mysqli_error());
 				if(mysqli_num_rows($sql) > 0) {
 					while($row=mysqli_fetch_assoc($sql)){ 
 						echo "<b>Secretary: </b>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."<br>";
@@ -104,8 +105,8 @@
 					echo "<b>Secretary:</b> No record found <br>";
 				}
 				
-				//treasurer
-				$sql=mysqli_query($conn,"select * from records where username='$treasurer'")or die(mysqli_error());
+				//trs
+				$sql=mysqli_query($conn,"select * from records where username='$trs'")or die(mysqli_error());
 				if(mysqli_num_rows($sql) > 0) {
 					while($row=mysqli_fetch_assoc($sql)){ 
 						echo "<b>Treasurer: </b>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."<br>";
@@ -115,8 +116,8 @@
 					echo "<b>Treasurer:</b> No record found <br>";
 				}
 				
-				//auditor
-				$sql=mysqli_query($conn,"select * from records where username='$auditor'")or die(mysqli_error());
+				//aud
+				$sql=mysqli_query($conn,"select * from records where username='$aud'")or die(mysqli_error());
 				if(mysqli_num_rows($sql) > 0) {
 					while($row=mysqli_fetch_assoc($sql)){ 
 						echo "<b>Auditor: </b>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."<br>";
@@ -136,19 +137,22 @@
 				else {
 					echo "<b>PRO:</b> No record found <br>";
 				}
-				?>
+			?>
 				<br><br>
 				<form method ="post" action="finalvote.php">
-				<button type="submit" name="SubmitFinalVote">Submit Final Vote</button>
+				<button type="submit" name="SubmitFinalVote" style="margin-left:380px; margin-bottom:20px;" class="btn btn-primary">Submit Final Vote</button>
+				</form>
+				<form method="get" action="user_home.php">
+					<button type="submit" style="margin-left:380px; margin-bottom:20px;" class="btn btn-primary">Back</button>
 				</form>
 		<?php				
 				//set session to be used in finalvote.php
 				$_SESSION["president"] = $president;
 				$_SESSION["viceint"] = $viceint;
 				$_SESSION["viceext"] = $viceext;
-				$_SESSION["secretary"] = $secretary;
-				$_SESSION["treasurer"] = $treasurer;
-				$_SESSION["auditor"] = $auditor;
+				$_SESSION["sec"] = $sec;
+				$_SESSION["trs"] = $trs;
+				$_SESSION["aud"] = $aud;
 				$_SESSION["pro"] = $pro; 
 			}
 					
@@ -158,6 +162,5 @@
 				header("location: submitvote.php");
 			}
 		?>	
-	<a href = submitvote.php>Back</a>
 	</body>
 </html>								
