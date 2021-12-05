@@ -14,7 +14,7 @@
 	session_start();
 	$conn = mysqli_connect('localhost','root','','phpfinals');
 	
-	$username = $_SESSION["username"];
+	$username2 = $_SESSION["username"];
 	$president2 = $_SESSION["president"];
 	$viceint2 = $_SESSION["viceint"];
 	$viceext2 = $_SESSION["viceext"]; 
@@ -67,7 +67,7 @@
 		$auditor=$_POST['auditor'];
 		$pro=$_POST['pro'];
 		
-		$sql=mysqli_query($conn,"UPDATE records SET status='voted' WHERE username='$username'")or die(mysqli_error());
+		$sql=mysqli_query($conn,"UPDATE records SET status='voted' WHERE username='$username2'")or die(mysqli_error());
 		$sql=mysqli_query($conn,"UPDATE records SET votes=$presidentvotes+1 WHERE username='$president2'")or die(mysqli_error());
 		$sql=mysqli_query($conn,"UPDATE records SET votes=$viceintvotes+1 WHERE username='$viceint2'")or die(mysqli_error());
 		$sql=mysqli_query($conn,"UPDATE records SET votes=$viceextvotes+1 WHERE username='$viceext2'")or die(mysqli_error());
@@ -77,6 +77,9 @@
 		$sql=mysqli_query($conn,"UPDATE records SET votes=$provotes+1 WHERE username='$pro2'")or die(mysqli_error());
 		
 		echo "<h1>THANKS FOR VOTING!</h1>";
+	}
+	else {
+		header("location: vote.php");
 	}
 ?>
 

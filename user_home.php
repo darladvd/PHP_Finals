@@ -3,7 +3,7 @@
         session_start();
         error_reporting(0);
 		
-		$username = $_SESSION["username"];	
+		$username = $_SESSION["username"];
 		$conn = mysqli_connect('localhost','root','','phpfinals');
 ?>
 
@@ -59,73 +59,73 @@
             <button class="tablinks" onclick="openTab(event, 'ProfileSettings')">Profile Settings</button>
             </div>
 
-        
+            <!-- View Profile -->
             <div id="ViewProfile" class="tabcontent">
-                <div class="row align-items-center flex-row-reverse">
+            <div class="row align-items-center flex-row-reverse">
+                <div class="col-md-6">
+                <div class="about-text go-to">
+                    <?php 
+                        $sql=mysqli_query($conn,"select * from records where username='$username'")or die(mysqli_error());
+                        while($row=mysqli_fetch_array($sql)){ 
+                        echo "<h3 class='dark-color'>".$row['firstname']." ".$row['middle']." ".$row['lastname']."</h3>";}?>
+                    <div class="row about-list">
                     <div class="col-md-6">
-                        <div class="about-text go-to">
-                            <?php 
-                                $sql=mysqli_query($conn,"select * from records where username='$username'")or die(mysqli_error());
-                                while($row=mysqli_fetch_array($sql)){ 
-                                echo "<h3 class='dark-color'>".$row['firstname']." ".$row['middle']." ".$row['lastname']."</h3>";}?>
-                            <div class="row about-list">
-                                <div class="col-md-6">
-                                    <div class="media">
-                                            <label>Student Number</label>
-                                            <?php 
-                                                $sql=mysqli_query($conn,"select * from records where username='$username'")or die(mysqli_error());
-                                                while($row=mysqli_fetch_array($sql)){echo $row['username'];}
-                                            ?>
-                                    </div>
-                                    <div class="media">
-                                            <label>Status</label>
-                                            <?php 
-                                                $sql=mysqli_query($conn,"select * from records where username='$username'")or die(mysqli_error());
-                                                while($row=mysqli_fetch_array($sql))
-                                                {
-                                                    if($row['status'] == "not voted")
-                                                    {
-                                                        echo "Not Voted";
-                                                    } else
-                                                    {
-                                                        echo "Voted";
-                                                    }
-                                                }
-                                            ?>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="media">
-                                        <label>Year Level</label>
-                                            <?php 
-                                                $sql=mysqli_query($conn,"select * from records where username='$username'")or die(mysqli_error());
-                                                while($row=mysqli_fetch_array($sql)){echo $row['yearlevel'];}
-                                            ?>
-                                    </div>
-                                    <div class="media">
-                                        <label>Gender</label>
-                                            <?php 
-                                                $sql=mysqli_query($conn,"select * from records where username='$username'")or die(mysqli_error());
-                                                while($row=mysqli_fetch_array($sql)){echo $row['gender'];}
-                                            ?>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="media">
+                                <label>Student Number</label>
+                                <?php 
+                                    $sql=mysqli_query($conn,"select * from records where username='$username'")or die(mysqli_error());
+                                    while($row=mysqli_fetch_array($sql)){echo $row['username'];}
+                                ?>
+                        </div>
+                        <div class="media">
+                                <label>Status</label>
+                                <?php 
+                                    $sql=mysqli_query($conn,"select * from records where username='$username'")or die(mysqli_error());
+                                    while($row=mysqli_fetch_array($sql))
+                                    {
+                                        if($row['status'] == "not voted")
+                                        {
+                                            echo "Not Voted";
+                                        } else
+                                        {
+                                            echo "Voted";
+                                        }
+                                    }
+                                ?>
                         </div>
                     </div>
-                    <div class="col-md-5">
-                        <?php
-                            $sql=mysqli_query($conn,"select * from records where username='$username'") or die(mysqli_error());
-                            while($row = mysqli_fetch_array($sql)){
-                                if($row['images']!=''){
-                                    echo "<img src = 'data:image/jpeg;base64," .base64_encode($row["images"]) ."' class='profilepic'/>";                                }
-                                else{
-                                    echo "<img src='images/default.jpg'>";
-                                }
-                            }
-                        ?>
+                    <div class="col-md-6">
+                        <div class="media">
+                            <label>Year Level</label>
+                                <?php 
+                                    $sql=mysqli_query($conn,"select * from records where username='$username'")or die(mysqli_error());
+                                    while($row=mysqli_fetch_array($sql)){echo $row['yearlevel'];}
+                                ?>
+                        </div>
+                        <div class="media">
+                            <label>Gender</label>
+                                <?php 
+                                    $sql=mysqli_query($conn,"select * from records where username='$username'")or die(mysqli_error());
+                                    while($row=mysqli_fetch_array($sql)){echo $row['gender'];}
+                                ?>
+                        </div>
+                    </div>
                     </div>
                 </div>
+                </div>
+                <div class="col-md-5">
+                    <?php
+                        $sql=mysqli_query($conn,"select * from records where username='$username'") or die(mysqli_error());
+                        while($row = mysqli_fetch_array($sql)){
+                            if($row['images']!=''){
+                                echo "<img src = 'data:image/jpeg;base64," .base64_encode($row["images"]) ."' class='profilepic'/>";                                }
+                            else{
+                                echo "<img src='images/default.jpg'>";
+                            }
+                        }
+                    ?>
+                </div>
+            </div>
             </div>
 
             <div id="SubmitVote" class="tabcontent">
@@ -138,135 +138,169 @@
                 <p>Check Results.</p>
             </div>
 
+            <!-- Profile Settings -->
             <div id="ProfileSettings" class="tabcontent">
+            <form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>" enctype="multipart/form-data">
             <div class="row align-items-center flex-row-reverse">
-                    <div class="col-md-6">
-                        <div class="about-text go-to">
-                            <?php 
-                                $sql=mysqli_query($conn,"select * from records where username='$username'")or die(mysqli_error());
-                                while($row=mysqli_fetch_array($sql)){ 
-                                echo "<h3 class='dark-color'>".$row['firstname']." ".$row['middle']." ".$row['lastname']."</h3>";}?>
-                            <div class="row about-list">
-                                <div class="col-md-6">
-                                    <div class="media">
-                                            <label>Student Number</label>
-                                            <?php 
-                                                $sql=mysqli_query($conn,"select * from records where username='$username'")or die(mysqli_error());
-                                                while($row=mysqli_fetch_array($sql)){echo $row['username'];}
-                                            ?>
-                                    </div>
-                                    <div class="media">
-                                            <label>Status</label>
-                                            <?php 
-                                                $sql=mysqli_query($conn,"select * from records where username='$username'")or die(mysqli_error());
-                                                while($row=mysqli_fetch_array($sql))
-                                                {
-                                                    if($row['status'] == "not voted")
-                                                    {
-                                                        echo "Not Voted";
-                                                    } else
-                                                    {
-                                                        echo "Voted";
-                                                    }
-                                                }
-                                            ?>
-                                    </div>
+                <div class="about-text go-to">
+                    <div class="row about-list">
+                        <div class="col-md-3">
+                            <h4 class='dark-color'> Reset Password </h4>
+                            <div class="media">
+                                <div class="form-group">
+                                <label for="newpw">New Password</label>
+                                <input type="password" class="form-control" name="newpw" placeholder="Enter new password">
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="media">
-                                        <label>Year Level</label>
-                                            <?php 
-                                                $sql=mysqli_query($conn,"select * from records where username='$username'")or die(mysqli_error());
-                                                while($row=mysqli_fetch_array($sql)){echo $row['yearlevel'];}
-                                            ?>
-                                    </div>
-                                    <div class="media">
-                                        <label>Gender</label>
-                                            <?php 
-                                                $sql=mysqli_query($conn,"select * from records where username='$username'")or die(mysqli_error());
-                                                while($row=mysqli_fetch_array($sql)){echo $row['gender'];}
-                                            ?>
-                                    </div>
+                            </div>
+                            <div class="media">
+                                <div class="form-group">
+                                <label for="updpw">Confirm New Password</label>
+                                <input type="password" class="form-control" name="updpw" placeholder="Re-enter new password">
+                                </div>
+                            </div>
+                            <div class="media">
+                                <div class="text-right">
+                                <button type="submit" name="submit" style="margin-top:20px;" class="btn btn-primary" onClick="window.location.reload();">Save Changes</button>
                                 </div>
                             </div>
                         </div>
+                        <div class="col-md-8" style="margin-left:20px;">
+                            <h4> Change Image </h4>                            
+                            <div class="media">
+                                <?php
+                                    $sql=mysqli_query($conn,"select * from records where username='$username'") or die(mysqli_error());
+                                    while($row = mysqli_fetch_array($sql)){
+                                        if($row['images']!=''){
+                                            echo "<img src = 'data:image/jpeg;base64," .base64_encode($row["images"]) ."' class='changeimg'/>";                               
+                                        }
+                                        else{
+                                            echo "<img src='images/default.jpg'>";
+                                        }
+                                    }
+                                ?>
+                                <input type="file" name="pic" id="pic" style="margin-left:20px;">
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-md-5">
-                        <?php
-                            $sql=mysqli_query($conn,"select * from records where username='$username'") or die(mysqli_error());
-                            while($row = mysqli_fetch_array($sql)){
-                                if($row['images']!=''){
-                                    echo "<img src = 'data:image/jpeg;base64," .base64_encode($row["images"]) ."' class='profilepic'/>";                                }
-                                else{
-                                    echo "<img src='images/default.jpg'>";
-                                }
-                            }
-                        ?>
-                    </div>
-                </div>
+                </div> <br>                
+            </form>
             </div>
+            </div>
+    <!-- Do Not Delete -->
+        </div>            
+    </div>
+    
+    <?php
+        if ($_SERVER["REQUEST_METHOD"] == "POST")
+        {
+            $newpw = $_POST['newpw'];
+            $updpw = $_POST['updpw'];
 
-
-            <script>
-            function openTab(evt, tabName) {
-            var i, tabcontent, tablinks;
-            tabcontent = document.getElementsByClassName("tabcontent");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
-            }
-            tablinks = document.getElementsByClassName("tablinks");
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].className = tablinks[i].className.replace(" active", "");
-            }
-            document.getElementById(tabName).style.display = "block";
-            evt.currentTarget.className += " active";
-            }
-
-            function openTabh(evt, tabName) {
-            var i, tabcontent, tablinks;
-            tabcontent = document.getElementsByClassName("tabcontenth");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
-            }
-            tablinks = document.getElementsByClassName("tablinks");
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].className = tablinks[i].className.replace(" active", "");
-            }
-            document.getElementById(tabName).style.display = "block";
-            evt.currentTarget.className += " active";
-            }
-
-            // Get the element with id="defaultOpen" and id="defaultOpen1" and click on it
-            document.getElementById("defaultOpen").click();
-            document.getElementById("defaultOpen1").click();
-
-            // Get the modal
-            var modal = document.getElementById("myModal");
-
-            // Get the button that opens the modal
-            var btn = document.getElementById("all13");
-
-            // Get the <span> element that closes the modal
-            var span = document.getElementsByClassName("close")[0];
-
-            // When the user clicks on the button, open the modal
-            btn.onclick = function() {
-            modal.style.display = "block";
-            }
-
-            // When the user clicks on <span> (x), close the modal
-            span.onclick = function() {
-            modal.style.display = "none";
-            }
-
-            // When the user clicks anywhere outside of the modal, close it
-            window.onclick = function(event) {
-                if (event.target == modal){
-                    modal.style.display = "none";
+            if (empty($newpw))
+            {
+                error_reporting(0);
+            } else
+            {
+                $sql = mysqli_query($conn, "select password from records where username='".$username."'");
+                while($row = mysqli_fetch_array($sql))
+                {
+                    if(strcmp($newpw,$updpw)==0)
+                    {
+                        $update_pw = "UPDATE records SET password='$newpw' WHERE username = '$username'";
+                        if($conn->query($update_pw)){
+                            echo "<script>alert('Password has been updated successfully.')</script>";                        
+                        }
+                        else {
+                            echo "There was an error with updating your password. Please try again...";
+                        }
+                        $conn->close();
+                    } else {
+                        echo "<script>alert('Password does not match. Please try again...')</script>"; 
+                    }
                 }
             }
-            </script>
-        </div>
-    </div>
+
+            if(isset($_FILES['pic']) && isset($_POST['submit']))
+            {
+                $image = addslashes(file_get_contents($_FILES['pic']['tmp_name']));
+                $stmt = "UPDATE records SET images = '$image' WHERE username = '$username'";
+  
+                if (mysqli_query($conn, $stmt))
+                {
+                    echo("<meta http-equiv='refresh' content='1'>");
+                    echo"<script>alert('Successfully uploaded image.')</script>";
+                }
+                else
+                {
+                    echo"<script>alert('Error in uploading image.')</script>";
+                }
+            }
+            $conn->close();
+        }
+    ?>
+
+    <script>
+    function openTab(evt, tabName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(tabName).style.display = "block";
+    evt.currentTarget.className += " active";
+    }
+
+    function openTabh(evt, tabName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontenth");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(tabName).style.display = "block";
+    evt.currentTarget.className += " active";
+    }
+
+    // Get the element with id="defaultOpen" and id="defaultOpen1" and click on it
+    document.getElementById("defaultOpen").click();
+    document.getElementById("defaultOpen1").click();
+
+    // Get the modal
+    var modal = document.getElementById("myModal");
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("all13");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on the button, open the modal
+    btn.onclick = function() {
+    modal.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+    modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal){
+            modal.style.display = "none";
+        }
+    }
+
+    function reloadThePage(){
+    window.location.reload();} 
+    </script>
+
     </body>
 </html>
