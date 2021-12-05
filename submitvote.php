@@ -140,7 +140,7 @@
 											echo "<img src = 'data:image/jpeg;base64," .base64_encode($row["images"]) ."' class='candidate'/>" . " ";
 											echo "<div class='flex'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</div>";
 											// echo "<div class='flex'> <a href='#' class='item-author text-color'  onclick = 'GetUser(' . $id . ')'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</a></div>";
-											echo "<div><input class='form-check-input' type='radio' name='president' id='president' value='<?php echo $president_id;?>' required></div>";
+											echo "<div><input class='form-check-input' type='radio' name='president' id='president' value='$president_id' required></div>";
 										}
 										else{
 											echo "<img src='images/default.jpg'>";
@@ -169,7 +169,7 @@
 											echo "<img src = 'data:image/jpeg;base64," .base64_encode($row["images"]) ."' class='candidate'/>" . " ";
 											echo "<div class='flex'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</div>";
 											// echo "<div class='flex'> <a href='#' class='item-author text-color'  onclick = 'GetUser(' . $id . ')'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</a></div>";
-											echo "<div><input class='form-check-input' type='radio' name='viceint' id='viceint' value='<?php echo $viceint_id;?>' required></div>";
+											echo "<div><input class='form-check-input' type='radio' name='viceint' id='viceint' value='$viceint_id' required></div>";
 										}
 										else{
 											echo "<img src='images/default.jpg'>";
@@ -190,7 +190,7 @@
 											echo "<img src = 'data:image/jpeg;base64," .base64_encode($row["images"]) ."' class='candidate'/>" . " ";
 											echo "<div class='flex'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</div>";
 											// echo "<div class='flex'> <a href='#' class='item-author text-color'  onclick = 'GetUser(' . $id . ')'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</a></div>";
-											echo "<div><input class='form-check-input' type='radio' name='viceint' id='viceint' value='<?php echo $viceint_id;?>' required></div>";
+											echo "<div><input class='form-check-input' type='radio' name='viceint' id='viceint' value='$viceint_id' required></div>";
 										}
 										else{
 											echo "<img src='images/default.jpg'>";
@@ -219,7 +219,7 @@
 											echo "<img src = 'data:image/jpeg;base64," .base64_encode($row["images"]) ."' class='candidate'/>" . " ";
 											echo "<div class='flex'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</div>";
 											// echo "<div class='flex'> <a href='#' class='item-author text-color'  onclick = 'GetUser(' . $id . ')'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</a></div>";
-											echo "<div><input class='form-check-input' type='radio' name='viceext' id='viceext' value='<?php echo $viceext_id;?>' required></div>";
+											echo "<div><input class='form-check-input' type='radio' name='viceext' id='viceext' value='$viceext_id' required></div>";
 										}
 										else{
 											echo "<img src='images/default.jpg'>";
@@ -240,7 +240,7 @@
 											echo "<img src = 'data:image/jpeg;base64," .base64_encode($row["images"]) ."' class='candidate'/>" . " ";
 											echo "<div class='flex'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</div>";
 											// echo "<div class='flex'> <a href='#' class='item-author text-color'  onclick = 'GetUser(' . $id . ')'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</a></div>";
-											echo "<div><input class='form-check-input' type='radio' name='viceext' id='viceext' value='<?php echo $viceext_id;?>' required></div>";
+											echo "<div><input class='form-check-input' type='radio' name='viceext' id='viceext' value='$viceext_id' required></div>";
 										}
 										else{
 											echo "<img src='images/default.jpg'>";
@@ -269,7 +269,7 @@
 											echo "<img src = 'data:image/jpeg;base64," .base64_encode($row["images"]) ."' class='candidate'/>" . " ";
 											echo "<div class='flex'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</div>";
 											// echo "<div class='flex'> <a href='#' class='item-author text-color'  onclick = 'GetUser(' . $id . ')'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</a></div>";
-											echo "<div><input class='form-check-input' type='radio' name='sec' id='sec' value='<?php echo $sec_id;?>' required></div>";
+											echo "<div><input class='form-check-input' type='radio' name='sec' id='sec' value='$sec_id' required></div>";
 										}
 										else{
 											echo "<img src='images/default.jpg'>";
@@ -290,7 +290,7 @@
 											echo "<img src = 'data:image/jpeg;base64," .base64_encode($row["images"]) ."' class='candidate'/>" . " ";
 											echo "<div class='flex'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</div>";
 											// echo "<div class='flex'> <a href='#' class='item-author text-color'  onclick = 'GetUser(' . $id . ')'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</a></div>";
-											echo "<div><input class='form-check-input' type='radio' name='sec' id='sec' value='<?php echo $sec_id;?>' required></div>";
+											echo "<div><input class='form-check-input' type='radio' name='sec' id='sec' value='$sec_id' required></div>";
 										}
 										else{
 											echo "<img src='images/default.jpg'>";
@@ -319,7 +319,7 @@
 											echo "<img src = 'data:image/jpeg;base64," .base64_encode($row["images"]) ."' class='candidate'/>" . " ";
 											echo "<div class='flex'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</div>";
 											// echo "<div class='flex'> <a href='#' class='item-author text-color'  onclick = 'GetUser(' . $id . ')'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</a></div>";
-											echo "<div><input class='form-check-input' type='radio' name='trs' id='trs' value='<?php echo $trs_id;?>' required></div>";
+											echo "<div><input class='form-check-input' type='radio' name='trs' id='trs' value='$trs_id' required></div>";
 										}
 										else{
 											echo "<img src='images/default.jpg'>";
@@ -340,7 +340,7 @@
 											echo "<img src = 'data:image/jpeg;base64," .base64_encode($row["images"]) ."' class='candidate'/>" . " ";
 											echo "<div class='flex'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</div>";
 											// echo "<div class='flex'> <a href='#' class='item-author text-color'  onclick = 'GetUser(' . $id . ')'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</a></div>";
-											echo "<div><input class='form-check-input' type='radio' name='trs' id='trs' value='<?php echo $trs_id;?>' required></div>";
+											echo "<div><input class='form-check-input' type='radio' name='trs' id='trs' value='$trs_id' required></div>";
 										}
 										else{
 											echo "<img src='images/default.jpg'>";
@@ -369,7 +369,7 @@
 											echo "<img src = 'data:image/jpeg;base64," .base64_encode($row["images"]) ."' class='candidate'/>" . " ";
 											echo "<div class='flex'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</div>";
 											// echo "<div class='flex'> <a href='#' class='item-author text-color'  onclick = 'GetUser(' . $id . ')'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</a></div>";
-											echo "<div><input class='form-check-input' type='radio' name='aud' id='aud' value='<?php echo $aud_id;?>' required></div>";
+											echo "<div><input class='form-check-input' type='radio' name='aud' id='aud' value='$aud_id' required></div>";
 										}
 										else{
 											echo "<img src='images/default.jpg'>";
@@ -390,7 +390,7 @@
 											echo "<img src = 'data:image/jpeg;base64," .base64_encode($row["images"]) ."' class='candidate'/>" . " ";
 											echo "<div class='flex'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</div>";
 											// echo "<div class='flex'> <a href='#' class='item-author text-color'  onclick = 'GetUser(' . $id . ')'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</a></div>";
-											echo "<div><input class='form-check-input' type='radio' name='aud' id='aud' value='<?php echo $aud_id;?>' required></div>";
+											echo "<div><input class='form-check-input' type='radio' name='aud' id='aud' value='$aud_id' required></div>";
 										}
 										else{
 											echo "<img src='images/default.jpg'>";
@@ -420,7 +420,7 @@
 											echo "<img src = 'data:image/jpeg;base64," .base64_encode($row["images"]) ."' class='candidate'/>" . " ";
 											echo "<div class='flex'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</div>";
 											// echo "<div class='flex'> <a href='#' class='item-author text-color'  onclick = 'GetUser(' . $id . ')'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</a></div>";
-											echo "<div><input class='form-check-input' type='radio' name='pro' id='pro' value='<?php echo $pro_id;?>' required></div>";
+											echo "<div><input class='form-check-input' type='radio' name='pro' id='pro' value='$pro_id' required></div>";
 										}
 										else{
 											echo "<img src='images/default.jpg'>";
@@ -441,7 +441,7 @@
 											echo "<img src = 'data:image/jpeg;base64," .base64_encode($row["images"]) ."' class='candidate'/>" . " ";
 											echo "<div class='flex'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</div>";
 											// echo "<div class='flex'> <a href='#' class='item-author text-color'  onclick = 'GetUser(' . $id . ')'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</a></div>";
-											echo "<div><input class='form-check-input' type='radio' name='pro' id='pro' value='<?php echo $pro_id;?>' required></div>";
+											echo "<div><input class='form-check-input' type='radio' name='pro' id='pro' value='$pro_id' required></div>";
 										}
 										else{
 											echo "<img src='images/default.jpg'>";
@@ -452,7 +452,7 @@
 						</div>
 						</div>
 					</div>
-					<button type="submit" name="submitvote" style="margin-left:380px; margin-bottom:20px;" class="btn btn-primary">Save Changes</button>
+					<button type="submit" name="submitvote" style="margin-left:380px; margin-bottom:20px;" class="btn btn-primary">Submit Vote</button>
 					</div>
 			</div>
 		</div>

@@ -59,7 +59,6 @@
 				$pro=$_POST['pro'];
 				
 				echo "<div class='hero-body-aud' style='text-align:center;'><h2>Official Ballot</h2></div>";
-				echo $president;
 
 				//president
 				$sql=mysqli_query($conn,"select * from records where username='$president'")or die(mysqli_error());
@@ -72,71 +71,71 @@
 					echo "<b>President:</b> No record found <br>";
 				}
 			
-				// //vp internal
-				// $sql=mysqli_query($conn,"select * from records where username='$viceint'")or die(mysqli_error());
-				// if(mysqli_num_rows($sql) > 0) {
-				// 	while($row=mysqli_fetch_assoc($sql)){ 
-				// 		echo "<b>Vice President Internal: </b>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."<br>";
-				// 	}
-				// } 
-				// else {
-				// 	echo "<b>Vice President Internal:</b> No record found <br>";
-				// }
+				//vp internal
+				$sql=mysqli_query($conn,"select * from records where username='$viceint'")or die(mysqli_error());
+				if(mysqli_num_rows($sql) > 0) {
+					while($row=mysqli_fetch_assoc($sql)){ 
+						echo "<b>Vice President Internal: </b>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."<br>";
+					}
+				} 
+				else {
+					echo "<b>Vice President Internal:</b> No record found <br>";
+				}
 				
-				// //vp external
-				// $sql=mysqli_query($conn,"select * from records where username='$viceext'")or die(mysqli_error());
-				// if(mysqli_num_rows($sql) > 0) {
-				// 	while($row=mysqli_fetch_assoc($sql)){ 
-				// 		echo "<b>Vice President External: </b>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."<br>";
-				// 	}
-				// } 
-				// else {
-				// 	echo "<b>Vice President External:</b> No record found <br>";
-				// }
+				//vp external
+				$sql=mysqli_query($conn,"select * from records where username='$viceext'")or die(mysqli_error());
+				if(mysqli_num_rows($sql) > 0) {
+					while($row=mysqli_fetch_assoc($sql)){ 
+						echo "<b>Vice President External: </b>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."<br>";
+					}
+				} 
+				else {
+					echo "<b>Vice President External:</b> No record found <br>";
+				}
 				
-				// //secretary
-				// $sql=mysqli_query($conn,"select * from records where username='$secretary'")or die(mysqli_error());
-				// if(mysqli_num_rows($sql) > 0) {
-				// 	while($row=mysqli_fetch_assoc($sql)){ 
-				// 		echo "<b>Secretary: </b>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."<br>";
-				// 	}
-				// } 
-				// else {
-				// 	echo "<b>Secretary:</b> No record found <br>";
-				// }
+				//secretary
+				$sql=mysqli_query($conn,"select * from records where username='$secretary'")or die(mysqli_error());
+				if(mysqli_num_rows($sql) > 0) {
+					while($row=mysqli_fetch_assoc($sql)){ 
+						echo "<b>Secretary: </b>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."<br>";
+					}
+				} 
+				else {
+					echo "<b>Secretary:</b> No record found <br>";
+				}
 				
-				// //treasurer
-				// $sql=mysqli_query($conn,"select * from records where username='$treasurer'")or die(mysqli_error());
-				// if(mysqli_num_rows($sql) > 0) {
-				// 	while($row=mysqli_fetch_assoc($sql)){ 
-				// 		echo "<b>Treasurer: </b>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."<br>";
-				// 	}
-				// } 
-				// else {
-				// 	echo "<b>Treasurer:</b> No record found <br>";
-				// }
+				//treasurer
+				$sql=mysqli_query($conn,"select * from records where username='$treasurer'")or die(mysqli_error());
+				if(mysqli_num_rows($sql) > 0) {
+					while($row=mysqli_fetch_assoc($sql)){ 
+						echo "<b>Treasurer: </b>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."<br>";
+					}
+				} 
+				else {
+					echo "<b>Treasurer:</b> No record found <br>";
+				}
 				
-				// //auditor
-				// $sql=mysqli_query($conn,"select * from records where username='$auditor'")or die(mysqli_error());
-				// if(mysqli_num_rows($sql) > 0) {
-				// 	while($row=mysqli_fetch_assoc($sql)){ 
-				// 		echo "<b>Auditor: </b>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."<br>";
-				// 	}
-				// } 
-				// else {
-				// 	echo "<b>Auditor:</b> No record found <br>";
-				// }
+				//auditor
+				$sql=mysqli_query($conn,"select * from records where username='$auditor'")or die(mysqli_error());
+				if(mysqli_num_rows($sql) > 0) {
+					while($row=mysqli_fetch_assoc($sql)){ 
+						echo "<b>Auditor: </b>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."<br>";
+					}
+				} 
+				else {
+					echo "<b>Auditor:</b> No record found <br>";
+				}
 				
-				// //pro
-				// $sql=mysqli_query($conn,"select * from records where username='$pro'")or die(mysqli_error());
-				// if(mysqli_num_rows($sql) > 0) {
-				// 	while($row=mysqli_fetch_assoc($sql)){ 
-				// 		echo "<b>PRO: </b>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."<br>";
-				// 	}
-				// } 
-				// else {
-				// 	echo "<b>PRO:</b> No record found <br>";
-				// }
+				//pro
+				$sql=mysqli_query($conn,"select * from records where username='$pro'")or die(mysqli_error());
+				if(mysqli_num_rows($sql) > 0) {
+					while($row=mysqli_fetch_assoc($sql)){ 
+						echo "<b>PRO: </b>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."<br>";
+					}
+				} 
+				else {
+					echo "<b>PRO:</b> No record found <br>";
+				}
 				?>
 				<br><br>
 				<form method ="post" action="finalvote.php">
