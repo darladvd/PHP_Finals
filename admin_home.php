@@ -292,6 +292,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
+                        <img src="images/logo.png" class="logo">
                         <h1>Account Details: </h1>
                         <h5 id ="uname"></h5>
                         <h5 id ="pass"></h5>
@@ -830,28 +831,6 @@
                 });
             }
 
-            //Show Candidate Details function
-            function ShowDetails(viewid)
-            {
-                $('#view').val(viewid)
-                $.post("update.php",{sendview:viewid},function(data,
-                status){
-                    var userid = JSON.parse(data);
-                    $('#uname').text("Username: " + userid.username)
-                    $('#pass').text("Password: " + userid.password)
-                    $('#fname').text("First Name: " + userid.firstname)
-                    $('#mname').text("Middle Name: " + userid.middlename)
-                    $('#lname').text("Last Name: " + userid.lastname)
-                    $('#gen').text("Gender: " + userid.gender)
-                    $('#pos').text("Position: " + userid.position)
-                    $('#yearlevel').text("Year Level: " + userid.yearlevel)
-                    $('#accesslevel').text("Access Level: " + userid.accesslevel)
-                    $('#status').text("Status: " + userid.status)
-                    $('#votes').text("Votes: " + userid.votes)
-                });
-                $('#viewModal').modal("show");
-            }
-            
             //Delete Candidate function
             function DeleteUser(deleteid)
             {
@@ -865,6 +844,27 @@
                         location.href = 'admin_home.php';
                     }
                 })
+            }
+
+            //Show Candidate Details function
+            function ShowDetails(viewid)
+            {
+                $('#view').val(viewid)
+                $.post("update.php",{sendview:viewid},function(data,
+                status){
+                    var userid = JSON.parse(data);
+                    $('#uname').text("Username: " + userid.username)
+                    $('#pass').text("Password: " + userid.password)
+                    $('#fname').text("First Name: " + userid.firstname)
+                    $('#mname').text("Middle Name: " + userid.middlename)
+                    $('#lname').text("Last Name: " + userid.lastname)
+                    $('#gen').text("Gender: " + userid.gender)
+                    $('#yearlevel').text("Year Level: " + userid.yearlevel)
+                    $('#pos').text("Position: " + userid.position)
+                    $('#accesslevel').text("Access Level: " + userid.accesslevel)
+                });
+
+                $('#viewModal').modal("show");
             }
            
 
