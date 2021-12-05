@@ -118,7 +118,8 @@
                     $sql=mysqli_query($conn,"select * from records where username='$username'") or die(mysqli_error());
                     while($row = mysqli_fetch_array($sql)){
                         if($row['images']!=''){
-                            echo "<img src = 'data:image/jpeg;base64," .base64_encode($row["images"]) ."' class='profilepic'/>";                                }
+                            echo "<img src = 'data:image/jpeg;base64," .base64_encode($row["images"]) ."' class='profilepic'/>";                                
+                        }
                         else{
                             echo "<img src='images/default.jpg'>";
                         }
