@@ -41,16 +41,6 @@ nav ul li a .cart {
     display: inline
 }
 
-nav ul li a .cart::after {
-    position: absolute;
-    content: "";
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background-color: #ff5252;
-    top: -1px
-}
-
 .navbar-toggler:focus {
     box-shadow: none
 }
@@ -187,8 +177,8 @@ nav ul li a .cart::after {
     padding: 5px;
   }
   
-/* Style the buttons that are used to open the tab content */
-.tabh button {
+  /* Style the buttons that are used to open the tab content */
+  .tabh button {
     background-color: inherit;
     float: left;
     border: none;
@@ -196,28 +186,28 @@ nav ul li a .cart::after {
     cursor: pointer;
     padding: 14px 16px;
     transition: 0.3s;
-}
+  }
   
-/* Change background color of buttons on hover */
-.tabh button:hover {
+  /* Change background color of buttons on hover */
+  .tabh button:hover {
     background-color: #ddd;
-}
+  }
   
-/* Create an active/current tablink class */
-.tabh button.active {
+  /* Create an active/current tablink class */
+  .tabh button.active {
     background-color: #ccc;
-}
+  }
   
-/* Style the tab content */
-.tabcontenth {
+  /* Style the tab content */
+  .tabcontenth {
     display: none;
     padding: 6px 12px;
     border: 1px solid #ccc;
     border-top: none;
-}
+  }
 
   /* The Modal (background) */
-.modal {
+  .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
@@ -229,10 +219,10 @@ nav ul li a .cart::after {
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
- }
+  }
   
-/* Modal Content */
-.modal-content {
+  /* Modal Content */
+  .modal-content {
     position: relative;
     background-color: #fefefe;
     margin: auto;
@@ -244,34 +234,36 @@ nav ul li a .cart::after {
     -webkit-animation-duration: 0.4s;
     animation-name: animatetop;
     animation-duration: 0.4s
-}
+  }
   
-/* Add Animation */
-    @-webkit-keyframes animatetop {
+  /* Add Animation */
+  @-webkit-keyframes animatetop {
     from {top:-300px; opacity:0} 
     to {top:0; opacity:1}
-}
+  }
   
-@keyframes animatetop {
+  @keyframes animatetop {
     from {top:-300px; opacity:0}
     to {top:0; opacity:1}
-}
+  }
   
-/* The Close Button */
-.close {
+  /* The Close Button */
+  .close {
     color: black;
     float: right;
     font-size: 28px;
     font-weight: bold;
-}
+  }
   
-.close:hover,
-.close:focus {
+  .close:hover,
+  .close:focus {
     color: #000;
     text-decoration: none;
     cursor: pointer;
-}
+  }
 
-.modal-body{
+
+  .modal-body{
       padding: 2px 16px;
-}
+  }
+  

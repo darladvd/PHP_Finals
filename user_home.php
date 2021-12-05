@@ -62,75 +62,77 @@
             <!-- View Profile -->
             <div id="ViewProfile" class="tabcontent">
             <div class="row align-items-center flex-row-reverse">
+            <div class="col-md-6">
+            <div class="about-text go-to">
+                <?php 
+                    $sql=mysqli_query($conn,"select * from records where username='$username'")or die(mysqli_error());
+                    while($row=mysqli_fetch_array($sql)){ 
+                    echo "<h3 class='dark-color'>".$row['firstname']." ".$row['middle']." ".$row['lastname']."</h3>";}?>
+                <div class="row about-list">
                 <div class="col-md-6">
-                <div class="about-text go-to">
-                    <?php 
-                        $sql=mysqli_query($conn,"select * from records where username='$username'")or die(mysqli_error());
-                        while($row=mysqli_fetch_array($sql)){ 
-                        echo "<h3 class='dark-color'>".$row['firstname']." ".$row['middle']." ".$row['lastname']."</h3>";}?>
-                    <div class="row about-list">
-                    <div class="col-md-6">
-                        <div class="media">
-                                <label>Student Number</label>
-                                <?php 
-                                    $sql=mysqli_query($conn,"select * from records where username='$username'")or die(mysqli_error());
-                                    while($row=mysqli_fetch_array($sql)){echo $row['username'];}
-                                ?>
-                        </div>
-                        <div class="media">
-                                <label>Status</label>
-                                <?php 
-                                    $sql=mysqli_query($conn,"select * from records where username='$username'")or die(mysqli_error());
-                                    while($row=mysqli_fetch_array($sql))
+                    <div class="media">
+                            <label>Student Number</label>
+                            <?php 
+                                $sql=mysqli_query($conn,"select * from records where username='$username'")or die(mysqli_error());
+                                while($row=mysqli_fetch_array($sql)){echo $row['username'];}
+                            ?>
+                    </div>
+                    <div class="media">
+                            <label>Status</label>
+                            <?php 
+                                $sql=mysqli_query($conn,"select * from records where username='$username'")or die(mysqli_error());
+                                while($row=mysqli_fetch_array($sql))
+                                {
+                                    if($row['status'] == "not voted")
                                     {
-                                        if($row['status'] == "not voted")
-                                        {
-                                            echo "Not Voted";
-                                        } else
-                                        {
-                                            echo "Voted";
-                                        }
+                                        echo "Not Voted";
+                                    } else
+                                    {
+                                        echo "Voted";
                                     }
-                                ?>
-                        </div>
+                                }
+                            ?>
                     </div>
-                    <div class="col-md-6">
-                        <div class="media">
-                            <label>Year Level</label>
-                                <?php 
-                                    $sql=mysqli_query($conn,"select * from records where username='$username'")or die(mysqli_error());
-                                    while($row=mysqli_fetch_array($sql)){echo $row['yearlevel'];}
-                                ?>
-                        </div>
-                        <div class="media">
-                            <label>Gender</label>
-                                <?php 
-                                    $sql=mysqli_query($conn,"select * from records where username='$username'")or die(mysqli_error());
-                                    while($row=mysqli_fetch_array($sql)){echo $row['gender'];}
-                                ?>
-                        </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="media">
+                        <label>Year Level</label>
+                            <?php 
+                                $sql=mysqli_query($conn,"select * from records where username='$username'")or die(mysqli_error());
+                                while($row=mysqli_fetch_array($sql)){echo $row['yearlevel'];}
+                            ?>
                     </div>
+                    <div class="media">
+                        <label>Gender</label>
+                            <?php 
+                                $sql=mysqli_query($conn,"select * from records where username='$username'")or die(mysqli_error());
+                                while($row=mysqli_fetch_array($sql)){echo $row['gender'];}
+                            ?>
                     </div>
                 </div>
                 </div>
-                <div class="col-md-5">
-                    <?php
-                        $sql=mysqli_query($conn,"select * from records where username='$username'") or die(mysqli_error());
-                        while($row = mysqli_fetch_array($sql)){
-                            if($row['images']!=''){
-                                echo "<img src = 'data:image/jpeg;base64," .base64_encode($row["images"]) ."' class='profilepic'/>";                                }
-                            else{
-                                echo "<img src='images/default.jpg'>";
-                            }
+            </div>
+            </div>
+            <div class="col-md-5">
+                <?php
+                    $sql=mysqli_query($conn,"select * from records where username='$username'") or die(mysqli_error());
+                    while($row = mysqli_fetch_array($sql)){
+                        if($row['images']!=''){
+                            echo "<img src = 'data:image/jpeg;base64," .base64_encode($row["images"]) ."' class='profilepic'/>";                                }
+                        else{
+                            echo "<img src='images/default.jpg'>";
                         }
-                    ?>
-                </div>
+                    }
+                ?>
+            </div>
             </div>
             </div>
 
+            <!-- Submit Vote -->
             <div id="SubmitVote" class="tabcontent">
-            <h3>Add Candidate</h3>
-            <p>Add Candidate.</p>
+            <?php
+            include 'submit_vote.php';
+            ?>
             </div>
 
             <div id="ViewBallot" class="tabcontent">
@@ -143,46 +145,46 @@
             <form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>" enctype="multipart/form-data">
             <div class="row align-items-center flex-row-reverse">
                 <div class="about-text go-to">
-                    <div class="row about-list">
-                        <div class="col-md-3">
-                            <h4 class='dark-color'> Reset Password </h4>
-                            <div class="media">
-                                <div class="form-group">
-                                <label for="newpw">New Password</label>
-                                <input type="password" class="form-control" name="newpw" placeholder="Enter new password">
-                                </div>
-                            </div>
-                            <div class="media">
-                                <div class="form-group">
-                                <label for="updpw">Confirm New Password</label>
-                                <input type="password" class="form-control" name="updpw" placeholder="Re-enter new password">
-                                </div>
-                            </div>
-                            <div class="media">
-                                <div class="text-right">
-                                <button type="submit" name="submit" style="margin-top:20px;" class="btn btn-primary" onClick="window.location.reload();">Save Changes</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-8" style="margin-left:20px;">
-                            <h4> Change Image </h4>                            
-                            <div class="media">
-                                <?php
-                                    $sql=mysqli_query($conn,"select * from records where username='$username'") or die(mysqli_error());
-                                    while($row = mysqli_fetch_array($sql)){
-                                        if($row['images']!=''){
-                                            echo "<img src = 'data:image/jpeg;base64," .base64_encode($row["images"]) ."' class='changeimg'/>";                               
-                                        }
-                                        else{
-                                            echo "<img src='images/default.jpg'>";
-                                        }
-                                    }
-                                ?>
-                                <input type="file" name="pic" id="pic" style="margin-left:20px;">
-                            </div>
-                        </div>
+                <div class="row about-list">
+                <div class="col-md-3">
+                <h4 class='dark-color'> Reset Password </h4>
+                <div class="media">
+                    <div class="form-group">
+                    <label for="newpw">New Password</label>
+                    <input type="password" class="form-control" name="newpw" placeholder="Enter new password">
                     </div>
-                </div> <br>                
+                </div>
+                <div class="media">
+                    <div class="form-group">
+                    <label for="updpw">Confirm New Password</label>
+                    <input type="password" class="form-control" name="updpw" placeholder="Re-enter new password">
+                    </div>
+                </div>
+                <div class="media">
+                    <div class="text-right">
+                    <button type="submit" name="submit" style="margin-top:20px;" class="btn btn-primary" onClick="window.location.reload();">Save Changes</button>
+                    </div>
+                </div>
+                </div>
+                <div class="col-md-8" style="margin-left:20px;">
+                <h4> Change Image </h4>                            
+                <div class="media">
+                    <?php
+                        $sql=mysqli_query($conn,"select * from records where username='$username'") or die(mysqli_error());
+                        while($row = mysqli_fetch_array($sql)){
+                            if($row['images']!=''){
+                                echo "<img src = 'data:image/jpeg;base64," .base64_encode($row["images"]) ."' class='changeimg'/>";                               
+                            }
+                            else{
+                                echo "<img src='images/default.jpg'>";
+                            }
+                        }
+                    ?>
+                    <input type="file" name="pic" id="pic" style="margin-left:20px;">
+                </div>
+                </div>
+                </div>
+            </div> <br>                
             </form>
             </div>
             </div>

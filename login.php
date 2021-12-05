@@ -126,7 +126,7 @@
         <div class="image-holder"></div>
 
         <form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
-        <h2 class="text-center"><strong>Login</strong> your account.</h2>
+        <h2 class="text-center"><strong>FEU Alabang ACM Student Chapter</strong> Voting System</h2>
         <div class="form-group"><input class="form-control" type="text" name="username" placeholder="Student Number" required></div>
         <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password" required></div>
         <div class="form-group"><button class="btn btn-success btn-block" type="submit" name="submit" value="Submit">Sign In</button></div>
