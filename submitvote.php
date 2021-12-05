@@ -486,21 +486,7 @@
 		function ShowDetails()
 		{
 			$('#viewModal').modal("show");
-			<?php
-				$pres = 'input[name=president]:checked';
-				$stmnt = mysqli_query($conn,"SELECT  `firstname`, `lastname` , FROM records WHERE `username` = $pres");
-				if(mysqli_num_rows($sql) > 0) {
-					while($row=mysqli_fetch_assoc($sql)){
-						$fullname = $row['firstname'];
-						// echo "<b>President: </b>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."<br>";
-					}
-				} 
-				else {
-					echo "<b>President:</b> No record found <br>";
-				}
-				echo "var info = '$fullname';";
-			?>
-			$('#presidentM').html(info).val());
+			$('#presidentM').html($('input[name=president]:checked').val());
 		}
 		</script>
 	</body>
