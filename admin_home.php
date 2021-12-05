@@ -13,7 +13,7 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
         <script src="https://use.fontawesome.com/releases/v5.7.2/css/all.css"></script>
         
-        <!-- Google Fonts -->
+        	<!-- Google Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
@@ -47,15 +47,15 @@
 
     <div class="container mt-4">
         <div class="row">
+
             <!-- Menu -->
             <div class="tab">
             <button class="tablinks" onclick="openTab(event, 'ViewCandidates')" id = "defaultOpen">View Candidates</button>
             <button class="tablinks" onclick="openTab(event, 'AddCandidate')">Add Candidate</button>
             <button class="tablinks" onclick="openTab(event, 'ViewVoters')">View Voters</button>
-            <button class="tablinks" onclick="openTab(event, 'CheckResults')" id = "CheckRes">Check Results</button>
+            <button class="tablinks" onclick="openTab(event, 'CheckResults')">Check Results</button>
             </div>
 
-            <!-- View Candidates -->
             <div id="ViewCandidates" class="tabcontent">
                 <!-- Tab links -->
                 <div class="tabh">
@@ -79,7 +79,7 @@
                             <th> Last Name </th>
                             <th> Position </th>
                             <th> Year Level </th>
-                            <th>Tools</th>
+                            <th></th>
                         </tr>
                     </thead>
 
@@ -92,12 +92,13 @@
                             die("Connection Failed : ".$conn->connect_error);
                         }
 
-                        $selectall = mysqli_query($conn,"SELECT `username`, `firstname`, `middlename`, `lastname`, `position`, `yearlevel` FROM phpfinals.records WHERE `position` != ''");
-                        function disp($stmnt)
+                        $selectall = mysqli_query($conn,"SELECT `firstname`, `middlename`, `lastname`, `position`, `yearlevel` FROM phpfinals.records WHERE `position` != ''");
+                        $str = "all";
+                        function disp($stmnt, $string)
                         {
+                            $counter = 1;
                             while($row = mysqli_fetch_assoc($stmnt)) 
                             {
-                                $id = $row['username'];
                                 echo "<tr>";
                                 echo "<td></td>";
                                 echo "<td>" . $row['firstname']   . "</td>";
@@ -105,17 +106,19 @@
                                 echo "<td>" . $row['lastname']    . "</td>";
                                 echo "<td>" . $row['position']  . "</td>";
                                 echo "<td>" . $row['yearlevel'] . "</td>";
-                                echo "<td>";
-                                echo' <button type="button" class="btn btn-success btn-sm" onclick = "GetUser(' . $id . ')">Edit</button>';
-                                echo' <button type="button" class="btn btn-primary btn-sm" onclick = "ShowDetails(' . $id . ')">View</button>';
-                                echo' <button type="button" class="btn btn-danger btn-sm" onclick = "DeleteUser(' . $id . ')">Delete</button>';
+                                echo "<td>" . "<button id='" . $string . $counter . "'>Edit</button>" .
+                                              "<button id='" . $string . $counter . "'>View</button>" .
+                                              "<button id='" . $string . $counter . "'>Delete</button>";
                                 echo "</td>";
                                 echo "</tr>";
+                                $counter += 1;
                             }   
                         }
                         
-                        disp($selectall);
+                        disp($selectall, $str);
                     ?>
+                    
+                    
 
                     </tbody>
                     </table>
@@ -137,8 +140,9 @@
 
                     <tbody>
                     <?php
-                        $selectpres = mysqli_query($conn,"SELECT `username`, `firstname`, `middlename`, `lastname`, `position`, `yearlevel` FROM phpfinals.records WHERE `position` = 'President'");
-                        disp($selectpres);
+                        $selectpres = mysqli_query($conn,"SELECT `firstname`, `middlename`, `lastname`, `position`, `yearlevel` FROM phpfinals.records WHERE `position` = 'President'");
+                        $str = "all";
+                        disp($selectpres, $str);
                     ?>
                     </tbody>
                 </table>
@@ -160,8 +164,9 @@
 
                     <tbody>
                     <?php
-                        $selectvpint = mysqli_query($conn,"SELECT `username`, `firstname`, `middlename`, `lastname`, `position`, `yearlevel` FROM phpfinals.records WHERE `position` = 'Vice President Internal'");
-                        disp($selectvpint);
+                        $selectvpint = mysqli_query($conn,"SELECT `firstname`, `middlename`, `lastname`, `position`, `yearlevel` FROM phpfinals.records WHERE `position` = 'Vice President Internal'");
+                        $str = "all";
+                        disp($selectvpint, $str);
                     ?>
                     </tbody>
                 </table>
@@ -183,8 +188,9 @@
 
                     <tbody>
                     <?php
-                        $selectvpext = mysqli_query($conn,"SELECT `username`, `firstname`, `middlename`, `lastname`, `position`, `yearlevel` FROM phpfinals.records WHERE `position` = 'Vice President External'");
-                        disp($selectvpext);
+                        $selectvpext = mysqli_query($conn,"SELECT `firstname`, `middlename`, `lastname`, `position`, `yearlevel` FROM phpfinals.records WHERE `position` = 'Vice President External'");
+                        $str = "all";
+                        disp($selectvpext, $str);
                     ?>
                     </tbody>
                 </table>
@@ -206,8 +212,9 @@
 
                     <tbody>
                     <?php
-                        $selectsec = mysqli_query($conn,"SELECT `username`, `firstname`, `middlename`, `lastname`, `position`, `yearlevel` FROM phpfinals.records WHERE `position` = 'Secretary'");
-                        disp($selectsec);
+                        $selectsec = mysqli_query($conn,"SELECT `firstname`, `middlename`, `lastname`, `position`, `yearlevel` FROM phpfinals.records WHERE `position` = 'Secretary'");
+                        $str = "all";
+                        disp($selectsec, $str);
                     ?>
                     </tbody>
                 </table>
@@ -229,206 +236,199 @@
 
                     <tbody>
                     <?php
-                        $selecttreas = mysqli_query($conn,"SELECT `username`, `firstname`, `middlename`, `lastname`, `position`, `yearlevel` FROM phpfinals.records WHERE `position` = 'Treasurer'");
-                        disp($selecttreas);
+                        $selecttreas = mysqli_query($conn,"SELECT `firstname`, `middlename`, `lastname`, `position`, `yearlevel` FROM phpfinals.records WHERE `position` = 'Treasurer'");
+                        $str = "all";
+                        disp($selecttreas, $str);
                     ?>
                     </tbody>
                 </table>
                 </div>
 
                 <div id="Audit" class="tabcontenth">
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th></th>
-                                <th> First Name </th>
-                                <th> Middle Name </th>
-                                <th> Last Name </th>
-                                <th> Position </th>
-                                <th> Year Level </th>
-                                <th></th>
-                            </tr>
-                        </thead>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th> First Name </th>
+                            <th> Middle Name </th>
+                            <th> Last Name </th>
+                            <th> Position </th>
+                            <th> Year Level </th>
+                            <th></th>
+                        </tr>
+                    </thead>
 
-                        <tbody>
-                        <?php
-                            $selectaudit = mysqli_query($conn,"SELECT `username`, `firstname`, `middlename`, `lastname`, `position`, `yearlevel` FROM phpfinals.records WHERE `position` = 'Auditor'");
-                            disp($selectaudit, $str);
-                        ?>
-                        </tbody>
-                    </table>
-                    </div>
-
-                    <div id="PRO" class="tabcontenth">
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th></th>
-                                <th> First Name </th>
-                                <th> Middle Name </th>
-                                <th> Last Name </th>
-                                <th> Position </th>
-                                <th> Year Level </th>
-                                <th></th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                        <?php
-                            $selectpro= mysqli_query($conn,"SELECT `username`, `firstname`, `middlename`, `lastname`, `position`, `yearlevel` FROM phpfinals.records WHERE `position` = 'PRO'");
-                            disp($selectpro);
-                        ?>
-                        </tbody>
-                    </table>
-                    </div>
+                    <tbody>
+                    <?php
+                        $selectaudit = mysqli_query($conn,"SELECT `firstname`, `middlename`, `lastname`, `position`, `yearlevel` FROM phpfinals.records WHERE `position` = 'Auditor'");
+                        $str = "all";
+                        disp($selectaudit, $str);
+                    ?>
+                    </tbody>
+                </table>
                 </div>
 
-                <!-- View Modal -->
-                <div class="modal fade" id="viewModal"  aria-labelledby="viewModal" aria-hidden="true">
-                <div class="modal-dialog">
+                <div id="PRO" class="tabcontenth">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th> First Name </th>
+                            <th> Middle Name </th>
+                            <th> Last Name </th>
+                            <th> Position </th>
+                            <th> Year Level </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                    <?php
+                        $selectpro= mysqli_query($conn,"SELECT `firstname`, `middlename`, `lastname`, `position`, `yearlevel` FROM phpfinals.records WHERE `position` = 'PRO'");
+                        $str = "all";
+                        disp($selectpro, $str);
+                    ?>
+                    </tbody>
+                </table>
+                </div>
+                
+                <!-- The Modal -->
+                <div id="myModal" class="modal">
                     <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Candidate Details</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <img src="images/logo.png" class="logo">
-                        <h1>Account Details: </h1>
-                        <h5 id ="uname"></h5>
-                        <h5 id ="pass"></h5>
-                        <h1>Election Details: </h1>
-                        <h5 id ="fname"></h5>
-                        <h5 id ="mname"></h5>
-                        <h5 id ="lname"></h5>
-                        <h5 id ="gen"></h5>
-                        <h5 id ="yearlevel"></h5>
-                        <h5 id ="pos"></h5>
-                        <h5 id ="status"></h5>
-                        <h1>Access Level Details: </h1>
-                        <h5 id ="accesslevel"></h5>
-                        <form>
-                            <input type="hidden" id="view">
-                        </form>
-                    </div>
+                        <span class="close">&times;</span>
+                        <?php
+                            $selectall = mysqli_query($conn,"SELECT `firstname`, `middlename`, `lastname`, `position`, `yearlevel` FROM phpfinals.records WHERE `position` != ''");
+                            $row = mysqli_fetch_assoc($selectall); 
+                            echo $row['firstname'];
+                            echo $row['middlename'];
+                            echo $row['lastname'];
+                            echo $row['position'];
+                            echo $row['yearlevel'];
+                        ?>
                     </div>
                 </div>
-                </div>
-                <!-- End of View Modal -->
-
-                <!-- Edit Modal -->
-                <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="editModalLabel">Edit Candidate</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <!-- EDIT CANDIDATE FORM -->
-                            <form>
-                            <div class="mb-3">
-                                <label for="editusername" class="form-label">Username</label>
-                                <input type="text" class="form-control" id="editusername" aria-describedby="emailHelp">
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="editpassword" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="editpassword" aria-describedby="emailHelp">
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="editfname" class="form-label">First Name</label>
-                                <input type="text" class="form-control" id="editfname">
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="editmname" class="form-label">Middle Name</label>
-                                <input type="text" class="form-control" id="editmname">
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="editlname" class="form-label">Last Name</label>
-                                <input type="text" class="form-control" id="editlname">
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="editgen" class="form-label">Gender</label>
-                                <input type="text" class="form-control" id="editgen">
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="edityearlevel" class="form-label">Year Level</label>
-                                <input type="text" class="form-control" id="edityearlevel">
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="editpos" class="form-label">Position</label>
-                                <input type="text" class="form-control" id="editpos">
-                            </div>
-
-                            <input type ="hidden" id ="hiddendata">
-                            <button type="button" class="btn btn-primary" onclick = "updateDetails()">Submit</button>
-                            </form>
-                            <!-- END OF EDIT CANDIDATE FORM -->
-                        </div>
-                    </div>
-                </div>
-                <!-- End of Edit Modal -->
 
             </div>
-            <!-- End of View Candidates -->
 
-            <!-- Add Candidate -->
+            <style>
+                .ac{
+                    border-bottom: 30px solid #009bd4;
+                }
+
+                .ac2{
+                    color: white;
+                    margin: auto auto;
+                    border-collapse: separate !important;
+                    background: #009bd4;
+                    border: 1px solid #cccccc;
+                    padding: 20px;
+                }
+                
+                .inputf{
+                    width: 99%;
+                }
+
+                .inputf2{
+                    width: 66%;
+                }
+
+                .button {
+                    width: 100%;
+                    background-color: white;
+                    border: none;
+                    color: #009bd4;
+                    padding: 15px;
+                    text-align: center;
+                    font-size: 16px;
+                    transition: 0.25s;
+                    border-radius: 1em;
+                }
+
+                .button:hover{
+                    background-color: #009bd4;
+                    color: white;
+                }
+            </style>
+
+            <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+            <script type="text/javascript">
+                $(function () {
+                    $("input[name='gender']").click(function () {
+                        if ($("#other").is(":checked")) {
+                            $("#othergender").removeAttr("disabled");
+                            $("#othergender").focus();
+                        } else {
+                            $("#othergender").attr("disabled", "disabled");
+                        }
+                    });
+                });
+            </script>
+            
+            <script>
+            function missinginfo() {
+                alert("Missing Info!");
+            }
+
+            function cpasserr() {
+                alert("Password and Confirm Password are not the same!");
+            }
+
+            function success() {
+                alert("Record Input Successful!");
+            }
+            </script>
+
             <div id="AddCandidate" class="tabcontent">
             <h3>Add Candidate</h3>
             <hr></hr>
             <form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
-            Username: <label for="username"></label><input class = "inputf" type="text" id="username" name="username" maxlength=9 required>
-			<br><br>Password: <label for="password"></label><input class = "inputf" type="password" id="password" name="password" required>
-			<br><br>Confirm Password: <label for="cpassword"></label><input class = "inputf" type="password" id="cpassword" name="cpassword" required>
-            <br><br>First Name: <label for="firstname"></label><input class = "inputf" type="text" id="firstname" name="firstname" required>
-			<br><br>Middle Name: <label for="middlename"></label><input class = "inputf" type="text" id="middlename" name="middlename">
-			<br><br>Last Name: <label for="lastname"></label><input class = "inputf" type="text" id="lastname" name="lastname" required>
+            <table class = ac2><tr><td>
+            <table class = ac>
+                <tr><td class = ac>Username: <label for="username"></label><input class = "inputf" type="text" id="username" name="username" maxlength=9 required></td></tr>
+                <tr><td class = ac>Password: <label for="password"></label><input class = "inputf" type="password" id="password" name="password" required></td></tr>
+                <tr><td class = ac>Confirm Password: <label for="cpassword"></label><input class = "inputf" type="password" id="cpassword" name="cpassword" required></td></tr>
+                <tr><td class = ac>First Name: <label for="firstname"></label><input class = "inputf" type="text" id="firstname" name="firstname" required></td></tr>
+                <tr><td class = ac>Middle Name: <label for="middlename"></label><input class = "inputf" type="text" id="middlename" name="middlename"></td></tr>
+                <tr><td class = ac>Last Name: <label for="lastname"></label><input class = "inputf" type="text" id="lastname" name="lastname" required></td></tr>
 
-            <br><br><label for="position">Position</label>
-            <select id="position" name="position">
-                <option value=""></option>
-                <option value="President">President</option>
-                <option value="VP Internal">VP Internal</option>
-                <option value="VP External">VP External</option>
-                <option value="Secretary">Secretary</option>
-                <option value="Treasurer">Treasurer</option>
-                <option value="Auditor">Auditor</option>
-                <option value="P.R.O.">P.R.O.</option>
-            </select>
+                <tr><td class = ac><label for="position">Position:</label>
+                <select id="position" name="position" class = "inputf">
+                    <option value=""></option>
+                    <option value="President">President</option>
+                    <option value="VP Internal">VP Internal</option>
+                    <option value="VP External">VP External</option>
+                    <option value="Secretary">Secretary</option>
+                    <option value="Treasurer">Treasurer</option>
+                    <option value="Auditor">Auditor</option>
+                    <option value="P.R.O.">P.R.O.</option>
+                </select></td></tr>
 
-			<br><br>Access Level:
-			<input type="radio" id="admin" name="accesslevel" value="admin" required>
-  			<label for="admin">Admin</label>
-  			<input type="radio" id="user" name="accesslevel" value="user">
-  			<label for="user">User</label>
+                <tr><td class = ac><label for="yearlevel">Year Level:</label>
+                <select id="yearlevel" name="yearlevel" class = "inputf">
+                    <option value=""></option>
+                    <option value="1st Year">1st Year</option>
+                    <option value="2nd Year">2nd Year</option>
+                    <option value="3rd Year">3rd Year</option>
+                    <option value="4th Year">4th Year</option>
+                </select></td></tr>
 
-            <br><br><label for="yearlevel">Year Level</label>
-            <select id="yearlevel" name="yearlevel">
-                <option value=""></option>
-                <option value="1st Year">1st Year</option>
-                <option value="2nd Year">2nd Year</option>
-                <option value="3rd Year">3rd Year</option>
-                <option value="4th Year">4th Year</option>
-            </select>
+                <tr><td class = ac>Access Level:<br>
+                <input type="radio" name="accesslevel" value="admin" required>Admin&emsp;
+                <input type="radio" name="accesslevel" value="user">User
 
-            <br><br><input type="radio" name="gender" value="Male" required>Male 
-            <input type="radio" name="gender" value="Female">Female 
-            <input type="radio" name="gender" value=""> <input type="text" name="other_gender" placeholder = "Other"/>
+                <tr><td class = ac>Gender:<br>
+                <input type="radio" name="gender" value="Male" required>Male&emsp;
+                <input type="radio" name="gender" value="Female">Female&emsp;
+                <label for = "other">
+                <input type="radio" name="gender" value="Other" id = "other">
+                </label>
+                <input type="text" name="othergender" placeholder = "Other" id = "othergender" disabled required/></td></tr>
 
-			<br><br>Status:
-			<input type="radio" id="active" name="status" value="voted" required>
-  			<label for="voted">Voted</label>
-  			<input type="radio" id="disable" name="status" value="not voted">
-  			<label for="not voted">Not Voted</label>
-
-			<br><br><input type="submit" value="Submit" class = "button"><br><br>
-            </form>
+                <tr><td><input type="submit" value="Submit" class = "button"></td></tr>
+                </form>
+            </table>
+            </td></tr>
+            </table><br>
 
             <?php
 		    if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -442,26 +442,27 @@
                 $accesslevel = $_POST['accesslevel'];
                 $yearlevel = $_POST['yearlevel'];
                 $gender = $_POST['gender'];
-                $status = $_POST['status'];
+                if($gender == "Other"){
+                    $gender = $_POST['othergender'];
+                }
 
-                if (empty($username)){
-                    echo "<p align = center class = 'Red'>Warning. Missing Information!";
+                if (empty($username) || empty($password) || empty($cpassword) || empty($firstname) || empty($lastname) || empty($position) || empty($accesslevel) || empty($yearlevel) || !isset($gender)){
+                    echo "<SCRIPT LANGUAGE ='javascript'>missinginfo()</script>";
                 }
                 else if ($password != $cpassword){
-                    echo "<p align = center class = 'Red'>Password and Confirm Password are not the same!";
+                    echo "<SCRIPT LANGUAGE ='javascript'>cpasser()</script>";
                 }
                 else{
-                    $query = "insert into records(username,password,firstname,middlename,lastname,position,accesslevel,yearlevel,gender,status) 
-                    values('$username','$password','$firstname','$middlename','$lastname','$position','$accesslevel','$yearlevel','$gender','$status')";
+                    $query = "insert into records(username,password,firstname,middlename,lastname,position,accesslevel,yearlevel,gender) 
+                    values('$username','$password','$firstname','$middlename','$lastname','$position','$accesslevel','$yearlevel','$gender')";
                     $run = mysqli_query($conn,$query);
-                    echo "<br><p align = center>Record Input Successful!";
+                    echo "<SCRIPT LANGUAGE ='javascript'>success()</script>";
                 }
 		    }
 		    ?>
-            </div>
-            <!-- End of Add Candidate -->
 
-            <!-- View Voters -->
+            </div>
+
             <div id="ViewVoters" class="tabcontent">
             <table class="table table-striped">
                     <thead>
@@ -472,7 +473,6 @@
                             <th> Last Name </th>
                             <th> Year Level </th>
                             <th> Status </th>
-                            <th> View Ballot </th>
                         </tr>
                     </thead>
 
@@ -488,394 +488,77 @@
                                 echo "<td>" . $row['lastname']    . "</td>";
                                 echo "<td>" . $row['yearlevel'] . "</td>";
                                 echo "<td>" . $row['status'] . "</td>";
-                                if($row['status'] == 'not voted')
-                                {
-                                    echo '<td><button type="button" class="btn btn-danger">Unavailable</button></td>';
-                                }
-                                else
-                                {
-                                    echo '<td><button type="button" class="btn btn-success">View Ballot</button></td>';
-                                }
-                                
+                                echo "</td>";
                                 echo "</tr>";
                             }  
                     ?>
                     </tbody>
                 </table>
             </div>
-            <!-- End of View Voters -->
-            
-            <!-- Check Results -->
-            <div id="CheckResults" class="tabcontent">
-                <h5>President</h5>
-                <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th></th>
-                                <th> First Name </th>
-                                <th> Last Name </th>
-                                <th> Position </th>
-                                <th> Votes </th>
-                            </tr>
-                        </thead>
 
-                        <tbody>
-                        <?php
-                            $res = mysqli_query($conn,"SELECT `firstname`, `lastname`, `position`, `votes` FROM phpfinals.records WHERE `position` = 'President'");
-                            while($row = mysqli_fetch_assoc($res)) 
-                                {
-                                    echo "<tr>";
-                                    echo "<td></td>";
-                                    echo "<td>" . $row['firstname']   . "</td>";
-                                    echo "<td>" . $row['lastname']    . "</td>";
-                                    echo "<td>" . $row['position'] . "</td>";
-                                    $votes = $row['votes'] * 10;
-                                    echo "<td>";
-                                    echo $votes . '%<div class="progress"><div class="progress-bar" role="progressbar" aria-valuemax="10" style="width:' . $votes . '%"></div></div>';
-                                    echo "</td>";
-                                    echo "</tr>";
-                                }  
-                        ?>
-                        </tbody>
-                    </table>
-
-                    <br><br>
-
-                    <h5>Vice President Internal</h5>
-                    <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                    <th> First Name </th>
-                                    <th> Last Name </th>
-                                    <th> Position </th>
-                                    <th> Votes </th>
-                                </tr>
-                            </thead>
-
-                            <tbody>
-                            <?php
-                                $res = mysqli_query($conn,"SELECT `firstname`, `lastname`, `position`, `votes` FROM phpfinals.records WHERE `position` = 'Vice President Internal'");
-                                while($row = mysqli_fetch_assoc($res)) 
-                                    {
-                                        echo "<tr>";
-                                        echo "<td></td>";
-                                        echo "<td>" . $row['firstname']   . "</td>";
-                                        echo "<td>" . $row['lastname']    . "</td>";
-                                        echo "<td>" . $row['position'] . "</td>";
-                                        $votes = $row['votes'] * 10;
-                                        echo "<td>";
-                                        echo $votes . '%<div class="progress"><div class="progress-bar" role="progressbar" aria-valuemax="10" style="width:' . $votes . '%"></div></div>';
-                                        echo "</td>";
-                                        echo "</tr>";
-                                    }  
-                            ?>
-                            </tbody>
-                    </table>
-
-                    <br><br>
-
-                    <h5>Vice President External</h5>
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th></th>
-                                <th> First Name </th>
-                                <th> Last Name </th>
-                                <th> Position </th>
-                                <th> Votes </th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                        <?php
-                            $res = mysqli_query($conn,"SELECT `firstname`, `lastname`, `position`, `votes` FROM phpfinals.records WHERE `position` = 'Vice President External'");
-                            while($row = mysqli_fetch_assoc($res)) 
-                                {
-                                    echo "<tr>";
-                                    echo "<td></td>";
-                                    echo "<td>" . $row['firstname']   . "</td>";
-                                    echo "<td>" . $row['lastname']    . "</td>";
-                                    echo "<td>" . $row['position'] . "</td>";
-                                    $votes = $row['votes'] * 10;
-                                    echo "<td>";
-                                    echo $votes . '%<div class="progress"><div class="progress-bar" role="progressbar" aria-valuemax="10" style="width:' . $votes . '%"></div></div>';
-                                    echo "</td>";
-                                    echo "</tr>";
-                                }  
-                        ?>
-                        </tbody>
-                    </table>
-
-                    <br><br>
-                    
-                    <h5>Secretary</h5>
-                    <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                    <th> First Name </th>
-                                    <th> Last Name </th>
-                                    <th> Position </th>
-                                    <th> Votes </th>
-                                </tr>
-                            </thead>
-
-                            <tbody>
-                            <?php
-                                $res = mysqli_query($conn,"SELECT `firstname`, `lastname`, `position`, `votes` FROM phpfinals.records WHERE `position` = 'Secretary'");
-                                while($row = mysqli_fetch_assoc($res)) 
-                                    {
-                                        echo "<tr>";
-                                        echo "<td></td>";
-                                        echo "<td>" . $row['firstname']   . "</td>";
-                                        echo "<td>" . $row['lastname']    . "</td>";
-                                        echo "<td>" . $row['position'] . "</td>";
-                                        $votes = $row['votes'] * 10;
-                                        echo "<td>";
-                                        echo $votes . '%<div class="progress"><div class="progress-bar" role="progressbar" aria-valuemax="10" style="width:' . $votes . '%"></div></div>';
-                                        echo "</td>";
-                                        echo "</tr>";
-                                    }  
-                            ?>
-                            </tbody>
-                    </table>
-
-                    <br><br>
-
-                    <h5>Treasurer</h5>
-                    <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                    <th> First Name </th>
-                                    <th> Last Name </th>
-                                    <th> Position </th>
-                                    <th> Votes </th>
-                                </tr>
-                            </thead>
-
-                            <tbody>
-                            <?php
-                                $res = mysqli_query($conn,"SELECT `firstname`, `lastname`, `position`, `votes` FROM phpfinals.records WHERE `position` = 'Treasurer'");
-                                while($row = mysqli_fetch_assoc($res)) 
-                                    {
-                                        echo "<tr>";
-                                        echo "<td></td>";
-                                        echo "<td>" . $row['firstname']   . "</td>";
-                                        echo "<td>" . $row['lastname']    . "</td>";
-                                        echo "<td>" . $row['position'] . "</td>";
-                                        $votes = $row['votes'] * 10;
-                                        echo "<td>";
-                                        echo $votes . '%<div class="progress"><div class="progress-bar" role="progressbar" aria-valuemax="10" style="width:' . $votes . '%"></div></div>';
-                                        echo "</td>";
-                                        echo "</tr>";
-                                    }  
-                            ?>
-                            </tbody>
-                    </table>
-
-                    <br><br>
-
-                    <h5>Auditor</h5>
-                    <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                    <th> First Name </th>
-                                    <th> Last Name </th>
-                                    <th> Position </th>
-                                    <th> Votes </th>
-                                </tr>
-                            </thead>
-
-                            <tbody>
-                            <?php
-                                $res = mysqli_query($conn,"SELECT `firstname`, `lastname`, `position`, `votes` FROM phpfinals.records WHERE `position` = 'Auditor'");
-                                while($row = mysqli_fetch_assoc($res)) 
-                                    {
-                                        echo "<tr>";
-                                        echo "<td></td>";
-                                        echo "<td>" . $row['firstname']   . "</td>";
-                                        echo "<td>" . $row['lastname']    . "</td>";
-                                        echo "<td>" . $row['position'] . "</td>";
-                                        $votes = $row['votes'] * 10;
-                                        echo "<td>";
-                                        echo $votes . '%<div class="progress"><div class="progress-bar" role="progressbar" aria-valuemax="10" style="width:' . $votes . '%"></div></div>';
-                                        echo "</td>";
-                                        echo "</tr>";
-                                    }  
-                            ?>
-                            </tbody>
-                    </table>
-                    
-                    <br><br>
-                    
-                    <h5>P.R.O.</h5>
-                    <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                    <th> First Name </th>
-                                    <th> Last Name </th>
-                                    <th> Position </th>
-                                    <th> Votes </th>
-                                </tr>
-                            </thead>
-
-                            <tbody>
-                            <?php
-                                $res = mysqli_query($conn,"SELECT `firstname`, `lastname`, `position`, `votes` FROM phpfinals.records WHERE `position` = 'PRO'");
-                                while($row = mysqli_fetch_assoc($res)) 
-                                    {
-                                        echo "<tr>";
-                                        echo "<td></td>";
-                                        echo "<td>" . $row['firstname']   . "</td>";
-                                        echo "<td>" . $row['lastname']    . "</td>";
-                                        echo "<td>" . $row['position'] . "</td>";
-                                        $votes = $row['votes'] * 10;
-                                        echo "<td>";
-                                        echo $votes . '%<div class="progress"><div class="progress-bar" role="progressbar" aria-valuemax="10" style="width:' . $votes . '%"></div></div>';
-                                        echo "</td>";
-                                        echo "</tr>";
-                                    }  
-                            ?>
-                            </tbody>
-                    </table>
-                </div>
-            <!-- End of Check Results -->
+            <div id="CheckResults" class="tabcontent" >
+            <h3>Check Results</h3>
+            <p>Check Results.</p>
+            </div>
 
             <script>
-            function openTab(evt, Tab)
-            {
-                var i, tabcontent, tablinks;
-                tabcontent = document.getElementsByClassName("tabcontent");
-                for (i = 0; i < tabcontent.length; i++)
-                {
-                    tabcontent[i].style.display = "none";
-                }
-                
-                tablinks = document.getElementsByClassName("tablinks");
-                for (i = 0; i < tablinks.length; i++)
-                {
-                    tablinks[i].className = tablinks[i].className.replace(" active", "");
-                }
-                document.getElementById(Tab).style.display = "block";
-                evt.currentTarget.className += " active";
+            function openTab(evt, cityName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(cityName).style.display = "block";
+            evt.currentTarget.className += " active";
             }
 
-            function openTabh(evt, Tab)
-            {
-                var i, tabcontent, tablinks;
-                tabcontent = document.getElementsByClassName("tabcontenth");
-                for (i = 0; i < tabcontent.length; i++)
-                {
-                    tabcontent[i].style.display = "none";
-                }
-            
-                tablinks = document.getElementsByClassName("tablinks");
-                for (i = 0; i < tablinks.length; i++) 
-                {
-                    tablinks[i].className = tablinks[i].className.replace(" active", "");
-                }
-                document.getElementById(Tab).style.display = "block";
-                evt.currentTarget.className += " active";
+            function openTabh(evt, cityName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontenth");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
             }
-
-            //Update function
-            function GetUser(updateid)
-            {       
-                $('#hiddendata').val(updateid)
-                $.post("update.php",{sendupdate:updateid},function(data,
-                status){
-                    var userid = JSON.parse(data);
-                    $('#editusername').val(userid.username)
-                    $('#editpassword').val(userid.password)
-                    $('#editfname').val(userid.firstname)
-                    $('#editmname').val(userid.middlename)
-                    $('#editlname').val(userid.lastname)
-                    $('#editpos').val(userid.position)
-                    $('#edityearlevel').val(userid.yearlevel)
-                    $('#editgen').val(userid.gender)
-                });
-
-                $('#editModal').modal("show");
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
             }
-
-            //On-click update event function
-            function updateDetails()
-            {
-                var updateuname = $("#editusername").val();
-                var updatepass = $("#editpassword").val();
-                var updatefname = $("#editfname").val();
-                var updatemname = $("#editmname").val();
-                var updatelname = $("#editlname").val();
-                var updategen = $("#editgen").val();
-                var updateyearlevel = $("#edityearlevel").val();
-                var updatepos = $("#editpos").val();
-                var hiddendata = $("#hiddendata").val();
-
-                $.post("update.php", {
-                    updateuname:updateuname,
-                    updatepass:updatepass,
-                    updatefname:updatefname,
-                    updatemname:updatemname,
-                    updatelname:updatelname,
-                    updategen:updategen,
-                    updateyearlevel:updateyearlevel,
-                    updatepos:updatepos,
-                    hiddendata:hiddendata
-                },function(data,status){
-                    $('#editModal').modal("hide");
-                    location.href = 'admin_home.php';
-                });
+            document.getElementById(cityName).style.display = "block";
+            evt.currentTarget.className += " active";
             }
-
-            //Delete Candidate function
-            function DeleteUser(deleteid)
-            {
-                $.ajax({
-                    url:"delete.php",
-                    type: 'post',
-                    data:{
-                        deletesend:deleteid
-                    },
-                    success:function(data,status){
-                        location.href = 'admin_home.php';
-                    }
-                })
-            }
-
-            //Show Candidate Details function
-            function ShowDetails(viewid)
-            {
-                $('#view').val(viewid)
-                $.post("update.php",{sendview:viewid},function(data,
-                status){
-                    var userid = JSON.parse(data);
-                    $('#uname').text("Username: " + userid.username)
-                    $('#pass').text("Password: " + userid.password)
-                    $('#fname').text("First Name: " + userid.firstname)
-                    $('#mname').text("Middle Name: " + userid.middlename)
-                    $('#lname').text("Last Name: " + userid.lastname)
-                    $('#gen').text("Gender: " + userid.gender)
-                    $('#yearlevel').text("Year Level: " + userid.yearlevel)
-                    $('#pos').text("Position: " + userid.position)
-                    $('#accesslevel').text("Access Level: " + userid.accesslevel)
-                });
-
-                $('#viewModal').modal("show");
-            }
-           
 
             // Get the element with id="defaultOpen" and id="defaultOpen1" and click on it
             document.getElementById("defaultOpen").click();
             document.getElementById("defaultOpen1").click();
-   
-            </script>
 
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+            // Get the modal
+            var modal = document.getElementById("myModal");
+
+            // Get the button that opens the modal
+            var btn = document.getElementById("all13");
+
+            // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close")[0];
+
+            // When the user clicks on the button, open the modal
+            btn.onclick = function() {
+            modal.style.display = "block";
+            }
+
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function() {
+            modal.style.display = "none";
+            }
+
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+                if (event.target == modal){
+                    modal.style.display = "none";
+                }
+            }
+            </script>
     </body>
 </html>
