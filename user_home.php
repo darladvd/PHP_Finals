@@ -237,12 +237,12 @@
   
                 if (mysqli_query($conn, $stmt))
                 {
-                  echo"<script>alert('Successfully uploaded image.')</script>";
-                  location.reload();
+                    echo("<meta http-equiv='refresh' content='1'>");
+                    echo"<script>alert('Successfully uploaded image.')</script>";
                 }
                 else
                 {
-                  echo"<script>alert('Error in uploading image.')</script>";
+                    echo"<script>alert('Error in uploading image.')</script>";
                 }
             }
             $conn->close();
