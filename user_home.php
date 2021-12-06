@@ -132,12 +132,7 @@
                 ?>
             </div>
 
-            <!-- View Ballot -->
-            <div id="ViewBallot" class="tabcontent">
-                <?php
-                    include 'ballot.php';
-                ?>
-            </div>
+
 
             <!-- Profile Settings -->
             <div id="ProfileSettings" class="tabcontent">
