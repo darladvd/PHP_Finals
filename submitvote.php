@@ -112,27 +112,7 @@
 						<div class="list list-row block">
 							<div class="list-item">
 								<?php 
-									$president=mysqli_query($conn,"select * from records where position='president' and username='201900002'")or die(mysqli_error());
-									while($row=mysqli_fetch_array($president)){ 
-									$president_id=$row['username']; 
-										if($row['images']!=''){
-											echo "<img src = 'data:image/jpeg;base64," .base64_encode($row["images"]) ."' class='candidate'/>" . " ";
-											echo "<div class='flex'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</div>";
-											echo "<div><input class='form-check-input' type='radio' name='president' id='president' value='$president_id' required></div>";
-										}
-										else{
-											echo "<img src='images/default.jpg'>";
-										}
-									}
-								?>
-							</div>
-						</div>
-						</div>
-						<div class="col-sm-4">
-						<div class="list list-row block">
-							<div class="list-item">
-								<?php 
-									$president=mysqli_query($conn,"select * from records where position='president' and username='201900003'")or die(mysqli_error());
+									$president=mysqli_query($conn,"select * from records where position='President'")or die(mysqli_error());
 									while($row=mysqli_fetch_array($president)){ 
 									$president_id=$row['username']; 
 										if($row['images']!=''){
@@ -160,27 +140,7 @@
 						<div class="list list-row block">
 							<div class="list-item">
 								<?php 
-									$viceint=mysqli_query($conn,"select * from records where position='VP Internal' and username='201900004'")or die(mysqli_error());
-									while($row=mysqli_fetch_array($viceint)){ 
-									$viceint_id=$row['username']; 
-										if($row['images']!=''){
-											echo "<img src = 'data:image/jpeg;base64," .base64_encode($row["images"]) ."' class='candidate'/>" . " ";
-											echo "<div class='flex'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</div>";
-											echo "<div><input class='form-check-input' type='radio' name='viceint' id='viceint' value='$viceint_id' required></div>";
-										}
-										else{
-											echo "<img src='images/default.jpg'>";
-										}
-									}
-								?>
-							</div>
-						</div>
-						</div>
-						<div class="col-sm-4">
-						<div class="list list-row block">
-							<div class="list-item">
-								<?php 
-									$viceint=mysqli_query($conn,"select * from records where position='VP Internal' and username='201900005'")or die(mysqli_error());
+									$viceint=mysqli_query($conn,"select * from records where position='VP Internal'")or die(mysqli_error());
 									while($row=mysqli_fetch_array($viceint)){ 
 									$viceint_id=$row['username']; 
 										if($row['images']!=''){
@@ -208,27 +168,7 @@
 						<div class="list list-row block">
 							<div class="list-item">
 								<?php 
-									$viceext=mysqli_query($conn,"select * from records where position='VP External' and username='201900006'")or die(mysqli_error());
-									while($row=mysqli_fetch_array($viceext)){ 
-									$viceext_id=$row['username']; 
-										if($row['images']!=''){
-											echo "<img src = 'data:image/jpeg;base64," .base64_encode($row["images"]) ."' class='candidate'/>" . " ";
-											echo "<div class='flex'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</div>";
-											echo "<div><input class='form-check-input' type='radio' name='viceext' id='viceext' value='$viceext_id' required></div>";
-										}
-										else{
-											echo "<img src='images/default.jpg'>";
-										}
-									}
-								?>
-							</div>
-						</div>
-						</div>
-						<div class="col-sm-4">
-						<div class="list list-row block">
-							<div class="list-item">
-								<?php 
-									$viceext=mysqli_query($conn,"select * from records where position='VP External' and username='201900007'")or die(mysqli_error());
+									$viceext=mysqli_query($conn,"select * from records where position='VP External'")or die(mysqli_error());
 									while($row=mysqli_fetch_array($viceext)){ 
 									$viceext_id=$row['username']; 
 										if($row['images']!=''){
@@ -256,27 +196,7 @@
 						<div class="list list-row block">
 							<div class="list-item">
 								<?php 
-									$sec=mysqli_query($conn,"select * from records where position='secretary' and username='201900008'")or die(mysqli_error());
-									while($row=mysqli_fetch_array($sec)){ 
-									$sec_id=$row['username']; 
-										if($row['images']!=''){
-											echo "<img src = 'data:image/jpeg;base64," .base64_encode($row["images"]) ."' class='candidate'/>" . " ";
-											echo "<div class='flex'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</div>";
-											echo "<div><input class='form-check-input' type='radio' name='sec' id='sec' value='$sec_id' required></div>";
-										}
-										else{
-											echo "<img src='images/default.jpg'>";
-										}
-									}
-								?>
-							</div>
-						</div>
-						</div>
-						<div class="col-sm-4">
-						<div class="list list-row block">
-							<div class="list-item">
-								<?php 
-									$sec=mysqli_query($conn,"select * from records where position='secretary' and username='201900009'")or die(mysqli_error());
+									$sec=mysqli_query($conn,"select * from records where position='Secretary'")or die(mysqli_error());
 									while($row=mysqli_fetch_array($sec)){ 
 									$sec_id=$row['username']; 
 										if($row['images']!=''){
@@ -304,27 +224,7 @@
 						<div class="list list-row block">
 							<div class="list-item">
 								<?php 
-									$trs=mysqli_query($conn,"select * from records where position='treasurer' and username='201900010'")or die(mysqli_error());
-									while($row=mysqli_fetch_array($trs)){ 
-									$trs_id=$row['username']; 
-										if($row['images']!=''){
-											echo "<img src = 'data:image/jpeg;base64," .base64_encode($row["images"]) ."' class='candidate'/>" . " ";
-											echo "<div class='flex'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</div>";
-											echo "<div><input class='form-check-input' type='radio' name='trs' id='trs' value='$trs_id' required></div>";
-										}
-										else{
-											echo "<img src='images/default.jpg'>";
-										}
-									}
-								?>
-							</div>
-						</div>
-						</div>
-						<div class="col-sm-4">
-						<div class="list list-row block">
-							<div class="list-item">
-								<?php 
-									$trs=mysqli_query($conn,"select * from records where position='treasurer' and username='201900011'")or die(mysqli_error());
+									$trs=mysqli_query($conn,"select * from records where position='Treasurer'")or die(mysqli_error());
 									while($row=mysqli_fetch_array($trs)){ 
 									$trs_id=$row['username']; 
 										if($row['images']!=''){
@@ -352,27 +252,7 @@
 						<div class="list list-row block">
 							<div class="list-item">
 								<?php 
-									$aud=mysqli_query($conn,"select * from records where position='auditor' and username='201900012'")or die(mysqli_error());
-									while($row=mysqli_fetch_array($aud)){ 
-									$aud_id=$row['username']; 
-										if($row['images']!=''){
-											echo "<img src = 'data:image/jpeg;base64," .base64_encode($row["images"]) ."' class='candidate'/>" . " ";
-											echo "<div class='flex'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</div>";
-											echo "<div><input class='form-check-input' type='radio' name='aud' id='aud' value='$aud_id' required></div>";
-										}
-										else{
-											echo "<img src='images/default.jpg'>";
-										}
-									}
-								?>
-							</div>
-						</div>
-						</div>
-						<div class="col-sm-4">
-						<div class="list list-row block">
-							<div class="list-item">
-								<?php 
-									$aud=mysqli_query($conn,"select * from records where position='auditor' and username='201900013'")or die(mysqli_error());
+									$aud=mysqli_query($conn,"select * from records where position='Auditor'")or die(mysqli_error());
 									while($row=mysqli_fetch_array($aud)){ 
 									$aud_id=$row['username']; 
 										if($row['images']!=''){
@@ -392,7 +272,6 @@
 					</div>
 			</div>
 			<hr>
-			
 			<div class="pro-align"> <br>
 				<div class="hero-body-pro" style="text-align:center;"><h2>Candidate for Public Relations Officer</h2></div>
 					<div class="padding">
@@ -401,27 +280,7 @@
 						<div class="list list-row block">
 							<div class="list-item">
 								<?php 
-									$pro=mysqli_query($conn,"select * from records where position='pro' and username='201900014'")or die(mysqli_error());
-									while($row=mysqli_fetch_array($pro)){ 
-									$pro_id=$row['username']; 
-										if($row['images']!=''){
-											echo "<img src = 'data:image/jpeg;base64," .base64_encode($row["images"]) ."' class='candidate'/>" . " ";
-											echo "<div class='flex'>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</div>";
-											echo "<div><input class='form-check-input' type='radio' name='pro' id='pro' value='$pro_id' required></div>";
-										}
-										else{
-											echo "<img src='images/default.jpg'>";
-										}
-									}
-								?>
-							</div>
-						</div>
-						</div>
-						<div class="col-sm-4">
-						<div class="list list-row block">
-							<div class="list-item">
-								<?php 
-									$pro=mysqli_query($conn,"select * from records where position='pro' and username='201900015'")or die(mysqli_error());
+									$pro=mysqli_query($conn,"select * from records where position='PRO' or position='P.R.O.'")or die(mysqli_error());
 									while($row=mysqli_fetch_array($pro)){ 
 									$pro_id=$row['username']; 
 										if($row['images']!=''){
@@ -442,6 +301,6 @@
 					</div>
 			</div>
 		</div>
-	</form>
+	</form><br><br>
 	</body>
 </html>								
