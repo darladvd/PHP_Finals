@@ -386,45 +386,95 @@
 
             <!-- View Voters -->
             <div id="ViewVoters" class="tabcontent">
-            <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th> First Name </th>
-                            <th> Middle Name </th>
-                            <th> Last Name </th>
-                            <th> Year Level </th>
-                            <th> Status </th>
-                            <th> View Ballot </th>
-                        </tr>
-                    </thead>
+                <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th> First Name </th>
+                                <th> Middle Name </th>
+                                <th> Last Name </th>
+                                <th> Year Level </th>
+                                <th> Status </th>
+                                <th> View Ballot </th>
+                            </tr>
+                        </thead>
 
-                    <tbody>
-                    <?php
-                        $selectvoters = mysqli_query($conn,"SELECT `firstname`, `middlename`, `lastname`, `yearlevel`, `status` FROM phpfinals.records WHERE `position` = '' AND `accesslevel` = 'user'");
-                        while($row = mysqli_fetch_assoc($selectvoters)) 
-                            {
-                                echo "<tr>";
-                                echo "<td></td>";
-                                echo "<td>" . $row['firstname']   . "</td>";
-                                echo "<td>" . $row['middlename']  . "</td>";
-                                echo "<td>" . $row['lastname']    . "</td>";
-                                echo "<td>" . $row['yearlevel'] . "</td>";
-                                echo "<td>" . $row['status'] . "</td>";
-                                if($row['status'] == 'not voted')
+                        <tbody>
+                        <?php
+                            $selectvoters = mysqli_query($conn,"SELECT `username`, `firstname`, `middlename`, `lastname`, `yearlevel`, `status` FROM phpfinals.records WHERE `position` = '' AND `accesslevel` = 'user'");
+                            while($row = mysqli_fetch_assoc($selectvoters)) 
                                 {
-                                    echo '<td><button type="button" class="btn btn-danger">Unavailable</button></td>';
-                                }
-                                else
-                                {
-                                    echo '<td><button type="button" class="btn btn-success">View Ballot</button></td>';
-                                }
-                                
-                                echo "</tr>";
-                            }  
-                    ?>
-                    </tbody>
+                                    $id = $row['username'];
+                                    echo "<tr>";
+                                    echo "<td></td>";
+                                    echo "<td>" . $row['firstname']   . "</td>";
+                                    echo "<td>" . $row['middlename']  . "</td>";
+                                    echo "<td>" . $row['lastname']    . "</td>";
+                                    echo "<td>" . $row['yearlevel'] . "</td>";
+                                    echo "<td>" . $row['status'] . "</td>";
+                                    if($row['status'] == 'not voted')
+                                    {
+                                        echo'<td><button type="button" class="btn btn-danger btn-sm" onclick = "NoBallot()">Unavailable</button></td>';
+                                    }
+                                    else
+                                    {
+                                        echo'<td><button type="button" class="btn btn-success btn-sm" onclick = "GetBallot(' . $id . ')">View Ballot</button></td>';
+                                    }
+                                    
+                                    echo "</tr>";
+                                }  
+                        ?>
+                        </tbody>
                 </table>
+
+                 <!-- No Ballot Modal -->
+                 <div class="modal fade" id="noBallot"  aria-labelledby="viewBallot" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Official Ballot</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <img src="images/logo.png">
+                            <h1>Ballot Unavailable</h1>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End of No Ballot Modal -->
+
+                
+
+                 <!-- View Ballot Modal -->
+                <div class="modal fade" id="viewBallot"  aria-labelledby="viewBallot" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Official Ballot</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <img src="images/logo.png">
+                            <h1>Account Details: </h1>
+                            <h5 id ="vuname"></h5>
+                            <h5 id ="vfullname"></h5>
+                            <h1>Election Details: </h1>
+                            <h5 id ="bpres"></h5>
+                            <h5 id ="bvpint"></h5>
+                            <h5 id ="bvpext"></h5>
+                            <h5 id ="bsec"></h5>
+                            <h5 id ="btreas"></h5>
+                            <h5 id ="baudit"></h5>
+                            <h5 id ="bpro"></h5>
+                            <form>
+                                <input type="hidden" id="voter">
+                            </form>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End of View Ballot Modal -->
             </div>
             <!-- End of View Voters -->
             
@@ -798,8 +848,34 @@
                 $('#viewModal').modal("show");
             }
 
- 
+            //No Ballot function
+            function NoBallot(voterid)
+            {
+                $('#noBallot').modal("show");
+            }
 
+            //Get Ballot function
+            function GetBallot(voterid)
+            {
+                $('#voter').val(voterid)
+                $.post("update.php",{sendviewb:voterid},function(data,
+                status){
+                    var ballot = JSON.parse(data);
+                    $('#vuname').text("Username: " + ballot.vid)
+                    $('#vfullname').text("Voter: " + ballot.vfname + " " + ballot.vlname)
+                    $('#bpres').text("President: " + ballot.presfname + " " + ballot.preslname)
+                    $('#bvpint').text("Vice President Internal: " + ballot.vpintfname + " " + ballot.vpintlname)
+                    $('#bvpext').text("Vice President External: " + ballot.vpextfname + " " + ballot.vpextlname)
+                    $('#bsec').text("Secretary: " + ballot.secfname + " " + ballot.seclname)
+                    $('#btreas').text("Treasurer: " + ballot.treasfname + " " + ballot.treaslname)
+                    $('#baudit').text("Auditor: " + ballot.auditfname + " " + ballot.auditlname)
+                    $('#bpro').text("P.R.O. : " + ballot.profname + " " + ballot.prolname)
+                });
+
+                $('#viewBallot').modal("show");
+            }
+
+        
             // Get the element with id="defaultOpen" and id="defaultOpen1" and click on it
             document.getElementById("defaultOpen").click();
             document.getElementById("defaultOpen1").click();
