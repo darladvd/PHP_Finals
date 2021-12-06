@@ -160,7 +160,7 @@
 						<div class="list list-row block">
 							<div class="list-item">
 								<?php 
-									$viceint=mysqli_query($conn,"select * from records where position='vice president internal' and username='201900004'")or die(mysqli_error());
+									$viceint=mysqli_query($conn,"select * from records where position='VP Internal' and username='201900004'")or die(mysqli_error());
 									while($row=mysqli_fetch_array($viceint)){ 
 									$viceint_id=$row['username']; 
 										if($row['images']!=''){
@@ -180,7 +180,7 @@
 						<div class="list list-row block">
 							<div class="list-item">
 								<?php 
-									$viceint=mysqli_query($conn,"select * from records where position='vice president internal' and username='201900005'")or die(mysqli_error());
+									$viceint=mysqli_query($conn,"select * from records where position='VP Internal' and username='201900005'")or die(mysqli_error());
 									while($row=mysqli_fetch_array($viceint)){ 
 									$viceint_id=$row['username']; 
 										if($row['images']!=''){
@@ -208,7 +208,7 @@
 						<div class="list list-row block">
 							<div class="list-item">
 								<?php 
-									$viceext=mysqli_query($conn,"select * from records where position='vice president external' and username='201900006'")or die(mysqli_error());
+									$viceext=mysqli_query($conn,"select * from records where position='VP External' and username='201900006'")or die(mysqli_error());
 									while($row=mysqli_fetch_array($viceext)){ 
 									$viceext_id=$row['username']; 
 										if($row['images']!=''){
@@ -228,7 +228,7 @@
 						<div class="list list-row block">
 							<div class="list-item">
 								<?php 
-									$viceext=mysqli_query($conn,"select * from records where position='vice president external' and username='201900007'")or die(mysqli_error());
+									$viceext=mysqli_query($conn,"select * from records where position='VP External' and username='201900007'")or die(mysqli_error());
 									while($row=mysqli_fetch_array($viceext)){ 
 									$viceext_id=$row['username']; 
 										if($row['images']!=''){
