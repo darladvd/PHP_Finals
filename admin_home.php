@@ -379,86 +379,9 @@
             <!-- End of View Candidates -->
 
             <!-- Add Candidate -->
-            <div id="AddCandidate" class="tabcontent">
-            <h3>Add Candidate</h3>
-            <hr></hr>
-            <form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
-            Username: <label for="username"></label><input class = "inputf" type="text" id="username" name="username" maxlength=9 required>
-			<br><br>Password: <label for="password"></label><input class = "inputf" type="password" id="password" name="password" required>
-			<br><br>Confirm Password: <label for="cpassword"></label><input class = "inputf" type="password" id="cpassword" name="cpassword" required>
-            <br><br>First Name: <label for="firstname"></label><input class = "inputf" type="text" id="firstname" name="firstname" required>
-			<br><br>Middle Name: <label for="middlename"></label><input class = "inputf" type="text" id="middlename" name="middlename">
-			<br><br>Last Name: <label for="lastname"></label><input class = "inputf" type="text" id="lastname" name="lastname" required>
-
-            <br><br><label for="position">Position</label>
-            <select id="position" name="position">
-                <option value=""></option>
-                <option value="President">President</option>
-                <option value="VP Internal">VP Internal</option>
-                <option value="VP External">VP External</option>
-                <option value="Secretary">Secretary</option>
-                <option value="Treasurer">Treasurer</option>
-                <option value="Auditor">Auditor</option>
-                <option value="P.R.O.">P.R.O.</option>
-            </select>
-
-			<br><br>Access Level:
-			<input type="radio" id="admin" name="accesslevel" value="admin" required>
-  			<label for="admin">Admin</label>
-  			<input type="radio" id="user" name="accesslevel" value="user">
-  			<label for="user">User</label>
-
-            <br><br><label for="yearlevel">Year Level</label>
-            <select id="yearlevel" name="yearlevel">
-                <option value=""></option>
-                <option value="1st Year">1st Year</option>
-                <option value="2nd Year">2nd Year</option>
-                <option value="3rd Year">3rd Year</option>
-                <option value="4th Year">4th Year</option>
-            </select>
-
-            <br><br><input type="radio" name="gender" value="Male" required>Male 
-            <input type="radio" name="gender" value="Female">Female 
-            <input type="radio" name="gender" value=""> <input type="text" name="other_gender" placeholder = "Other"/>
-
-			<br><br>Status:
-			<input type="radio" id="active" name="status" value="voted" required>
-  			<label for="voted">Voted</label>
-  			<input type="radio" id="disable" name="status" value="not voted">
-  			<label for="not voted">Not Voted</label>
-
-			<br><br><input type="submit" value="Submit" class = "button"><br><br>
-            </form>
-
             <?php
-		    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                $username = $_POST['username'];
-                $password = $_POST['password'];
-                $cpassword = $_POST['cpassword'];
-                $firstname = $_POST['firstname'];
-                $middlename = $_POST['middlename'];
-                $lastname = $_POST['lastname'];
-                $position = $_POST['position'];
-                $accesslevel = $_POST['accesslevel'];
-                $yearlevel = $_POST['yearlevel'];
-                $gender = $_POST['gender'];
-                $status = $_POST['status'];
-
-                if (empty($username)){
-                    echo "<p align = center class = 'Red'>Warning. Missing Information!";
-                }
-                else if ($password != $cpassword){
-                    echo "<p align = center class = 'Red'>Password and Confirm Password are not the same!";
-                }
-                else{
-                    $query = "insert into records(username,password,firstname,middlename,lastname,position,accesslevel,yearlevel,gender,status) 
-                    values('$username','$password','$firstname','$middlename','$lastname','$position','$accesslevel','$yearlevel','$gender','$status')";
-                    $run = mysqli_query($conn,$query);
-                    echo "<br><p align = center>Record Input Successful!";
-                }
-		    }
-		    ?>
-            </div>
+                include "admin_home_ac.php";
+            ?>
             <!-- End of Add Candidate -->
 
             <!-- View Voters -->
