@@ -297,7 +297,7 @@
 						</div>
 						</div>
 					</div>
-					<button type="submit" name="submitvote" style="margin-left:380px; margin-bottom:20px;" class="btn btn-primary">Submit Vote</button>
+					<button type="submit" name="submitvote" style="margin-left:380px; margin-bottom:20px;" class="btn btn-primary">View Ballot</button>
 					</div>
 			</div>
 		</div>

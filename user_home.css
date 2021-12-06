@@ -7,8 +7,9 @@
     font-family: 'Montserrat', sans-serif
 }
 
+/* View Profile */
 nav .navbar-brand .logo {
-    padding: 10px 15px;
+    padding: 15px 15px;
     border-radius: 8px
 }
 
@@ -41,62 +42,31 @@ nav ul li a .cart {
     display: inline
 }
 
+nav ul li a .cart::after {
+    position: absolute;
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #ff5252;
+    top: -1px
+}
+
 .navbar-toggler:focus {
     box-shadow: none
 }
 
 /* View Profile */
 .profilepic {
-    max-width: 100%;
-    max-height: 100%;
     height: 300px;
     width: 300px;
     border-radius: 50%;
 }
 
-.about-text h3 {
-  font-size: 45px;
+p {
   font-weight: 700;
-}
-
-@media (max-width: 767px) {
-  .about-text h6 {
-    font-size: 18px;
-  }
-
-}
-.about-text p {
-  font-size: 18px;
-  max-width: 450px;
-}
-
-.about-text p mark {
-  font-weight: 600;
-  color: #20247b;
-}
-
-.about-list {
-  padding-top: 20px;
-}
-
-.about-list .media {
-  padding: 5px 0;
-}
-
-.about-list label {
-  color: #20247b;
-  font-weight: 600;
-  width: 100%;
-  position: relative;
-}
-
-.about-list p {
-  font-size: 15px;
-}
-
-.form-control:focus {
-  box-shadow: none;
-  border-color: #BA68C8
+  color: #007caa;
+  margin-right:5px;
 }
 
 /* Profile Settings */
@@ -108,27 +78,7 @@ nav ul li a .cart {
   border-radius: 50%;
 }
 
-
-.form-control {
-  border: 1px solid #cfd1d8;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  border-radius: 2px;
-  font-size: .825rem;
-  background: #ffffff;
-  color: #2e323c;
-}
-
-.card {
-  background: #ffffff;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-  border: 0;
-  margin-bottom: 1rem;
-}
-
-/* Style the tab */
+/* Sidemenu */
 .tab {
   float: left;
   border: 1px solid #ccc;
@@ -159,7 +109,6 @@ nav ul li a .cart {
   background-color: #007caa;
 }
 
-/* Style the tab  */
 .tabcontent {
   float: left;
   padding: 0px 12px;
@@ -169,7 +118,6 @@ nav ul li a .cart {
   height: 300px;
 }
 
-/* Style the tab */
 .tabh {
     overflow: hidden;
     border: 1px solid #ccc;
@@ -177,7 +125,6 @@ nav ul li a .cart {
     padding: 5px;
   }
   
-  /* Style the buttons that are used to open the tab content */
   .tabh button {
     background-color: inherit;
     float: left;
@@ -188,55 +135,21 @@ nav ul li a .cart {
     transition: 0.3s;
   }
   
-  /* Change background color of buttons on hover */
   .tabh button:hover {
     background-color: #ddd;
   }
   
-  /* Create an active/current tablink class */
   .tabh button.active {
     background-color: #ccc;
   }
   
-  /* Style the tab content */
   .tabcontenth {
     display: none;
     padding: 6px 12px;
     border: 1px solid #ccc;
     border-top: none;
   }
-
-  /* The Modal (background) */
-  .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    padding-top: 300px; /* Location of the box */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  }
   
-  /* Modal Content */
-  .modal-content {
-    position: relative;
-    background-color: #fefefe;
-    margin: auto;
-    padding: 0;
-    border: 1px solid #888;
-    width: 35%;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-    -webkit-animation-name: animatetop;
-    -webkit-animation-duration: 0.4s;
-    animation-name: animatetop;
-    animation-duration: 0.4s
-  }
-  
-  /* Add Animation */
   @-webkit-keyframes animatetop {
     from {top:-300px; opacity:0} 
     to {top:0; opacity:1}
@@ -246,24 +159,3 @@ nav ul li a .cart {
     from {top:-300px; opacity:0}
     to {top:0; opacity:1}
   }
-  
-  /* The Close Button */
-  .close {
-    color: black;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-  }
-  
-  .close:hover,
-  .close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-  }
-
-
-  .modal-body{
-      padding: 2px 16px;
-  }
-  

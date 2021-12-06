@@ -77,6 +77,7 @@
 		$sql=mysqli_query($conn,"UPDATE records SET votes=$provotes+1 WHERE username='$pro2'")or die(mysqli_error());
 		
 		$exec=mysqli_query($conn,"insert into ballot (voter, president, viceint, viceext, secretary, treasurer, auditor, pro) values ($username2, $president2, $viceint2, $viceext2, $sec2, $trs2, $aud2, $pro2)")or die(mysqli_error());
+		// echo "<script>alert('Thank you for voting!')</script>"; NOT WORKING PLS FI
 		header("location: user_home.php");
 	}
 	else {

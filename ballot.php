@@ -8,12 +8,12 @@
 <title> Ballot </title>
 <head>
 <style>
-body {
+/* body {
 	margin: 50px;
 	text-align: center;
 	font-family: arial;
 	font-size: 20px;
-}
+} */
 </style>
 </head>
 <body>

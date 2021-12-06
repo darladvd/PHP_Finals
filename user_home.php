@@ -20,13 +20,12 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet"> -->
 
         <!-- External CSS -->
-	    <link rel="stylesheet" type="text/css" href="user_home.css">
-        
+	    <link rel="stylesheet" type="text/css" href="user_home.css">        
         <title>Voter</title>
     </head>
     <body>
@@ -34,12 +33,11 @@
     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container"> <button class="navbar-toggler" type="button" row-bs-toggle="collapse" row-bs-target="#mynav" aria-controls="mynav" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button> <a class="navbar-brand" href="#">
-            <div class="d-flex">
-                <div class="ms-3 d-flex flex-column">
-                    <!-- <img src="images/logo.png"> -->
-                    <div class="h4"> <img src="images/logo.png" class="logo"> Voter Dashboard </div>
-                </div>
+        <div class="d-flex">
+            <div class="ms-3 d-flex flex-column">
+                <div class="h4"> <img src="images/logo.png" class="logo"> Voter Dashboard </div>
             </div>
+        </div>
         </a>
         <div class="collapse navbar-collapse" id="mynav">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
@@ -50,36 +48,59 @@
 
     <div class="container mt-4">
         <div class="row">
-
             <!-- Menu -->
             <div class="tab">
-            <button class="tablinks" onclick="openTab(event, 'ViewProfile')" id = "defaultOpen">View Profile</button>
-            <button class="tablinks" onclick="openTab(event, 'SubmitVote')">Submit a Vote</button>
-            <button class="tablinks" onclick="openTab(event, 'ViewBallot')">View Ballot</button>
-            <button class="tablinks" onclick="openTab(event, 'ProfileSettings')">Profile Settings</button>
+                <button class="tablinks" onclick="openTab(event, 'ViewProfile')" id = "defaultOpen">View Profile</button>
+                <button class="tablinks" onclick="openTab(event, 'SubmitVote')">Submit a Vote</button>
+                <button class="tablinks" onclick="openTab(event, 'ViewBallot')">View Ballot</button>
+                <button class="tablinks" onclick="openTab(event, 'ProfileSettings')">Profile Settings</button>
             </div>
 
             <!-- View Profile -->
             <div id="ViewProfile" class="tabcontent">
-            <div class="row align-items-center flex-row-reverse">
-            <div class="col-md-6">
-            <div class="about-text go-to">
-                <?php 
-                    $sql=mysqli_query($conn,"select * from records where username='$username'")or die(mysqli_error());
-                    while($row=mysqli_fetch_array($sql)){ 
-                    echo "<h3 class='dark-color'>".$row['firstname']." ".$row['middle']." ".$row['lastname']."</h3>";}?>
-                <div class="row about-list">
-                <div class="col-md-6">
-                    <div class="media">
-                            <label>Student Number</label>
+                <table>
+                    <tr>
+                        <td rowspan = 4>
+                            <?php
+                                $sql=mysqli_query($conn,"select * from records where username='$username'") or die(mysqli_error());
+                                while($row = mysqli_fetch_array($sql)){
+                                    if($row['images']!=''){
+                                        echo "<img src = 'data:image/jpeg;base64," .base64_encode($row["images"]) ."' class='profilepic'/>";                                
+                                    }
+                                    else{
+                                        echo "<img src='images/default.jpg'>";
+                                    }
+                                }
+                            ?>
+                        </td>
+                        <td colspan = 2>
                             <?php 
+                            $sql=mysqli_query($conn,"select * from records where username='$username'")or die(mysqli_error());
+                            while($row=mysqli_fetch_array($sql)){ 
+                            echo "<h1 style='margin-left:20px; color: #007caa;'><b>".$row['firstname']." ".$row['middlename']." ".$row['lastname']."</b></h1>";}
+                            ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style = "padding: 25px;">
+                            <?php 
+                                echo "<p>Student Number:</p>";
                                 $sql=mysqli_query($conn,"select * from records where username='$username'")or die(mysqli_error());
                                 while($row=mysqli_fetch_array($sql)){echo $row['username'];}
                             ?>
-                    </div>
-                    <div class="media">
-                            <label>Status</label>
+                        </td>
+                        <td style = "padding: 25px;">
                             <?php 
+                                echo "<p>Year Level:</p>";
+                                $sql=mysqli_query($conn,"select * from records where username='$username'")or die(mysqli_error());
+                                while($row=mysqli_fetch_array($sql)){echo $row['yearlevel'];}
+                            ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style = "padding: 25px;">
+                            <?php 
+                                echo "<p>Status:</p>";
                                 $sql=mysqli_query($conn,"select * from records where username='$username'")or die(mysqli_error());
                                 while($row=mysqli_fetch_array($sql))
                                 {
@@ -92,41 +113,16 @@
                                     }
                                 }
                             ?>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="media">
-                        <label>Year Level</label>
+                        </td>
+                        <td style = "padding: 25px;">
                             <?php 
-                                $sql=mysqli_query($conn,"select * from records where username='$username'")or die(mysqli_error());
-                                while($row=mysqli_fetch_array($sql)){echo $row['yearlevel'];}
-                            ?>
-                    </div>
-                    <div class="media">
-                        <label>Gender</label>
-                            <?php 
+                                echo "<p>Gender:</p>";
                                 $sql=mysqli_query($conn,"select * from records where username='$username'")or die(mysqli_error());
                                 while($row=mysqli_fetch_array($sql)){echo $row['gender'];}
                             ?>
-                    </div>
-                </div>
-                </div>
-            </div>
-            </div>
-            <div class="col-md-5">
-                <?php
-                    $sql=mysqli_query($conn,"select * from records where username='$username'") or die(mysqli_error());
-                    while($row = mysqli_fetch_array($sql)){
-                        if($row['images']!=''){
-                            echo "<img src = 'data:image/jpeg;base64," .base64_encode($row["images"]) ."' class='profilepic'/>";                                
-                        }
-                        else{
-                            echo "<img src='images/default.jpg'>";
-                        }
-                    }
-                ?>
-            </div>
-            </div>
+                        </td>
+                    </tr>
+                </table>
             </div>
 
             <!-- Submit Vote -->
@@ -136,8 +132,10 @@
                 ?>
             </div>
 
+            <!-- View Ballot -->
             <div id="ViewBallot" class="tabcontent">
                 <?php
+                    include 'ballot.php';
                 ?>
             </div>
 
@@ -147,15 +145,15 @@
             <div class="row align-items-center flex-row-reverse">
                 <div class="about-text go-to">
                 <div class="row about-list">
-                <div class="col-md-3">
+                <div class="col-md-4">
                 <h4 class='dark-color'> Reset Password </h4>
-                <div class="media">
+                <div class="media" style="margin-top:30px">
                     <div class="form-group">
                     <label for="newpw">New Password</label>
                     <input type="password" class="form-control" name="newpw" placeholder="Enter new password">
                     </div>
                 </div>
-                <div class="media">
+                <div class="media" style="margin-top:30px">
                     <div class="form-group">
                     <label for="updpw">Confirm New Password</label>
                     <input type="password" class="form-control" name="updpw" placeholder="Re-enter new password">
@@ -163,11 +161,11 @@
                 </div>
                 <div class="media">
                     <div class="text-right">
-                    <button type="submit" name="submit" style="margin-top:20px;" class="btn btn-primary" onClick="window.location.reload();">Save Changes</button>
+                    <button type="submit" name="submit" class="btn btn-primary" onClick="window.location.reload();" style="margin-top:30px">Save Changes</button>
                     </div>
                 </div>
                 </div>
-                <div class="col-md-8" style="margin-left:20px;">
+                <div class="col-md-7" style="margin-left:20px;">
                 <h4> Change Image </h4>                            
                 <div class="media">
                     <?php
@@ -181,7 +179,7 @@
                             }
                         }
                     ?>
-                    <input type="file" name="pic" id="pic" style="margin-left:20px;">
+                    <input type="file" name="pic" id="pic" style="margin-left:20px; margin-top:30px">
                 </div>
                 </div>
                 </div>
