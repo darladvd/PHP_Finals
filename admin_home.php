@@ -401,7 +401,7 @@
 
                         <tbody>
                         <?php
-                            $selectvoters = mysqli_query($conn,"SELECT `username`, `firstname`, `middlename`, `lastname`, `yearlevel`, `status` FROM phpfinals.records WHERE `position` = '' AND `accesslevel` = 'user'");
+                            $selectvoters = mysqli_query($conn,"SELECT `username`, `firstname`, `middlename`, `lastname`, `yearlevel`, `status` FROM phpfinals.records WHERE `accesslevel` = 'user'");
                             while($row = mysqli_fetch_assoc($selectvoters)) 
                                 {
                                     $id = $row['username'];
