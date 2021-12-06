@@ -426,6 +426,7 @@
                         ?>
                         </tbody>
                 </table>
+                <br><br>
 
                  <!-- No Ballot Modal -->
                  <div class="modal fade" id="noBallot"  aria-labelledby="viewBallot" aria-hidden="true">
