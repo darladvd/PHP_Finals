@@ -842,7 +842,7 @@
                     $('#yearlevel').text("Year Level: " + userid.yearlevel)
                     $('#pos').text("Position: " + userid.position)
                     $('#accesslevel').text("Access Level: " + userid.accesslevel)          
-                    let image = "images/" + userid.username + ".jpg";   
+                    let image = "images/" + userid.username + ".png";   
                     $('#img').attr("src", image)            
                 });
 
